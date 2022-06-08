@@ -1,0 +1,30 @@
+{
+  "name": "miary",
+  "version": "1.0.0",
+  "description": "blog named miary",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run": "node app.js"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "ejbeak",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mocha": "^10.0.0",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.20.1",
+    "sequelize-cli": "^6.4.1",
+    "should": "^13.2.3",
+    "supertest": "^6.2.3",
+    "winston": "^3.7.2",
+    "winston-daily-rotate-file": "^4.7.1"
+  },
+  "devDependencies": {
+    "swagger-jsdoc": "^6.2.1",
+    "swagger-ui-express": "^4.4.0"
+  }
+}
