@@ -5,14 +5,26 @@ header{
     left: 0;
     right: 0;
     z-index: 1;
+    &.hide {
+        transform: translateY(-100px);
+        transition: all .5s;
+        
+    }
+    transition: all .5s;
     .HeaderContainer{
-        //background-color: rgb(202, 196, 192);
+
+        
+        //background-color: #664147;
+        background:  #cdeec5;
+        border-bottom-left-radius: 7px;
+        border-bottom-right-radius: 7px;
         //color: aqua;
         width: 100%;
         height: 76px;
         margin: 0 auto;
+        padding-top: 20px;
         max-width: 1110px;
-    
+
         //항목 양끝 정렬
         display: flex;
     
@@ -20,27 +32,30 @@ header{
                 min-width: 80px;
                 width: 80px;
                 //background-color: rgb(120, 103, 214);
+                overflow: hidden;
                 img{
                     width: 76px;
-                    height: 100%;
+                    height: 76px;
                     float: left;
                 }
             }
             .HeaderBlank{
-                background-color: rgb(177, 158, 158);
+                //background-color: rgb(177, 158, 158);
                 flex:1;
                 min-width: 0px;
             }
             .HeaderToolsContainer{
-                width: 300px;
-                min-width: 300px;
+                width: 250px;
+                min-width: 250px;
                 //background-color: rgb(194, 109, 135);
     
                 ul{
+                    display: inline-block;
+                    line-height: 76px; //수직정렬 (부모높이만큼)
                     li{
-                        list-style-type: none;
                         float: left;
-                        outline: 2px dotted red;
+                        //outline: 2px dotted red;
+                        padding-left: 10px;
                     }
                 }
 

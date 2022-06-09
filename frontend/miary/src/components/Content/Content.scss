@@ -1,0 +1,20 @@
+/**
+ * @author Shun
+ * @email vytngms@gmail.com
+ * @create date 2022-06-09 16:05:53
+ * @modify date 2022-06-09 16:05:53
+ * @desc [반응형 컨텐트 뷰, 여기서 메인 글들을 불러온다.]
+ */
+@import '../Common_Scss/mixin';
+
+.ContentContainer{
+    max-width: 1100px;
+    height: fit-content;
+    
+    background-color: #A3F7B5;
+    //outline: solid black 1px;
+    border-radius: 10px;
+    margin: 0 auto;
+    min-height: 500px;
+    overflow: hidden;
+}
