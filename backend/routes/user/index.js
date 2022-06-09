@@ -1,4 +1,5 @@
 const express = require("express");
+const dayjs = require("dayjs");
 
 const pool = require("../../utils/pool");
 const logger = require("../../utils/winston");
@@ -16,17 +17,20 @@ router.post("/", async (req, res, next) => {
   const name = req.body.name;
   const email = req.body.email;
   const intro = req.body.intro;
+  const date = dayjs(new Date).format('YYYY-MM-DD HH:mm:ss');
 
   let json = null;
   let dbcon = null;
 
-  const input_data = [id, pw, name.email, intro, new Date.now(), false];
+  const input_data = [id, pw, name,email, intro, date, false];
+
+  console.log(input_data);
 
   try {
     dbcon = await pool.getConnection(async (conn) => conn);
 
     const input_sql =
-      "INSERT INTO members(userId,password,name,email,intro,rdate,auto) VALUES (?,?,?,?,?,?,?)";
+      'INSERT INTO members(userId,password,name,email,intro,rdate,auto) VALUES (?,?,?,?,?,?,?)';
 
     const [input_result] = await dbcon.query(input_sql, input_data);
 
@@ -35,7 +39,7 @@ router.post("/", async (req, res, next) => {
       [input_result.insertId]
     );
 
-    json = get_result;
+    json = get_result[0];
   } catch (err) {
     logger.error(err);
     res.status(500).send("Internal Server Error");

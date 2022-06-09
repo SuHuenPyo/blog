@@ -4,8 +4,8 @@
   "description": "blog named miary",
   "main": "app.js",
   "scripts": {
-    "test": "mocha ./routes/user/user.spec.js",
-    "run": "node app.js"
+    "test": "mocha ./routes/user/user.spec.js --timeout 10000",
+    "start": "node app.js"
   },
   "keywords": [
     "nodejs"
@@ -13,6 +13,7 @@
   "author": "ejbeak",
   "license": "ISC",
   "dependencies": {
+    "dayjs": "^1.11.3",
     "express": "^4.18.1",
     "mocha": "^10.0.0",
     "mysql2": "^2.3.3",
