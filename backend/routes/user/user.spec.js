@@ -3,41 +3,57 @@ const should = require("should");
 const app = require("../../app");
 
 describe("POST /user", () => {
-  describe.only("성공시", () => {
+  describe("성공시", () => {
     it("유저 이름을 반환한다.", (done) => {
       request(app)
         .post("/user")
+        .set("Content-Type", "application/x-www-form-urlencoded")
         .send({
-          id: "test123",
-          pw: "test123",
-          name: "Imtest",
+          id: "test",
+          pw: "test138@",
+          name: "test",
           email: "test@test.com",
-          intro: null,
+          intro:''
         })
-        .end((err, res) => {
-            const {data} = res.body; 
-          data.should.have.property("name");
-
+        .end((err,res) => {
+          res.body.should.have.property("name");
           done();
         });
     });
 
     it("201을 반환한다.", (done) => {
-        request(app)
-        .post('/user')
+      request(app)
+        .post("/user")
+        .set("Content-Type", "application/x-www-form-urlencoded")
         .send({
-            id: "test123",
-            pw: "test123",
-            name: "Imtest",
-            email: "test@test.com",
-            intro: null,
-          })
+          id: "test123",
+          pw: "test123@",
+          name: "Imtest",
+          email: "test@test.com",
+          intro:''
+        })
         .expect(201)
         .end(done);
     });
   });
 
   describe("실패시", () => {
-    it("id,pw,name,email,intro 가 없을 경우 400을 반환한다.", (done) => {});
+    it("id,pw,name,email 중 하나라도 값이 없을 경우 400을 반환한다.", (done) => {
+      request(app)
+        .post("/user")
+        .set("Content-Type", "application/x-www-form-urlencoded")
+        .send({
+            id: "test123",
+            pw: "test123@",
+            name: "Imtest",
+            email: "",
+            intro:''
+        })
+        .expect(400)
+        .end((err,res)=>{
+
+          done();
+        });
+    });
   });
 });
