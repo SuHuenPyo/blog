@@ -4,8 +4,17 @@ const app  = require("../../app");
 
 description('POST /user',()=>{
     description('성공시',()=>{
-        it('유저 이름을 반환한다.',(done)=>{
+        it.only('유저 이름을 반환한다.',(done)=>{
+            request(app)
+            .post('/user')
+            .send({id: 'test123',pw:'test123',name:'Imtest',email:'test@test.com',intro:null})
+            .end((err,res)=>{
+                if(err){
+                    return console.log(err);
+                }
 
+                res.data.should.should.have.property('name')
+            })
         })
 
         it('201을 반환한다.',(done)=>{
