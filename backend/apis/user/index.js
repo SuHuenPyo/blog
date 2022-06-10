@@ -2,12 +2,13 @@ const express = require("express");
 const router = express.Router();
 
 const { create } = require('./user.ctrl');
+const { upload } = require('../../utils/multer');
 
 router.get("/out", (req, res, next) => {
   // 로그아웃
 });
 
-router.post("/", create);
+router.post("/", upload.single('profile') ,create);
 
 router.post("/in", (req, res, next) => {
   // 로그인

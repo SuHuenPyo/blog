@@ -3,6 +3,7 @@ const dayjs = require("dayjs");
 const pool = require("../../utils/pool");
 const logger = require("../../utils/winston");
 const RegexHelper = require("../../utils/RegexHelper");
+const {deleteImg } = require("../../utils/multer")
 
 const regex = new RegexHelper;
 
@@ -11,22 +12,30 @@ const create = async (req, res, next) => {
     let json = null;
     let dbcon = null;
 
-    const id = req.body.id.trim();
-    const pw = req.body.pw.trim();
-    const name = req.body.name.trim();
-    const email = req.body.email.trim();
-    const intro = req.body.intro.trim();
-    const date = dayjs(new Date).format('YYYY-MM-DD HH:mm:ss');
+    let id;
+    let pw;
+    let name;
+    let email;
+    let intro = req.body.intro.trim() || null;
+    let date = dayjs(new Date).format('YYYY-MM-DD HH:mm:ss');
+    let img = req.file || null;
 
 
     // 정규식 검사
     try {
 
         // 값
-        regex.value(id,"[POST /user ID]");
-        regex.value(pw,"[POST /user PW]");
-        regex.value(name,"[POST /user NAME]");
-        regex.value(email,"[POST /user EMAIL]");
+        regex.value(req.body.id,"[POST /user ID]");
+        id = req.body.id.trim();
+
+        regex.value(req.body.pw,"[POST /user PW]");
+        pw = req.body.pw.trim();
+
+        regex.value(req.body.name,"[POST /user NAME]");
+        name = req.body.name.trim();
+
+        regex.value(req.body.email,"[POST /user EMAIL]");
+        email = req.body.email.trim();
 
         //길이
         regex.length(id,3,50,"[POST /user ID]");
@@ -38,26 +47,31 @@ const create = async (req, res, next) => {
             regex.length(intro,0,100,"[POST /user INTRO]");
         }
 
-
         //정규식
         regex.idTest(id,"[POST /user ID]");
         regex.pwTest(pw,"[POST /user PW]");
         regex.email(email,"[POST /user EMAIL]");
 
     } catch(err){
+
         logger.error(`[${err.name}] ${err.message}`);
+
+        if(img !== null){
+          deleteImg(img.key);
+        }
 
         return res.status(400).send('DATA를 확인해주세요.').end();
     }
 
-    const input_data = [id, pw, name,email, intro, date, false];
-  
+    
     try {
+
+      const input_data = [id, pw, name, email, intro, date, false, img?.location || null];
 
       dbcon = await pool.getConnection(async (conn) => conn);
   
       const input_sql =
-        'INSERT INTO members(userId,password,name,email,intro,rdate,auto) VALUES (?,?,?,?,?,?,?)';
+        'INSERT INTO members(userId,password,name,email,intro,rdate,auto,image) VALUES (?,?,?,?,?,?,?,?)';
   
       const [input_result] = await dbcon.query(input_sql, input_data);
   
@@ -67,9 +81,11 @@ const create = async (req, res, next) => {
       );
   
       json = await get_result[0];
+
     } catch (err) {
 
       logger.error(err);
+
       return res.status(500).send("Internal Server Error");
 
     } finally {
@@ -80,7 +96,6 @@ const create = async (req, res, next) => {
   
     return res.status(201).json(json);
   }
-
 
   module.exports = {
       create,

@@ -3,6 +3,7 @@
  * description : 파라미터를 검사하기 위한 모듈
  */
 
+const throwError = require("./errorHandler");
 
 class RegexHelper {
   /**
@@ -11,14 +12,10 @@ class RegexHelper {
    * @param {string} name 검사값 이름
    * @returns 값이 있으면 true, 없으면 false를 리턴한다.
    */
+
   value(data, name) {
     if (!data) {
-      console.log(data);
-      return new Error({
-        name: "No Value",
-        message: `[${name}] 값이 없습니다.`,
-      });
-
+      return throwError("No Value", `[${name}] 값이 없습니다.`);
     }
 
     return;
@@ -36,15 +33,19 @@ class RegexHelper {
     const length = data.length;
 
     if (length > max) {
-      return new Error({
-        name: "Value is too long",
-        message: `[${name}] 길이가 ${max}값보다 깁니다.`,
-      });
+      return throwError(
+        "Value is too long",
+        `[${name}] 길이가 ${max}값보다 깁니다.`
+      );
+
+      return;
     } else if (length < min) {
-      return new Error({
-        name: "Value is too short",
-        message: `[${name}] 길이가 ${min}값보다 짧습니다.`,
-      });
+      return throwError(
+        "Value is too short",
+        `[${name}] 길이가 ${min}값보다 짧습니다.`
+      );
+
+      return;
     }
 
     return;
@@ -61,33 +62,32 @@ class RegexHelper {
     const regex =
       /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 
-    if(!regex.test(data)){
-        return new Error({
-            name: "Value is not email",
-            message: `[${name}] 이메일 형식이 아닙니다.`,
-        })
+    if (!regex.test(data)) {
+      return throwError(
+        "Value is not email",
+        `[${name}] 이메일 형식이 아닙니다.`
+      );
     }
 
     return;
   }
 
   /**
-   * 영문,숫자, 특수문자 조합의 패스워드인지 검사하는 함수
+   * 영문,숫자,특수문자 조합의 패스워드인지 검사하는 함수
    * @param {string} data 검사값
    * @returns 맞으면 true 틀리면 false
    */
-  pwTest(data, message) {
+  pwTest(data, name) {
     const regex =
-      /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
+      /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).*$/;
 
-      if(!regex.test(data)){
-        return new Error({
-            name: "Value didn't passed Regex",
-            message: `[${name}] 정규식을 통과하지 못했습니다.`,
-        })
-
+    if (!regex.test(data)) {
+      return throwError(
+        "Value didn't passed Regex",
+        `[${name}] 정규식을 통과하지 못했습니다.`
+      );
     }
-        return;
+    return;
   }
 
   /**
@@ -95,20 +95,18 @@ class RegexHelper {
    * @param {string} data 검사값
    * @returns 맞으면 true 틀리면 false
    */
-  idTest(data, message) {
+
+  idTest(data, name) {
     const regex = /^[a-z]+[a-z0-9]*$/g;
 
-    if(!regex.test(data)){
-        return new Error({
-            name: "Value didn't passed Regex",
-            message: `[${name}] 정규식을 통과하지 못했습니다.`,
-        })
-
+    if (!regex.test(data)) {
+      return throwError(
+        "Value didn't passed Regex",
+        `[${name}] 정규식을 통과하지 못했습니다.`
+      );
     }
-        return;
+    return;
+  }
 }
-
-}
-
 
 module.exports = RegexHelper;

@@ -9,12 +9,13 @@ describe("POST /user", () => {
         .post("/user")
         .set("Content-Type", "application/x-www-form-urlencoded")
         .send({
-          id: "test",
+          id: "test12",
           pw: "test138@",
           name: "test",
           email: "test@test.com",
           intro:''
         })
+        .expect(201)
         .end((err,res) => {
           res.body.should.have.property("name");
           done();
@@ -24,11 +25,11 @@ describe("POST /user", () => {
     it("201을 반환한다.", (done) => {
       request(app)
         .post("/user")
-        .set("Content-Type", "application/x-www-form-urlencoded")
+        .set("Content-Type","application/x-www-form-urlencoded")
         .send({
           id: "test123",
           pw: "test123@",
-          name: "Imtest",
+          name: "imtest",
           email: "test@test.com",
           intro:''
         })
@@ -38,7 +39,7 @@ describe("POST /user", () => {
   });
 
   describe("실패시", () => {
-    it("id,pw,name,email 중 하나라도 값이 없을 경우 400을 반환한다.", (done) => {
+    it("id,pw,name,email,info 중 하나라도 정규식 검사를 통확하지 못하면 400을 반환한다.", (done) => {
       request(app)
         .post("/user")
         .set("Content-Type", "application/x-www-form-urlencoded")
@@ -51,7 +52,6 @@ describe("POST /user", () => {
         })
         .expect(400)
         .end((err,res)=>{
-
           done();
         });
     });

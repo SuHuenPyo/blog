@@ -4,7 +4,7 @@
   "description": "blog named miary",
   "main": "app.js",
   "scripts": {
-    "test": "NODE_ENV=test mocha ./routes/user/user.spec.js --timeout 10000",
+    "test": "NODE_ENV=test mocha ./apis/user/user.spec.js --timeout 10000",
     "start": "node app.js"
   },
   "keywords": [
@@ -13,9 +13,12 @@
   "author": "ejbeak",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.1152.0",
     "dayjs": "^1.11.3",
     "express": "^4.18.1",
     "mocha": "^10.0.0",
+    "multer": "^1.4.5-lts.1",
+    "multer-s3": "^2.10.0",
     "mysql2": "^2.3.3",
     "sequelize": "^6.20.1",
     "sequelize-cli": "^6.4.1",

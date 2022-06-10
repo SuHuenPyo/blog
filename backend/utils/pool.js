@@ -1,5 +1,5 @@
 const mysql = require('mysql2/promise');
-const { db } = require('../_config.json');
+const { db } = require('../configs/_config.json');
 
 
 module.exports = mysql.createPool({
