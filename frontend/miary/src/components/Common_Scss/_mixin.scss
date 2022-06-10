@@ -1,0 +1,27 @@
+/**
+ * @author Shun
+ * @email vytngms@gmail.com
+ * @create date 2022-06-09 15:47:58
+ * @modify date 2022-06-09 15:47:58
+ * @desc [mixin]
+ */
+
+ @import "./variables";
+ 
+//반응형 웹 디자인을 위한 사이즈 계산
+ @mixin mobile {
+     @media (min-width: 0) and (max-width: #{$bp-tablet - 1px}){
+         @content;
+     }
+ }
+ @mixin tablet {
+    @media (min-width: #{$bp-tablet}) and (max-width: #{$bp-desktop - 1px}){
+        @content;
+    }
+}
+@mixin desktop{
+    @media (min-width: #{$bp-desktop}) {
+        @content;
+    }
+}
+

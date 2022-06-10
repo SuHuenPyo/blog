@@ -1,0 +1,19 @@
+/**
+ * @author Shun
+ * @email vytngms@gmail.com
+ * @create date 2022-06-03 15:24:35
+ * @modify date 2022-06-03 15:24:35
+ * @desc [ContentView.scss의 stylesheet]
+ */
+@import '../Common_Scss/mixin';
+
+.ContentViewContainer{
+   width: 100%;
+   height: 100%;
+   height: 400px;
+   margin: 0 auto;
+   //background-color: rgb(52, 88, 63);
+   float:left;
+   height: fit-content;
+   
+}

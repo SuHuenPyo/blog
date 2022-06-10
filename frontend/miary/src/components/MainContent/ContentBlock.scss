@@ -1,0 +1,139 @@
+/**
+ * @author Shun
+ * @email vytngms@gmail.com
+ * @create date 2022-06-03 15:19:57
+ * @modify date 2022-06-03 15:19:57
+ * @desc [ContentBlock.js style Sheet]   3 x 8 = 24개 컨텐츠 
+ */
+ @import '../Common_Scss/mixin';
+ @import '../Common_Scss/variables';
+
+
+ //Only use ContentBlock.css : define contents sort with count of width size
+ $contentCount-mobile : 1;
+ $contentCount-tablet : 2;
+ $contentCount-desktop: 3;
+
+
+ //baseSize: desktop, tablet, mobile , default : $bp-desktop
+ //widthCount: 컨텐츠 가로 정렬 개수 , default : $contentCount-desktop
+ @mixin mixinContentBlockContainer($baseSize: $bp-desktop, $widthCount: $contentCount-desktop){
+    $marginValue: 20px;
+    $withMinusMargin: ($marginValue*($widthCount+1));
+    
+    display: inline-block;
+    width: ($baseSize / $widthCount) -($withMinusMargin);
+
+
+    height: 450px;
+    background-color: #9de0ad;
+    border-radius: 7px;
+    margin: $marginValue;
+    cursor: pointer;
+    flex-direction: column;
+    transition: .5s;
+
+    
+}
+@include desktop{
+    .ContentBlockContainer{
+        @include mixinContentBlockContainer($bp-desktop,$contentCount-desktop )
+    }
+ }
+ @include tablet{
+    .ContentBlockContainer{
+        @include mixinContentBlockContainer($bp-tablet,$contentCount-tablet )
+    }
+ }
+ @include mobile{
+    .ContentBlockContainer{
+        @include mixinContentBlockContainer($bp-mobile,$contentCount-mobile )
+    }
+ }
+ .ContentBlockContainer{
+    &:hover {
+        box-shadow: 0 0 20px #2b1207;
+        transition: .5s;
+        .ContentBlockImage{
+            overflow: hidden;
+            img{
+                transform: scale(1.5);
+                transition: .5s;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+    .ContentBlockImage{
+        
+        height: 50%;
+        max-height: 50%;
+        background-color: rgb(101, 199, 166);
+        border-top-left-radius: 7px;
+        border-top-right-radius: 7px;
+        overflow: hidden;
+        
+        img{
+            object-fit:contain;
+            transition: .5s;
+            width: 100%;
+            height: 100%;
+            
+        }
+    }
+    .ContentArticlContainer{
+        //background-color: blanchedalmond;
+        height: 50%;
+        
+        flex-direction: column;
+        text-align: left;
+        .ContentBlockArticleTitle{
+            //background-color: cadetblue;
+            height: 10%;
+            margin: -5px 20px;
+            padding-top: 10px;
+            
+            text-overflow: ellipsis; 
+            font-size: large;
+            font-weight: bold;
+        }
+        .ContentBlockArticleContent{
+            //background-color: cornflowerblue;
+            height: 65%;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            margin: 0 20px;
+            padding: 10px 10px 0 0;
+        }
+        .ContentBlockArticleAuthorContainer{ //writer box.. 
+            //background-color: darkgoldenrod;
+            height: 25%;
+            margin: 0 20px;
+            display: flex;
+            .ContentBlockArticleAuthorPic{ // writer pic
+                flex: 1;
+            }
+            .ContentBlockArticleAuthorInfo{ // writer Name, writer's register Date, HitCount(up to every Read times)
+                flex: 9;
+                .ContentBlockArticleAuthorName{
+
+                }
+                .ContentBlockArticleAuthorDateHit{
+                    display: flex;
+                    .ContentBlockArticleAuthorDate{
+                        
+                    }
+                    .ContentBlockArticleAuthorBlank{
+
+                    }
+                    .ContentBlockArticleAuthorHit{
+
+                    }
+                }
+            }
+        }
+    }
+    
+ 
+ }
+ 

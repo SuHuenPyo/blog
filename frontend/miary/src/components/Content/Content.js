@@ -1,13 +1,14 @@
 import React from 'react'
-import '../assets/css/Content.scss';
-import ContentView from './ContentView';
+import './Content.scss';
+import ContentView from '../MainContent/ContentView';
+
 
 export const Content = (props) => {
   return (
     <div className='ContentContainer'>
       
       <ContentView/>
-      a
+
     </div>
   )
 }
