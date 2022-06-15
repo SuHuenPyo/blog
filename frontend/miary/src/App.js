@@ -1,20 +1,31 @@
 import logo from './logo.svg';
 import './App.scss';
+import React from "react";
+import {Route, Routes} from "react-router-dom";
 
-import {Header} from './components/Header/Header';
-import {Content} from './components/Content/Content';
-import { Footer } from './components/Footer/Footer';
+
+import Home from './pages/Home';
+import MyBlog from './pages/MyBlog';
+import AboutAll from './pages/AboutAll';
+import Search from './pages/Search';
+import Setting from './pages/Setting';
+//route
+
 
 function App() {
-  const headerTools = [
-   {tools1: '글 쓰기', tools2: '프로필'}
-  ]
+
   return (
-    
     <div className="App">
-      <Header tools1={headerTools[0].tools1} tools2={headerTools[0].tools2}></Header>
-      <Content></Content>
-      <Footer></Footer>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/myblog" element={<MyBlog />} />
+        <Route path="/setting" element={<Setting />} />
+        <Route path="/aboutall" element={<AboutAll />} />
+
+      </Routes>
+   
     </div>
   );
 }

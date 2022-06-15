@@ -45,6 +45,7 @@ export const Header = (props) => {
 
     
   return (
+    // error point
     <header className={hide && 'hide'}>
         
         {/* <div className={hide ? 'HeaderContainer' + 'HeaderContainer:hide' : 'HeaderContainer'}> */}
