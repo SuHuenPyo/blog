@@ -1,21 +1,25 @@
 const express = require("express");
 const router = express.Router();
-
+const { upload } = require("../../utils/multer");
+const { create } = require("./post.ctrl");
 
 router.get("/", (req, res, next) => {
-  // 로그아웃
+  // 전체 글 가져오기
 });
 
-router.post("/", (req, res, next) => {
-    // 로그인
-  });;
-
-router.post("/in", (req, res, next) => {
-  // 로그인
+router.get("/:id", (req, res, next) => {
+  // Id 글 가져오기
 });
 
-router.delete("/in", (req, res, next) => {
-  // 탈퇴
+router.post("/", upload.single("banner"), create);
+
+
+router.put("/:id",upload.single("banner"), (req, res, next) => {
+  // 글 수정하기
+});
+
+router.delete("/:id", (req, res, next) => {
+  // 글 지우기
 });
 
 module.exports = router;

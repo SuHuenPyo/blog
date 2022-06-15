@@ -1,7 +1,6 @@
 const multer = require('multer');
 const multerS3 = require('multer-s3');
 const aws = require('aws-sdk');
-const throwError = require('./errorHandler');
 
 aws.config.loadFromPath(__dirname + '/../configs/s3.json');
 
@@ -16,7 +15,6 @@ const upload = multer({
             if(!file || file == null){
                 return;
             }
-
             cd(null,Date.now() + '.' + file.originalname.split('.').pop())
         }
     })
@@ -28,9 +26,8 @@ const deleteImg = (filename)=>{
         Key: filename
       }, function(err, data){
           if(err){
-             throwError('[S3 Detelete Object]',err);
+             throw { name: '[S3 Detelete Object]', message: err}
           }
-
           return;
       });
 }

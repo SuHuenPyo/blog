@@ -3,7 +3,7 @@ const dayjs = require("dayjs");
 const pool = require("../../utils/pool");
 const logger = require("../../utils/winston");
 const RegexHelper = require("../../utils/RegexHelper");
-const {deleteImg } = require("../../utils/multer")
+const { deleteImg } = require("../../utils/multer")
 
 const regex = new RegexHelper;
 
@@ -12,10 +12,10 @@ const create = async (req, res, next) => {
     let json = null;
     let dbcon = null;
 
-    let id;
-    let pw;
-    let name;
-    let email;
+    const id = req.body.id?.trim();
+    const pw = req.body.pw?.trim(); 
+    const name = req.body.name?.trim();
+    const email = req.body.email?.trim();
     let intro = req.body.intro.trim() || null;
     let date = dayjs(new Date).format('YYYY-MM-DD HH:mm:ss');
     let img = req.file || null;
@@ -23,19 +23,16 @@ const create = async (req, res, next) => {
 
     // 정규식 검사
     try {
-
         // 값
-        regex.value(req.body.id,"[POST /user ID]");
-        id = req.body.id.trim();
+        regex.value(id,"[POST /user ID]");
 
-        regex.value(req.body.pw,"[POST /user PW]");
-        pw = req.body.pw.trim();
 
-        regex.value(req.body.name,"[POST /user NAME]");
-        name = req.body.name.trim();
+        regex.value(pw,"[POST /user PW]");
 
-        regex.value(req.body.email,"[POST /user EMAIL]");
-        email = req.body.email.trim();
+        regex.value(name,"[POST /user NAME]");
+
+        regex.value(email,"[POST /user EMAIL]");
+
 
         //길이
         regex.length(id,3,50,"[POST /user ID]");

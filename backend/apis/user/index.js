@@ -14,7 +14,7 @@ router.post("/in", (req, res, next) => {
   // 로그인
 });
 
-router.delete("/in", (req, res, next) => {
+router.delete("/out", (req, res, next) => {
   // 탈퇴
 });
 
