@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { upload } = require("../../utils/multer");
-const { create,index,detail } = require("./post.ctrl");
+const { create,index,detail,popular,recent } = require("./post.ctrl");
 
 
 /**
@@ -42,15 +42,12 @@ router.get("/", index);
  *        description: 아이디 확인 필요
  */
 
+
+router.get("/popular", popular);
+
+router.get("/recent", recent);
+
 router.get("/:id", detail);
-
-router.get("/popular", (req, res, next) => {
-  // Id 글 가져오기
-});
-
-router.get("/recent", (req, res, next) => {
-  // Id 글 가져오기
-});
 
 /**
  * @swagger

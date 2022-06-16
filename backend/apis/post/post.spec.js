@@ -41,7 +41,7 @@ describe("GET /post/:id", () => {
           res.body.should.have.properties("date");
           res.body.should.have.properties("hits");
           res.body.should.have.properties("like");
-          
+
           done();
         });
     });
@@ -57,6 +57,39 @@ describe("GET /post/:id", () => {
     });
   });
 });
+
+
+describe("GET /post/popular",()=>{
+    describe("성공시", () => {
+        it('hits 가 높은 순서대로 목록을 반환한다.',(done)=>{
+            request(app)
+            .get('/post/popular')
+            .expect(200)
+            .end((err, res)=>{
+                res.body.should.be.an.Array();
+
+                done();
+            })
+        })
+    })
+})
+
+describe.only("GET /post/recent",()=>{
+    describe.only("성공시", () => {
+        it('최근 날짜 순으로 정렬된 목록을 반환한다.',(done)=>{
+            request(app)
+            .get('/post/recent')
+            .expect(200)
+            .end((err, res)=>{
+
+                console.log(res);
+                res.body.should.be.an.Array();
+
+                done();
+            })
+        })
+    })
+})
 
 describe("POST /post", () => {
   describe("성공시", () => {

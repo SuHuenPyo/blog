@@ -4,6 +4,7 @@ const pool = require("../../utils/pool");
 const logger = require("../../utils/winston");
 const RegexHelper = require("../../utils/RegexHelper");
 const { deleteImg } = require("../../utils/multer");
+const { reset } = require("nodemon");
 
 const regex = new RegexHelper();
 
@@ -68,13 +69,61 @@ const detail = async (req, res, next) => {
     logger.error(err);
 
     return res.status(500).send("Interal Server Error");
-    
+
   } finally {
     await dbcon.release();
   }
 
   return res.status(200).json(json);
 };
+
+const popular = async (req, res, next) => {
+    let dbcon;
+    let json;
+
+    try {
+        dbcon = await pool.getConnection(async (conn) => conn);
+        
+        const sql = "SELECT b_id 'id', b_title 'title', b_banner 'banner', b_content 'content', m_id 'author', b_mdate 'date', b_hits 'hits', b_like 'like' FROM boards ORDER BY b_hits DESC";
+
+        const [result] = await dbcon.query(sql);
+
+        json = result;
+
+    } catch (err) {
+        logger.error(err);
+
+        return res.status(500).send("Interal Server Error");
+    } finally {
+        await dbcon.release();
+    }
+
+    return res.status(200).json(json);
+}
+
+const recent = async (req, res, next) => {
+    let dbcon;
+    let json;
+
+    try {
+        dbcon = await pool.getConnection(async (conn) => conn);
+        
+        const sql = "SELECT b_id 'id', b_title 'title', b_banner 'banner', b_content 'content', m_id 'author', b_mdate 'date', b_hits 'hits', b_like 'like' FROM boards ORDER BY b_rdate DESC";
+
+        const [result] = await dbcon.query(sql);
+
+        json = result;
+
+    } catch (err) {
+        logger.error(err);
+
+        return res.status(500).send("Interal Server Error");
+    } finally {
+        await dbcon.release();
+    }
+
+    return res.status(200).json(json);
+}
 
 const create = async (req, res, next) => {
   let dbcon = null;
@@ -137,4 +186,4 @@ const create = async (req, res, next) => {
   return res.status(201).end();
 };
 
-module.exports = { create, index, detail };
+module.exports = { create, index, detail,popular,recent };
