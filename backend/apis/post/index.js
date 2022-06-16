@@ -59,20 +59,21 @@ router.get("/recent", (req, res, next) => {
  *      tags:
  *        - Post 
  *      description: 글 등록하기
- *      requestBody:
- *        content: 
- *          application/x-www-form-urlencoded:
- *            schema: 
- *              type: object
- *              properties:
- *                title: 
- *                  type: string
- *                content: 
- *                  type: string
- *                author: 
- *                  type: inter
- *                banner:
- *                  type: image/* 
+ *      parameters:
+ *        - in: body
+ *          name: postInfo
+ *          description: The user to create.
+ *          schema: 
+ *            type: object
+ *            properties:
+ *              title: 
+ *               type: string
+ *              content: 
+ *                type: string
+ *              author: 
+ *                 type: integer
+ *              banner:
+*                  type: image/* 
  *      responses:
  *         201:
  *          description: 글 추가 성공

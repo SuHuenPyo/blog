@@ -17,12 +17,11 @@ router.get("/out", (req, res, next) => {
  *      tags:
  *        - users  
  *      description: 회원가입
- *      requestBody:
- *        description: 회원가입 정보
- *        required: true
- *        content: 
- *          application/x-www-form-urlencoded:
- *            schema: 
+ *      parameters:
+ *        - in: body
+ *          name: postInfo
+ *          description: 회원가입 정보
+ *          schema: 
  *              type: object
  *              properties:
  *                id: 
