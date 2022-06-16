@@ -8,6 +8,42 @@ router.get("/out", (req, res, next) => {
   // 로그아웃
 });
 
+
+
+/**
+ * @swagger
+ *  /user:
+ *    post:
+ *      tags:
+ *        - users  
+ *      description: 회원가입
+ *      requestBody:
+ *        description: 회원가입 정보
+ *        required: true
+ *        content: 
+ *          application/x-www-form-urlencoded:
+ *            schema: 
+ *              type: object
+ *              properties:
+ *                id: 
+ *                  type: string
+ *                pw: 
+ *                  type: string
+ *                name: 
+ *                  type: string
+ *                email: 
+ *                  type: string
+ *                intro:
+ *                  type: string
+ *                profile:
+ *                  type: image/* 
+ *      responses:
+ *         201:
+ *          description: 유저 추가 성공
+ *         404: 
+ *           description: 유효성 검사 실패
+ */
+
 router.post("/", upload.single('profile') ,create);
 
 router.post("/in", (req, res, next) => {

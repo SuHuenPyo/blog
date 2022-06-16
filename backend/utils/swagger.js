@@ -15,11 +15,11 @@ const options = {
             version: '1.0.0',
             description: 'API for Miary'
         },
-        host: 'localhost:2800',
+        host: 'localhost:3300',
         basePath: '/'
     },
     // 설정한 api들의 파일 위치, swagger 설정위치
-    apis:['./routes/*.js','./swagger/*']
+    apis:['./apis/*/index.js','./swagger/*']
 }
 
 const specs = swaggerJsDoc(options);

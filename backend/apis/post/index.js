@@ -1,16 +1,84 @@
 const express = require("express");
 const router = express.Router();
 const { upload } = require("../../utils/multer");
-const { create } = require("./post.ctrl");
+const { create,index,detail } = require("./post.ctrl");
 
-router.get("/", (req, res, next) => {
-  // 전체 글 가져오기
-});
 
-router.get("/:id", (req, res, next) => {
+/**
+ * @swagger
+ *   /post:
+ *    get:
+ *     tags:
+ *      - Post 
+ *     description: 글 불러오기
+ *     produces:
+ *     - application/json
+ *     responses:
+ *         200:
+ *          description: 글 불러오기 성공
+ */
+router.get("/", index);
+
+/**
+ * @swagger
+ *  /post/{id}:
+ *    get:
+ *      tags:
+ *      - Post
+ *      description: 특정 포스트 불러오기
+ *      produces:
+ *      - application/json
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          required: true
+ *          schema:
+ *            type: integer
+ *            description: 포스트 아이디
+ *      responses:
+ *       200:
+ *        description: 제품 조회 성공
+ *       400:
+ *        description: 아이디 확인 필요
+ */
+
+router.get("/:id", detail);
+
+router.get("/popular", (req, res, next) => {
   // Id 글 가져오기
 });
 
+router.get("/recent", (req, res, next) => {
+  // Id 글 가져오기
+});
+
+/**
+ * @swagger
+ *  /post:
+ *    post:
+ *      tags:
+ *        - Post 
+ *      description: 글 등록하기
+ *      requestBody:
+ *        content: 
+ *          application/x-www-form-urlencoded:
+ *            schema: 
+ *              type: object
+ *              properties:
+ *                title: 
+ *                  type: string
+ *                content: 
+ *                  type: string
+ *                author: 
+ *                  type: inter
+ *                banner:
+ *                  type: image/* 
+ *      responses:
+ *         201:
+ *          description: 글 추가 성공
+ *         404: 
+ *           description: 유효성 검사 실패
+ */
 router.post("/", upload.single("banner"), create);
 
 
