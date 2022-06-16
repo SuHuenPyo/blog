@@ -84,7 +84,7 @@ const popular = async (req, res, next) => {
     try {
         dbcon = await pool.getConnection(async (conn) => conn);
         
-        const sql = "SELECT b_id 'id', b_title 'title', b_banner 'banner', b_content 'content', m_id 'author', b_mdate 'date', b_hits 'hits', b_like 'like' FROM boards ORDER BY b_hits DESC";
+        const sql = "SELECT b_id 'id', b_title 'title', b_banner 'banner', b_content 'content', m_id 'author', b_mdate 'date', b_hits 'hits', b_like 'like' FROM boards ORDER BY b_hits DESC, b_like DESC";
 
         const [result] = await dbcon.query(sql);
 

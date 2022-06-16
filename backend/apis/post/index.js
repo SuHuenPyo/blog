@@ -21,6 +21,38 @@ router.get("/", index);
 
 /**
  * @swagger
+ *   /post/popular:
+ *    get:
+ *     tags:
+ *      - Post 
+ *     description: 인기글 불러오기(Hts,like)
+ *     produces:
+ *     - application/json
+ *     responses:
+ *         200:
+ *          description: 글 불러오기 성공
+ */
+
+router.get("/popular", popular);
+
+/**
+ * @swagger
+ *   /post/recent:
+ *    get:
+ *     tags:
+ *      - Post 
+ *     description: 최신글 불러오기(rdate)
+ *     produces:
+ *     - application/json
+ *     responses:
+ *         200:
+ *          description: 글 불러오기 성공
+ */
+
+router.get("/recent", recent);
+
+/**
+ * @swagger
  *  /post/{id}:
  *    get:
  *      tags:
@@ -42,10 +74,6 @@ router.get("/", index);
  *        description: 아이디 확인 필요
  */
 
-
-router.get("/popular", popular);
-
-router.get("/recent", recent);
 
 router.get("/:id", detail);
 
