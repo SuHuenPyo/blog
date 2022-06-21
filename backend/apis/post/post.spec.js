@@ -28,12 +28,14 @@ describe("GET /post", () => {
 });
 
 describe("GET /post/:id", () => {
-  describe("성공시", () => {
+  describe.only("성공시", () => {
     it("id에 해당하는 포스트 정보를 반환한다.", (done) => {
       request(app)
-        .get("/post/1")
+        .get("/post/34")
         .expect(200)
         .end((err, res) => {
+          console.log(res.body);
+          
           res.body.should.have.properties("title");
           res.body.should.have.properties("content");
           res.body.should.have.properties("author");
@@ -41,6 +43,7 @@ describe("GET /post/:id", () => {
           res.body.should.have.properties("date");
           res.body.should.have.properties("hits");
           res.body.should.have.properties("like");
+          res.body.should.have.properties("tags");
 
           done();
         });
@@ -90,7 +93,7 @@ describe("GET /post/recent",()=>{
 })
 
 describe("POST /post", () => {
-  describe.only("성공시", () => {
+  describe("성공시", () => {
     it("성공시 201을 반환한다.", (done) => {
       request(app)
         .post("/post")

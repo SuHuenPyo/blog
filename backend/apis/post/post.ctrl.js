@@ -58,12 +58,29 @@ const detail = async (req, res, next) => {
 
     const sql2 = "SELECT name , image 'profile' FROM members WHERE m_id = ?";
 
-
     const [author_info] = await dbcon.query(sql2,[author_id]);
+
+    const board_id = result[0].id;
+
+    const findTagsId = "SELECT t_id FROM board_tags WHERE b_id = ?";
+
+    const [TagsId] = await dbcon.query(findTagsId,[board_id]);
+
+    const tags = await Promise.all(TagsId.map(async ( tagId, index)=>{
+
+      const findTag = "SELECT name FROM tags WHERE t_id = ?";
+
+      const [tag] = await dbcon.query(findTag, [tagId.t_id]);
+
+      return tag[0].name
+    }))
+
 
     json = result[0];
 
     json.author = author_info[0];
+
+    json.tags = tags;
 
   } catch (err) {
     logger.error(err);
@@ -191,16 +208,12 @@ const create = async (req, res, next) => {
 
       const [result1] = await dbcon.query(findId, [tag]);
 
-      console.log(result1);
-
-      tagId = result1;
+      tagId = result1[0].tagId;
 
       if(!tagId[0]){
         const inputTag = "INSERT INTO tags(name) VALUES (?)"
 
         const [result2] = await dbcon.query(inputTag,[tag]);
-
-        console.log(result2);
 
         tagId = result2.insertId;
       }
