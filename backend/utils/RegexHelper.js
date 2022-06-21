@@ -13,6 +13,7 @@ class RegexHelper {
    */
 
   value(data, name) {
+    
     if (!data) {
       throw { name: "No Value", message: `[${name}] 값이 없습니다.` };
     }

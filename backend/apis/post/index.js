@@ -1,15 +1,21 @@
 const express = require("express");
 const router = express.Router();
 const { upload } = require("../../utils/multer");
-const { create,index,detail,popular,recent } = require("./post.ctrl");
-
+const {
+  create,
+  index,
+  detail,
+  popular,
+  recent,
+  update,
+} = require("./post.ctrl");
 
 /**
  * @swagger
  *   /post:
  *    get:
  *     tags:
- *      - Post 
+ *      - Post
  *     description: 글 불러오기
  *     produces:
  *     - application/json
@@ -24,7 +30,7 @@ router.get("/", index);
  *   /post/popular:
  *    get:
  *     tags:
- *      - Post 
+ *      - Post
  *     description: 인기글 불러오기(Hts,like)
  *     produces:
  *     - application/json
@@ -40,7 +46,7 @@ router.get("/popular", popular);
  *   /post/recent:
  *    get:
  *     tags:
- *      - Post 
+ *      - Post
  *     description: 최신글 불러오기(rdate)
  *     produces:
  *     - application/json
@@ -74,7 +80,6 @@ router.get("/recent", recent);
  *        description: 아이디 확인 필요
  */
 
-
 router.get("/:id", detail);
 
 /**
@@ -82,36 +87,33 @@ router.get("/:id", detail);
  *  /post:
  *    post:
  *      tags:
- *        - Post 
+ *        - Post
  *      description: 글 등록하기
  *      parameters:
  *        - in: body
  *          name: postInfo
  *          description: The user to create.
- *          schema: 
+ *          schema:
  *            type: object
  *            properties:
- *              title: 
+ *              title:
  *               type: string
- *              content: 
+ *              content:
  *                type: string
- *              author: 
+ *              author:
  *                 type: integer
  *              banner:
-*                  type: image/* 
+ *                  type: image/*
  *      responses:
  *         201:
  *          description: 글 추가 성공
- *         404: 
+ *         404:
  *           description: 유효성 검사 실패
  */
 
 router.post("/", upload.single("banner"), create);
 
-
-router.put("/:id",upload.single("banner"), (req, res, next) => {
-  // 글 수정하기
-});
+router.put("/:id", upload.single("banner"), update);
 
 router.delete("/:id", (req, res, next) => {
   // 글 지우기

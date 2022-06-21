@@ -28,14 +28,15 @@ describe("GET /post", () => {
 });
 
 describe("GET /post/:id", () => {
-  describe.only("성공시", () => {
+  describe("성공시", () => {
     it("id에 해당하는 포스트 정보를 반환한다.", (done) => {
       request(app)
         .get("/post/34")
         .expect(200)
-        .end((err, res) => {
+        .end((err, res
+          ) => {
           console.log(res.body);
-          
+
           res.body.should.have.properties("title");
           res.body.should.have.properties("content");
           res.body.should.have.properties("author");
@@ -124,3 +125,52 @@ describe("POST /post", () => {
     });
   });
 });
+
+describe("PUT /post/:id",()=>{
+  describe("성공시", () => {
+    it('204을 반환한다.',(done)=>{
+       request(app)
+       .put('/post/43')
+       .send({
+        title: "This is updated!",
+        banner: null,
+        content: "Update test content",
+        author: 1,
+       })
+       .expect(204)
+       .end(done)
+    })
+  })
+
+  describe("실패시",()=>{
+    it("유효성 검사에 실패하면 400을 반환한다.", (done) => {
+      request(app)
+      .put("/post/1")
+      .send({
+        title: "test",
+        banner: null,
+        content: "",
+        author: 2,
+      })
+      .expect(400)
+      .end(done);
+    })
+
+
+    it("해당하는 post가 없으면 400을 반환한다.", (done) => {
+      request(app)
+      .put("/post/999")
+      .send({
+        title: "test",
+        banner: null,
+        content: "",
+        author: 2,
+      })
+      .expect(400)
+      .end((err, res)=>{
+        console.log(res.body);
+        done();
+      });
+    })
+  })
+})

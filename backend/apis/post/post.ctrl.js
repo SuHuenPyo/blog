@@ -160,11 +160,11 @@ const create = async (req, res, next) => {
 
     regex.value(content, "[POST /post content]");
 
-    regex.value(author, "[POST /post content]");
+    regex.value(author, "[POST /post author]");
 
-    regex.length(title, 2, 45, "[POST /user title]");
+    regex.length(title, 2, 45, "[POST /post title]");
 
-    regex.length(title, 3, 1000, "[POST /user content]");
+    regex.length(title, 3, 1000, "[POST /post content]");
 
     regex.number(author, "[POST /post author]");
 
@@ -221,7 +221,9 @@ const create = async (req, res, next) => {
     const inputTagBoard = "INSERT INTO board_tags(t_id, b_id) VALUES (?,?)"
 
 
-    await dbcon.query(inputTagBoard, [tagId,boardId]);
+    const [boardRT] = await dbcon.query(inputTagBoard, [tagId,boardId]);
+
+    logger.debug(`[POST] - ID: ${boardRT.insertId} is create`)
 
     });
 
@@ -237,4 +239,68 @@ const create = async (req, res, next) => {
   return res.status(201).end();
 };
 
-module.exports = { create, index, detail,popular,recent };
+const update = async (req, res, next) => {
+  let dbcon = null;
+  const id = parseInt(req.params.id,10);
+  const title = req.body.title?.trim();
+  const banner = req.file || null;
+  const content = req.body.content?.trim();
+  const author = parseInt(req.body.author, 10);
+  const date = dayjs(new Date()).format("YYYY-MM-DD HH:mm:ss");
+
+  try {
+    regex.value(title, "PUT /post title");
+
+    regex.value(content, "PUT /post content");
+
+    regex.value(author, "PUT /post author");
+
+    regex.length(title, 2, 45, "PUT /post title");
+
+    regex.length(content, 3, 1000, "PUT /post content");
+
+    regex.number(author, "PUT /post author");
+    regex.number(id, "PUT /post id");
+
+  } catch (err) {
+    logger.error(`${err.name} ${err.message}`);
+
+    if (banner !== null) {
+      deleteImg(banner.key);
+    }
+
+    return res.status(400).send("DATA를 확인해주세요.").end();
+  }
+
+
+  try {
+    dbcon = await pool.getConnection(async (conn) => conn);
+    
+    const input_data = [title, banner, content,author,date,id];
+
+    const sql = "UPDATE boards SET b_title = ?, b_banner = ?, b_content = ? ,m_id = ?, b_mdate = ? WHERE b_id = ? "
+
+    const [result] = await dbcon.query(sql, input_data);
+
+    if(result.affectedRows < 1){
+      return res.status(400).send("Board ID를 확인해주세요.");
+    }
+
+    logger.debug(`[POST] - ID: ${id} is updated done`);
+
+  } catch (err) {
+
+    logger.error(err);
+
+    return res.status(500).send("Interal Server Error");
+
+  } finally {
+
+    dbcon.release();
+
+  }
+
+  return res.status(204).end()
+}
+
+module.exports = { create, index, detail,popular,recent,update };
