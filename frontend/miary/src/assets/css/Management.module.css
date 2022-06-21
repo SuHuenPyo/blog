@@ -1,0 +1,14 @@
+.Management {
+    display: flex;
+}
+
+.Leftside {
+    background-color: #f5f5f8; 
+    width: 30%;
+    padding-top: 40px;
+    padding-left: 70px;
+}
+
+.Accountside {
+    width: 70%;
+}
