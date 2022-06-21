@@ -1,0 +1,106 @@
+/* 공통 */
+h1 {
+    font-size: 1.3em;
+}
+
+.Explanation {
+    padding: 1rem;
+    color: #856404;
+    background-color: #fff3cd;
+    border-left: 5px solid #ffc405;
+    font-weight: bold;
+    box-sizing: border-box;
+    display: block;
+    width: 730px;
+}
+
+.Update {
+    background-color: black;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 0.25rem;
+    font-weight: bold;
+    font-size: 1.0em;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+/* 가입일 */
+.Member {
+    margin-bottom: -13px;
+}
+.Date {
+    font-size: 1.0em;
+}
+
+/* 사용자 필명 */
+.text {
+    float: left;
+}
+.Penname {
+    margin-top: 5px;
+}
+.Change {
+    background-color: black;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 0.25rem;
+    font-weight: bold;
+    font-size: 1.0em;
+    margin-left: 560px;
+}
+/* 사용자 실명 */
+.name {
+    width: 730px;
+    height: 30px;
+    padding-left: 15px;
+    font-weight: bold;
+    font-size: 1.0rem;
+}
+/* 비밀번호 변경 */
+.password {
+    width: 730px;
+    height: 30px;
+    font-weight: bold;
+    font-size: 1.0rem;
+    padding-left: 15px;
+}
+.passwordcheck {
+    margin-top: 10px;
+    width: 730%;
+    height: 30px;
+    font-weight: bold;
+    font-size: 1.0rem;
+    padding-left: 15px;
+}
+
+/* 개인정보 보호 */
+.PIP {
+    margin-top: 20px;
+}
+
+.PIP label {
+    padding-left: 0.25rem;
+    font-weight: bold;
+}
+/* 2차인증 및 탈퇴 */
+.Certified {
+    margin-top: 50px;
+    background-color: black;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 0.25rem;
+    font-weight: bold;
+    font-size: 1.0em;
+}
+
+.Out {
+    background-color: black;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 0.25rem;
+    font-weight: bold;
+    font-size: 1.0em;
+    margin-left: 10px;
+}
