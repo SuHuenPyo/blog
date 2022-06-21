@@ -1,2 +1,2 @@
 # Miary
-추억과 기억을 보관하는 블로그
+Miary Project 1.0.0
