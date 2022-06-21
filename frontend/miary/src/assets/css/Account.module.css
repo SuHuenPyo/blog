@@ -28,6 +28,12 @@ h1 {
 }
 
 /* 가입일 */
+.Since {
+    background-color: #f5f5f8; 
+    padding: 10px;
+    border-radius: 0.75rem;
+    margin: 20px;
+}
 .Member {
     margin-bottom: -13px;
 }
@@ -36,10 +42,16 @@ h1 {
 }
 
 /* 사용자 필명 */
+.Pname {
+    background-color: #f5f5f8;
+    padding: 10px;
+    border-radius: 0.75rem;
+    margin: 20px; 
+}
 .text {
     float: left;
 }
-.Penname {
+.Penname1 {
     margin-top: 5px;
 }
 .Change {
@@ -51,8 +63,21 @@ h1 {
     font-size: 1.0em;
     margin-left: 560px;
 }
+/* email */
+.email {
+    background-color: #f5f5f8; 
+    padding: 10px;
+    border-radius: 0.75rem;
+    margin: 20px;
+}
 /* 사용자 실명 */
-.name {
+.Rname {
+    background-color: #f5f5f8; 
+    padding: 10px;
+    border-radius: 0.75rem;
+    margin: 20px;
+}
+.Rname1 {
     width: 730px;
     height: 30px;
     padding-left: 15px;
@@ -60,14 +85,20 @@ h1 {
     font-size: 1.0rem;
 }
 /* 비밀번호 변경 */
-.password {
+.Password {
+    background-color: #f5f5f8; 
+    padding: 10px;
+    border-radius: 0.75rem;
+    margin: 20px;
+}
+.Password1 {
     width: 730px;
     height: 30px;
     font-weight: bold;
     font-size: 1.0rem;
     padding-left: 15px;
 }
-.passwordcheck {
+.Passwordcheck {
     margin-top: 10px;
     width: 730%;
     height: 30px;
@@ -77,6 +108,12 @@ h1 {
 }
 
 /* 개인정보 보호 */
+.Privacy {
+    background-color: #f5f5f8; 
+    padding: 10px;
+    border-radius: 0.75rem;
+    margin: 20px;
+}
 .PIP {
     margin-top: 20px;
 }

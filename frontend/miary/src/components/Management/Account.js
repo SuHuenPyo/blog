@@ -8,47 +8,49 @@ export const Account = () => {
             <h1 className ={Style.Member}>가입일</h1>
                 <h3 className ={Style.Date}>2022년 5월 31일</h3>
         </div>
-        <div className={Style.text}>
-            <h1 className={Style.Penname}>사용자 필명
-            </h1>
-        </div>
-        <div>
-            <button className={Style.Change}>변경</button>
-            <p className={Style.Explanation}>
-                사용자의 필명은 로그인시 사용되며 주소(URL)에 표기되는 이름입니다.
-            </p>
-        </div>
-        <div>
+        <div className={Style.Pname}>
+            <div className={Style.text}>
+                <h1 className={Style.Pname1}>사용자 필명
+                </h1>
+            </div>
+            <div>
+                <button className={Style.Change}>변경</button>
+                <p className={Style.Explanation}>
+                    사용자의 필명은 로그인시 사용되며 주소(URL)에 표기되는 이름입니다.
+                </p>
+            </div>
             <div>
                 ID
             </div>
         </div>
-        <div>
+        <div className={Style.email}>
             <h1>이메일</h1>
         </div>
-        <div>
+        <div className={Style.Rname}>
             <h1>사용자 실명</h1>
             <button className={Style.Update}>업데이트</button>
             <p className={Style.Explanation}>
                 반드시 실명일 필요는 없으나 실명 사용을 권장합니다.
             </p>
             <input type="text" name="name" placeholder="이름"
-            className={Style.name}></input>
+            className={Style.Rname1}></input>
         </div>
-        <div>
-            <h1>비밀번호 변경</h1>
-            <button className={Style.Update}>업데이트</button>
-        </div>
-        <div>
-            <input type='password' name='password' placeholder='새 비밀번호'
-            className={Style.password}>
+        <div className={Style.Password}>
+            <div>
+                <h1>비밀번호 변경</h1>
+                <button className={Style.Update}>업데이트</button>
+            </div>
+            <div>
+                <input type='password' name='password1' placeholder='새 비밀번호'
+                className={Style.Password1}>
+                </input>
+            </div>
+            <div>
+            <input type='password' name='Passwordcheck' placeholder='비밀번호 확인'  className={Style.Passwordcheck}>
             </input>
+            </div>
         </div>
-        <div>
-        <input type='password' name='passwordcheck' placeholder='비밀번호 확인'  className={Style.passwordcheck}>
-        </input>
-        </div>
-        <div>
+        <div className={Style.Privacy}>
             <h1>개인정보 보호</h1>
             <button className={Style.Update}>업데이트</button>
             <form>

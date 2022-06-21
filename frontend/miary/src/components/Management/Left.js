@@ -25,9 +25,6 @@ export const Left = () => {
               <a href="/">
                 <div className={Style.Form}>서식</div>
               </a>
-              <a href="/">
-                <div className={Style.Analysis}>분석</div>
-              </a>
             </div>
     </div>
   )

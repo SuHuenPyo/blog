@@ -1,7 +1,7 @@
 /* 공통 */
 .Left {
-
-    height: auto;
+    width: 200px;
+    padding-right: 10px;
 }
 a {
     text-decoration: none;
@@ -10,18 +10,13 @@ a {
 /* 사용자 관리 */
 .MU{
     font-size: 12px;
-    border: 1px solid black;
     padding: 15px;
     color: #aeaeae;
-}
-
-.MU1 {
-    border: 1px solid black;
+    font-weight: bold;
 }
 
 .Account {
     padding: 10px;
-    border: 3px solid red;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -34,11 +29,11 @@ a {
 
 .Profile {
     padding: 10px;
-    border: 3px solid skyblue;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
     text-align: left;
+    border-bottom: 2px solid #cccccc;
 }
 
 .Profile:hover {
@@ -47,19 +42,13 @@ a {
 
 /* 포스트 관리 */
 .PM {
-    border: 1px solid black;
     padding: 15px;
     color: #aeaeae;
     font-size: 12px;
     line-height: 1.5;
 }
 
-.PM1 {
-    border: 1px solid black;
-}
-
 .Post {
-    border: 3px solid pink;
     padding: 10px;
     font-size: 1rem;
     font-weight: 400;
@@ -72,27 +61,14 @@ a {
 }
 
 .Form {
-    border: 3px solid purple;
     padding: 10px;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
     text-align: left;
+    border-bottom: 2px solid #cccccc;
 }
 
 .Form:hover {
-    background-color: #eee;
-}
-
-.Analysis {
-    border: 3px solid yellow;
-    padding: 10px;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    text-align: left;
-}
-
-.Analysis:hover {
     background-color: #eee;
 }
