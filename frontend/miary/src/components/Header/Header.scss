@@ -13,7 +13,6 @@ header{
     transition: all .5s;
     .HeaderContainer{
 
-        
         //background-color: #664147;
         background:  #cdeec5;
         border-bottom-left-radius: 7px;
@@ -33,11 +32,14 @@ header{
                 width: 80px;
                 //background-color: rgb(120, 103, 214);
                 overflow: hidden;
-                img{
-                    width: 76px;
-                    height: 76px;
-                    float: left;
+                a{
+                    img{
+                        width: 76px;
+                        height: 76px;
+                        float: left;
+                    }
                 }
+                
             }
             .HeaderBlank{
                 //background-color: rgb(177, 158, 158);
@@ -62,4 +64,3 @@ header{
             }
     }
 }
-

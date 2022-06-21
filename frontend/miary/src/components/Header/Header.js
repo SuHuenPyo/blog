@@ -7,6 +7,7 @@ import {
     FaBell,
     FaGreaterThanEqual, //종(알림)    
 } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const throttle = function (callback, waitTime) {
     let timerId = null;
@@ -50,7 +51,7 @@ export const Header = (props) => {
         
         {/* <div className={hide ? 'HeaderContainer' + 'HeaderContainer:hide' : 'HeaderContainer'}> */}
         <div className='HeaderContainer'>
-            <div className='HeaderLogo'><img src={require('../../assets/img/miary_img/Symbol.png')}></img></div>
+            <div className='HeaderLogo'><Link to="/home"><img src={require('../../assets/img/miary_img/Symbol.png')}></img></Link></div>
             <div className='HeaderBlank'></div>
 
             <div className='HeaderToolsContainer'>
@@ -58,7 +59,11 @@ export const Header = (props) => {
                 <ul>
                     <li><a href="#"><FaSearch/></a></li>
                     <li><a href="#"><FaBell/></a></li>
-                    <li><a href="#">{props.tools1}</a></li>
+                    <li>
+                        <Link to="/write_post">
+                            글 쓰기
+                        </Link>
+                    </li>
                     <li><a href="#">{props.tools2}</a></li>
                 </ul>
             </div>
