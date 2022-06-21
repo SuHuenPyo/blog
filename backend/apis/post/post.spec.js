@@ -74,15 +74,13 @@ describe("GET /post/popular",()=>{
     })
 })
 
-describe.only("GET /post/recent",()=>{
-    describe.only("성공시", () => {
+describe("GET /post/recent",()=>{
+    describe("성공시", () => {
         it('최근 날짜 순으로 정렬된 목록을 반환한다.',(done)=>{
             request(app)
             .get('/post/recent')
             .expect(200)
             .end((err, res)=>{
-
-                console.log(res);
                 res.body.should.be.an.Array();
 
                 done();
@@ -92,7 +90,7 @@ describe.only("GET /post/recent",()=>{
 })
 
 describe("POST /post", () => {
-  describe("성공시", () => {
+  describe.only("성공시", () => {
     it("성공시 201을 반환한다.", (done) => {
       request(app)
         .post("/post")
@@ -101,6 +99,7 @@ describe("POST /post", () => {
           banner: null,
           content: "test content",
           author: 1,
+          tags: ["js","react","node"]
         })
         .expect(201)
         .end(done);

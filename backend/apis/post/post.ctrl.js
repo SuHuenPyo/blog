@@ -131,9 +131,12 @@ const create = async (req, res, next) => {
   const banner = req.file || null;
   const content = req.body.content?.trim();
   const author = parseInt(req.body.author, 10);
+  const tags = req.body.tags ?? [];
   const date = dayjs(new Date()).format("YYYY-MM-DD HH:mm:ss");
   const hits = 0;
   const like = 0;
+
+
 
   try {
     regex.value(title, "[POST /post title]");
@@ -147,6 +150,7 @@ const create = async (req, res, next) => {
     regex.length(title, 3, 1000, "[POST /user content]");
 
     regex.number(author, "[POST /post author]");
+
   } catch (err) {
     logger.error(`[${err.name}] ${err.message}`);
 
@@ -157,6 +161,7 @@ const create = async (req, res, next) => {
     return res.status(400).send("DATA를 확인해주세요.").end();
   }
 
+ 
   try {
     const input_data = [
       title,
@@ -174,12 +179,45 @@ const create = async (req, res, next) => {
     const sql =
       "INSERT INTO boards( b_title, b_banner, b_content, b_rdate, b_mdate, b_hits, b_like, m_id ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-    await dbcon.query(sql, input_data);
+    const [boardRT] = await dbcon.query(sql, input_data);
+
+    const boardId = boardRT.insertId;
+
+    // tag 처리
+    await tags.forEach( async(tag,i)=>{
+      let tagId;
+
+      const findId = "SELECT t_id FROM tags WHERE name = ?"
+
+      const [result1] = await dbcon.query(findId, [tag]);
+
+      console.log(result1);
+
+      tagId = result1;
+
+      if(!tagId[0]){
+        const inputTag = "INSERT INTO tags(name) VALUES (?)"
+
+        const [result2] = await dbcon.query(inputTag,[tag]);
+
+        console.log(result2);
+
+        tagId = result2.insertId;
+      }
+
+    const inputTagBoard = "INSERT INTO board_tags(t_id, b_id) VALUES (?,?)"
+
+
+    await dbcon.query(inputTagBoard, [tagId,boardId]);
+
+    });
+
   } catch (err) {
     logger.error(err);
 
     return res.status(500).send("Internal Server Error");
   } finally {
+
     dbcon.release();
   }
 

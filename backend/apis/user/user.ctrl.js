@@ -59,7 +59,6 @@ const create = async (req, res, next) => {
 
         return res.status(400).send('DATA를 확인해주세요.').end();
     }
-
     
     try {
 
@@ -71,7 +70,7 @@ const create = async (req, res, next) => {
         'INSERT INTO members(userId,password,name,email,intro,rdate,auto,image) VALUES (?,?,?,?,?,?,?,?)';
   
       const [input_result] = await dbcon.query(input_sql, input_data);
-  
+      
       const [get_result] = await dbcon.query(
         "SELECT name FROM members WHERE m_id=?",
         [input_result.insertId]

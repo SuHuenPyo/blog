@@ -13,7 +13,7 @@ const options = {
         info: {
             title: 'Miary API',
             version: '1.0.0',
-            description: 'API for Miary'
+            description: 'Miary API들'
         },
         host: 'localhost:3300',
         basePath: '/'

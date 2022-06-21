@@ -8,8 +8,6 @@ router.get("/out", (req, res, next) => {
   // 로그아웃
 });
 
-
-
 /**
  * @swagger
  *  /user:
