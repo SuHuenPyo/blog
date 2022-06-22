@@ -31,11 +31,10 @@ describe("GET /post/:id", () => {
   describe("성공시", () => {
     it("id에 해당하는 포스트 정보를 반환한다.", (done) => {
       request(app)
-        .get("/post/34")
+        .get("/post/1")
         .expect(200)
         .end((err, res
           ) => {
-          console.log(res.body);
 
           res.body.should.have.properties("title");
           res.body.should.have.properties("content");
@@ -99,11 +98,11 @@ describe("POST /post", () => {
       request(app)
         .post("/post")
         .send({
-          title: "test",
+          title: "Where is tags?",
           banner: null,
-          content: "test content",
+          content: "I can't found any tags in here",
           author: 1,
-          tags: ["js","react","node"]
+          tags: ["js","react","next"]
         })
         .expect(201)
         .end(done);
@@ -130,7 +129,7 @@ describe("PUT /post/:id",()=>{
   describe("성공시", () => {
     it('204을 반환한다.',(done)=>{
        request(app)
-       .put('/post/43')
+       .put('/post/68')
        .send({
         title: "This is updated!",
         banner: null,
@@ -166,6 +165,38 @@ describe("PUT /post/:id",()=>{
         content: "",
         author: 2,
       })
+      .expect(400)
+      .end((err, res)=>{
+        console.log(res.body);
+        done();
+      });
+    })
+  })
+})
+
+
+describe("DELETE /post/:id",()=>{
+  describe("성공시", () => {
+    it('204을 반환한다.',(done)=>{
+       request(app)
+       .delete('/post/1')
+       .expect(204)
+       .end(done)
+    })
+  })
+
+  describe("실패시",()=>{
+    it("아이디가 숫자가 아니면 400을 반환한다.", (done) => {
+      request(app)
+      .delete("/post/one")
+      .expect(400)
+      .end(done);
+    })
+
+
+    it("해당하는 post가 없으면 400을 반환한다.", (done) => {
+      request(app)
+      .delete("/post/999")
       .expect(400)
       .end((err, res)=>{
         console.log(res.body);

@@ -8,6 +8,7 @@ const {
   popular,
   recent,
   update,
+  destroy,
 } = require("./post.ctrl");
 
 /**
@@ -115,8 +116,6 @@ router.post("/", upload.single("banner"), create);
 
 router.put("/:id", upload.single("banner"), update);
 
-router.delete("/:id", (req, res, next) => {
-  // 글 지우기
-});
+router.delete("/:id", destroy);
 
 module.exports = router;

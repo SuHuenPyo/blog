@@ -201,21 +201,28 @@ const create = async (req, res, next) => {
     const boardId = boardRT.insertId;
 
     // tag 처리
-    await tags.forEach( async(tag,i)=>{
+    const tagRT = await Promise.all(tags.map(async (tag,i)=>{
       let tagId;
 
       const findId = "SELECT t_id FROM tags WHERE name = ?"
 
       const [result1] = await dbcon.query(findId, [tag]);
 
-      tagId = result1[0].tagId;
+      tagId = result1[0]?.t_id || 0;
 
-      if(!tagId[0]){
-        const inputTag = "INSERT INTO tags(name) VALUES (?)"
+      if(tagId < 1){
+
+        console.log("tag가 없으므로 생성합니다");
+
+        const inputTag = "INSERT INTO tags(name) VALUES ( ? )"
 
         const [result2] = await dbcon.query(inputTag,[tag]);
 
+
         tagId = result2.insertId;
+        
+        logger.info(`[Tag] - ID: ${result2.insertId} is created`)
+
       }
 
     const inputTagBoard = "INSERT INTO board_tags(t_id, b_id) VALUES (?,?)"
@@ -223,9 +230,9 @@ const create = async (req, res, next) => {
 
     const [boardRT] = await dbcon.query(inputTagBoard, [tagId,boardId]);
 
-    logger.debug(`[POST] - ID: ${boardRT.insertId} is create`)
+    logger.info(`[POST] - ID: ${boardRT.insertId} is created`)
 
-    });
+    }))
 
   } catch (err) {
     logger.error(err);
@@ -296,11 +303,50 @@ const update = async (req, res, next) => {
 
   } finally {
 
-    dbcon.release();
+    await dbcon.release();
 
   }
 
   return res.status(204).end()
 }
 
-module.exports = { create, index, detail,popular,recent,update };
+const destroy = async (req, res, next) => { 
+  let json = null;
+  let dbcon = null;
+  const id = parseInt(req.params.id, 10);
+
+  if(isNaN(id)){
+    return res.status(400).send("Board ID를 확인해주세요.");
+  }
+
+  try {
+
+    dbcon = await pool.getConnection(async (conn) => conn);
+
+    const sql = "DELETE FROM boards WHERE b_id = ?";
+
+    const [result] = await dbcon.query(sql,[id]);
+
+    if(result.affectedRows < 1){
+      return res.status(400).send("Board ID를 확인해주세요.");
+    }
+
+    logger.debug(`[POST] - ID: ${id} is deteled`)
+
+  } catch (err) {
+
+    logger.error(err);
+
+    return res.status(500).send("Interal Server Error");
+
+  } finally {
+
+    await dbcon.release();
+
+  }
+
+  return res.status(204).end()
+
+}
+
+module.exports = { create, index, detail,popular,recent,update,destroy };
