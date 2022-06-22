@@ -10,7 +10,8 @@ import AboutAll from './pages/AboutAll';
 import {Search} from './pages/Search';
 import Setting from './pages/Setting';
 import WritePost from './pages/WritePost';
-//route
+import Login from './components/Login/Login';
+
 
 
 function App() {
@@ -25,9 +26,9 @@ function App() {
         <Route path="/setting" element={<Setting />} />
         <Route path="/aboutall" element={<AboutAll />} />
         <Route path="/write_post" element={<WritePost />} />
-
       </Routes>
    
+      <Login></Login>
     </div>
   );
 }

@@ -1,4 +1,5 @@
-import {useState, useEffect, useRef} from 'react'
+import {useState, useEffect, useRef} from 'react';
+import React, {Component} from 'react';
 import styled from 'styled-components';
 import './Header.scss';
 
@@ -8,6 +9,7 @@ import {
     FaGreaterThanEqual, //종(알림)    
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import SideBar from '../Login/SideBar';
 
 const throttle = function (callback, waitTime) {
     let timerId = null;
@@ -43,6 +45,7 @@ export const Header = (props) => {
         documentRef.current.addEventListener('scroll', throttleScroll);
         return () => documentRef.current.removeEventListener('scroll', throttleScroll);
     }, [pageY]);
+
 
     
   return (
