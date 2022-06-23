@@ -1,5 +1,5 @@
 import React from 'react'
-import Style from '../asset/css/Account.module.css'
+import Style from '../../asset/css/Account.module.css'
 
 export const Account = () => {
   return (
@@ -75,3 +75,5 @@ export const Account = () => {
     </div>
   )
 }
+
+export default Account;

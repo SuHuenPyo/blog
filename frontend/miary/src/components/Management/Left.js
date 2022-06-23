@@ -1,5 +1,5 @@
 import React from 'react'
-import Style from '../asset/css/Left.module.css'
+import Style from '../../asset/css/Left.module.css'
 
 export const Left = () => {
   return (
@@ -29,3 +29,5 @@ export const Left = () => {
     </div>
   )
 }
+
+export default Left;

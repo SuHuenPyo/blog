@@ -1,5 +1,5 @@
 import React from 'react'
-import Style from '../asset/css/Profile.module.css'
+import Style from '../../asset/css/Profile.module.css'
 
 export const Profile = () => {
   return (
@@ -9,8 +9,8 @@ export const Profile = () => {
             <div className={Style.Userimage2}></div>
         </div>
         <div className={Style.Userintro}>
-            <h1>사용자 소개</h1>
-            <div>
+            <div className={Style.Buttonop}>
+                <h1>사용자 소개</h1>
                 <button className={Style.Update}>업데이트</button>
             </div>
             <div>
@@ -20,66 +20,46 @@ export const Profile = () => {
                 <textarea>자신을 간단히 설명하세요.</textarea>
             </div>
         </div>
-        <div className={Style.socialinfor}>
-            <h1>소셜 정보</h1>
-            <div>
+        <div className={Style.Socialinfor}>
+            <div className={Style.Buttonop}>
+                <h1>소셜 정보</h1>
                 <button className={Style.Update}>업데이트</button>
             </div>
-            <div>
+            <div className={Style.Address}>
                 <label>개인 홈페이지 주소:</label>
                 <div>
                     <span className={Style.Http}>https://</span>
-                </div>
-                <div>
                     <input type="text"></input>
                 </div>
             </div>
-            <div>
+            <div className={Style.Address}>
                 <label>깃허브 주소:</label>
-                <div>
-                    <span>https://github.com/</span>
-                </div>
-                <div>
-                    <input type="text"></input>
-                </div>
+                <span>https://github.com/</span>
+                <input type="text"></input>
             </div>
-            <div>
+            <div className={Style.Address}>
                 <label>트위터 주소:</label>
-                <div>
-                    <span>https://twitter.com/</span>
-                </div>
-                <div>
-                    <input type="text"></input>
-                </div>
+                <span>https://twitter.com/</span>
+                <input type="text"></input>
             </div>
-            <div>
+            <div className={Style.Address}>
                 <label>페이스북 주소:</label>
-                <div>
-                    <span>https://facebook.com/</span>
-                </div>
-                <div>
-                    <input type="text"></input>
-                </div>
+                <span>https://facebook.com/</span>
+                <input type="text"></input>
             </div>
-            <div>
+            <div className={Style.Address}>
                 <label>인스타그램 주소:</label>
-                <div>
-                    <span>https://instagram.com/</span>
-                </div>
-                <div>
-                    <input type="text"></input>
-                </div>
+                <span>https://instagram.com/</span>
+                <input type="text"></input>
             </div>
-            <div>
+            <div className={Style.Address}>
                 <label>유투브 채널 주소:</label>
-                <div>
-                    <span>https://youtube.com/channel/</span>
-                </div>
-                <div>
-                    <input type="text"></input>
-                </div>
+                <span>https://youtube.com/channel/</span>
+                <input type="text"></input>
             </div>
         </div>
     </div>
   )
 }
+
+export default Profile;
