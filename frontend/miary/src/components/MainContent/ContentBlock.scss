@@ -26,11 +26,12 @@
 
 
     height: 450px;
-    background-color: #9de0ad;
-    border-radius: 7px;
+    background-color: inherit;
+    //border-radius: 15px;
     margin: $marginValue;
     cursor: pointer;
     flex-direction: column;
+    border-radius: 30px;
     transition: .5s;
 
     
@@ -51,9 +52,18 @@
     }
  }
  .ContentBlockContainer{
+    //border-top-left-radius: 30px;
+    //border-top-right-radius: 30px;
+    overflow: hidden;
     &:hover {
-        box-shadow: 0 0 20px #2b1207;
+        overflow: hidden;
+        box-shadow: 0 0 20px #696969;
         transition: .5s;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        border-bottom-right-radius: 30px;
+        border-bottom-left-radius: 30px;
+        border-radius: 30px;
         .ContentBlockImage{
             overflow: hidden;
             img{
@@ -68,9 +78,9 @@
         
         height: 50%;
         max-height: 50%;
-        background-color: rgb(101, 199, 166);
-        border-top-left-radius: 7px;
-        border-top-right-radius: 7px;
+        background-color: rgb(138, 138, 138);
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
         overflow: hidden;
         
         img{
@@ -78,15 +88,18 @@
             transition: .5s;
             width: 100%;
             height: 100%;
+            overflow: hidden;
             
         }
     }
     .ContentArticlContainer{
         //background-color: blanchedalmond;
         height: 50%;
+        background-color: rgb(251, 255, 255);
         
         flex-direction: column;
         text-align: left;
+
         .ContentBlockArticleTitle{
             //background-color: cadetblue;
             height: 10%;
@@ -99,7 +112,10 @@
         }
         .ContentBlockArticleContent{
             //background-color: cornflowerblue;
+            color: rgb(129, 129, 129);
             height: 65%;
+            font-size: 13px;
+            //font-weight: bold;
             text-overflow: ellipsis;
             overflow: hidden;
             margin: 0 20px;
@@ -110,13 +126,14 @@
             height: 25%;
             margin: 0 20px;
             display: flex;
+            font-size: 13px;
             .ContentBlockArticleAuthorPic{ // writer pic
                 flex: 1;
             }
             .ContentBlockArticleAuthorInfo{ // writer Name, writer's register Date, HitCount(up to every Read times)
                 flex: 9;
                 .ContentBlockArticleAuthorName{
-
+                    
                 }
                 .ContentBlockArticleAuthorDateHit{
                     display: flex;
