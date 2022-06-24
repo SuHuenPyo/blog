@@ -2,7 +2,7 @@ import React from 'react'
 import { Account } from '../components/Management/Account'
 import { Profile } from '../components/Management/Profile'
 import { Left } from '../components/Management/Left'
-import Style from '../asset/css/Management.module.css'
+import Style from '../assets/css/Management.module.css'
 
 export const Management = () => {
   return (

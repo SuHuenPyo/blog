@@ -1,5 +1,5 @@
 import React from 'react'
-import Style from '../../asset/css/Profile.module.css'
+import Style from '../../assets/css/Profile.module.css'
 
 export const Profile = () => {
   return (

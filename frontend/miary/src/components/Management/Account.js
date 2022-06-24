@@ -1,5 +1,6 @@
 import React from 'react'
-import Style from '../../asset/css/Account.module.css'
+import Style from '../../assets/css/Account.module.css'
+
 
 export const Account = () => {
   return (

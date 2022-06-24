@@ -1,5 +1,5 @@
 import React from 'react'
-import Style from '../../asset/css/Left.module.css'
+import Style from '../../assets/css/Left.module.css'
 
 export const Left = () => {
   return (
