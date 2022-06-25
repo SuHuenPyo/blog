@@ -3,7 +3,7 @@ import Style from '../../assets/css/Profile.module.css'
 
 export const Profile = () => {
   return (
-    <div>
+    <div className={Style.Fullprofile}>
         <div className={Style.Userimage}>
             <h1>사용자 이미지</h1>
             <div className={Style.Userimage2}></div>
