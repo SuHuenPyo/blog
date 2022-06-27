@@ -50,7 +50,10 @@ app.use('/image',image)
 app.use('/api-docs',swaggerUI.serve,swaggerUI.setup(specs))
 
 app.listen(port,()=>{
-    logger.info('Server is Running')
+    logger.info('-------------------')
+    logger.info(' SERVER IS RUNNING ')
+    logger.info('-------------------')
+    
 })
 
 module.exports = app;
