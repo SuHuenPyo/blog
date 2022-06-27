@@ -6,7 +6,8 @@ import './Header.scss';
 import {
     FaSearch, // 돋보기
     FaBell,
-    FaGreaterThanEqual, //종(알림)    
+    FaGreaterThanEqual, //종(알림) 
+       
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import SideBar from '../Login/SideBar';
@@ -67,7 +68,11 @@ export const Header = (props) => {
                             글 쓰기
                         </Link>
                     </li>
-                    <li><a href="#">{props.tools2}</a></li>
+                    <li>
+                        <Link to="/myblog">
+                            프로필
+                        </Link>
+                    </li>
                 </ul>
             </div>
 
