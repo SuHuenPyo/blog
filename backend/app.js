@@ -6,6 +6,7 @@ const port = 3300;
 //router
 const user = require('./apis/user/index');
 const post = require('./apis/post/index');
+const image = require('./apis/image/index');
 
 // modules
 const { swaggerUI, specs } = require('./utils/swagger');
@@ -32,6 +33,19 @@ app.use('/user',user);
  */
 
 app.use('/post',post);
+
+app.use('/profile',()=>{
+
+});
+
+/**
+ * @swagger
+ * tags:
+ *   name: Image
+ *   description: 글 작성시 이미지 번호
+ */
+
+app.use('/image',image)
 
 app.use('/api-docs',swaggerUI.serve,swaggerUI.setup(specs))
 

@@ -18,6 +18,7 @@ function App() {
 //jira test
   return (
     <div className="App">
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
@@ -27,7 +28,7 @@ function App() {
         <Route path="/aboutall" element={<AboutAll />} />
         <Route path="/write_post" element={<WritePost />} />
       </Routes>
-   
+
       <Login></Login>
     </div>
   );
