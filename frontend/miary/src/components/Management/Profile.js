@@ -17,7 +17,7 @@ export const Profile = () => {
                 <p className={Style.Userintro2}>포스트 상단에서 작성자를 소개하는 문장입니다. 자신을 한문장으로 표현해 본다면?</p>
             </div>
             <div>
-                <textarea>자신을 간단히 설명하세요.</textarea>
+                <textarea placeholder="자신을 간단히 설명하세요."></textarea>
             </div>
         </div>
         <div className={Style.Socialinfor}>
@@ -27,35 +27,33 @@ export const Profile = () => {
             </div>
             <div className={Style.Address}>
                 <label>개인 홈페이지 주소:</label>
-                <div>
-                    <span className={Style.Http}>https://</span>
-                    <input type="text"></input>
-                </div>
+                <span>https://</span>
+                <input type="text" className={Style.Homepage}></input>
             </div>
             <div className={Style.Address}>
                 <label>깃허브 주소:</label>
                 <span>https://github.com/</span>
-                <input type="text"></input>
+                <input type="text" className={Style.Github}></input>
             </div>
             <div className={Style.Address}>
                 <label>트위터 주소:</label>
                 <span>https://twitter.com/</span>
-                <input type="text"></input>
+                <input type="text" className={Style.Twitter}></input>
             </div>
             <div className={Style.Address}>
                 <label>페이스북 주소:</label>
                 <span>https://facebook.com/</span>
-                <input type="text"></input>
+                <input type="text" className={Style.Facebook}></input>
             </div>
             <div className={Style.Address}>
                 <label>인스타그램 주소:</label>
                 <span>https://instagram.com/</span>
-                <input type="text"></input>
+                <input type="text" className={Style.Instagram}></input>
             </div>
             <div className={Style.Address}>
                 <label>유투브 채널 주소:</label>
                 <span>https://youtube.com/channel/</span>
-                <input type="text"></input>
+                <input type="text" className={Style.Youtube}></input>
             </div>
         </div>
     </div>
