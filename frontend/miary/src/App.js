@@ -11,6 +11,7 @@ import {Search} from './pages/Search';
 import Setting from './pages/Setting';
 import WritePost from './pages/WritePost';
 import Login from './components/Login/Login';
+import Management from './pages/Management';
 
 
 
@@ -27,6 +28,7 @@ function App() {
         <Route path="/setting" element={<Setting />} />
         <Route path="/aboutall" element={<AboutAll />} />
         <Route path="/write_post" element={<WritePost />} />
+        <Route path="/management" element={<Management />} />
       </Routes>
 
       <Login></Login>

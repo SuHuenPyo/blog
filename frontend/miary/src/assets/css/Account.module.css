@@ -1,6 +1,11 @@
 /* 공통 */
+.Fullaccount {
+    text-align: left;
+}
+
 h1 {
     font-size: 1.3em;
+    width: 100%;
 }
 
 .Explanation {
@@ -11,20 +16,25 @@ h1 {
     font-weight: bold;
     box-sizing: border-box;
     display: block;
-    width: 730px;
+    width: 100%;
+}
+
+.Buttonoption {
+    width: 100%;
+    display: flex;
+    justify-items: space-between;
 }
 
 .Update {
-    background-color: black;
+    background-color: #333;
+    border: 1px solid #333;
     color: white;
-    padding: 5px 10px;
+    font-size: 1.0rem;
     border-radius: 0.25rem;
     font-weight: bold;
-    font-size: 1.0em;
-    position: relative;
-    overflow: hidden;
-    display: inline-block;
-    margin-left: 560px;
+    width: 15%;
+    height: auto;
+    margin: 10px;
 }
 
 /* 가입일 */
@@ -34,10 +44,10 @@ h1 {
     border-radius: 0.75rem;
     margin: 20px;
 }
-.Member {
+.Since1 {
     margin-bottom: -13px;
 }
-.Date {
+.Date1 {
     font-size: 1.0em;
 }
 
@@ -48,20 +58,20 @@ h1 {
     border-radius: 0.75rem;
     margin: 20px; 
 }
-.text {
-    float: left;
-}
+
 .Penname1 {
     margin-top: 5px;
 }
 .Change {
-    background-color: black;
+    background-color: #333;
+    border: 1px solid #333;
     color: white;
-    padding: 5px 10px;
+    font-size: 1.0rem;
     border-radius: 0.25rem;
     font-weight: bold;
-    font-size: 1.0em;
-    margin-left: 560px;
+    width: 9%;
+    height: auto;
+    margin: 10px;
 }
 /* email */
 .email {
@@ -78,7 +88,7 @@ h1 {
     margin: 20px;
 }
 .Rname1 {
-    width: 730px;
+    width: 97%;
     height: 30px;
     padding-left: 15px;
     font-weight: bold;
@@ -92,7 +102,7 @@ h1 {
     margin: 20px;
 }
 .Password1 {
-    width: 730px;
+    width: 96%;
     height: 30px;
     font-weight: bold;
     font-size: 1.0rem;
@@ -100,7 +110,7 @@ h1 {
 }
 .Passwordcheck {
     margin-top: 10px;
-    width: 730%;
+    width: 96%;
     height: 30px;
     font-weight: bold;
     font-size: 1.0rem;
@@ -113,19 +123,53 @@ h1 {
     padding: 10px;
     border-radius: 0.75rem;
     margin: 20px;
-}
-.PIP {
-    margin-top: 20px;
+    width: auto;
 }
 
-.PIP label {
-    padding-left: 0.25rem;
-    font-weight: bold;
+.PIP {
+    width: 100%;
+    height: auto;
+    padding-bottom: 10px;
 }
+
+.PIP input {
+    width: 13px;
+    height: 13px;
+    margin-right: -27%;
+    margin-left:  -28%;
+    display: inline-block;
+}
+
+
+.PIP label {
+    font-size: 1.0rem;
+    font-weight: normal;
+    width: auto;
+    margin-bottom: 13px;
+    display: inline;
+}
+
+
+input[id="Protection1"] + label {
+	cursor: pointer;
+}
+
+input[id="Protection2"] + label {
+	cursor: pointer;
+}
+
+input[id="Protection3"] + label {
+	cursor: pointer;
+}
+
 /* 2차인증 및 탈퇴 */
+.Lastbutton {
+    margin-left: 20px;
+}
+
 .Certified {
-    margin-top: 50px;
-    background-color: black;
+    background-color: #333;
+    border: 1px solid #333;
     color: white;
     padding: 5px 10px;
     border-radius: 0.25rem;
@@ -134,7 +178,8 @@ h1 {
 }
 
 .Out {
-    background-color: black;
+    background-color: #333;
+    border: 1px solid #333;
     color: white;
     padding: 5px 10px;
     border-radius: 0.25rem;
@@ -142,3 +187,4 @@ h1 {
     font-size: 1.0em;
     margin-left: 10px;
 }
+

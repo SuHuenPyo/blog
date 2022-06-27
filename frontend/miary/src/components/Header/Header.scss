@@ -14,7 +14,7 @@ header{
     .HeaderContainer{
 
         //background-color: #664147;
-        background:  #cdeec5;
+        background:  #ffffff;
         border-bottom-left-radius: 7px;
         border-bottom-right-radius: 7px;
         //color: aqua;
@@ -23,6 +23,7 @@ header{
         margin: 0 auto;
         padding-top: 20px;
         max-width: 1110px;
+        box-shadow: 0 4px 5px rgba(0, 0, 0, 0.219);
 
         //항목 양끝 정렬
         display: flex;
