@@ -5,7 +5,7 @@ const logger = require("../../utils/winston");
 
 /**
  * @swagger
- *  /image:
+ *  /images:
  *    post:
  *      tags:
  *        - Image
@@ -13,12 +13,12 @@ const logger = require("../../utils/winston");
  *      parameters:
  *        - in: body
  *          name: imgs
- *          description: 업로드할 이미지 배열
+ *          description: 업로드할 이미지 
  *          schema:
- *              type: array
+ *              type: object
  *      responses:
  *         200:
- *          description: 유저 추가 성공, url 반환
+ *          description: 유저 추가 성공, url 배열 반환
  *         404:
  *           description: 유효성 검사 실패
  */
