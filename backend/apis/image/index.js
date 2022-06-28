@@ -23,31 +23,31 @@ const logger = require("../../utils/winston");
  *           description: 유효성 검사 실패
  */
 
-module.exports = router.get(
+module.exports = router.post(
   "/",
   upload.array("imgs", 5),
   async (req, res, next) => {
     logger.info(`[POST /image] ${req.ip} is access`);
 
-    const img_urls = await req.files;
-    console.log(img_urls);
+    const img_urls = req.files;
+    let json;
 
-    if (!img_url[0]) {
+    if (!img_urls) {
       return res.status(400).send("다시 시도 해주세요.");
     }
 
     try {
-      const json = await Promise.all(
+      json = await Promise.all(
         img_urls.map((image, index) => {
+          console.log(image.location);
           return image.location;
         })
       );
     } catch (err) {
-
       logger.error(err);
-
+      return res.status(500).send("Interal Server Error");
     }
 
-    return res.status(200).json({ urls: json });
+    return res.status(200).send(json);
   }
 );

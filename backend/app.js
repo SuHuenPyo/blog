@@ -16,7 +16,7 @@ const logger = require('./utils/winston');
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
-/**
+/** 
  * @swagger
  * tags:
  *   name: Users
@@ -42,7 +42,7 @@ app.use('/profile',()=>{
  * @swagger
  * tags:
  *   name: Image
- *   description: 글 작성시 이미지 번호
+ *   description: 글 작성시 이미지 번환
  */
 
 app.use('/image',image)
