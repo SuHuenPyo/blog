@@ -105,16 +105,82 @@ router.get("/:id", detail);
  *                 type: integer
  *              banner:
  *                  type: image/*
+ *              tags: 
+ *                  type: array
  *      responses:
  *         201:
  *          description: 글 추가 성공
- *         404:
+ *         400:
  *           description: 유효성 검사 실패
  */
 
 router.post("/", upload.single("banner"), create);
 
+/**
+ * @swagger
+ *  /post/{id}:
+ *    put:
+ *      tags:
+ *        - Post
+ *      description: 글 수정하기(태그 제외)
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          required: true
+ *        - in: body
+ *          name: postInfo
+ *          description: The user to create.
+ *          schema:
+ *            type: object
+ *            properties:
+ *              title:
+ *               type: string
+ *              content:
+ *                type: string
+ *              author:
+ *                 type: integer
+ *              banner:
+ *                  type: image/*
+ *      responses:
+ *         204:
+ *          description: 글 수정 성공
+ *         400:
+ *           description: 유효성 검사 실패
+ */
+
 router.put("/:id", upload.single("banner"), update);
+
+/**
+ * @swagger
+ *  /post/{id}:
+ *    delete:
+ *      tags:
+ *        - Post
+ *      description: 글 수정하기(태그 제외)
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          required: true
+ *        - in: body
+ *          name: postInfo
+ *          description: The user to create.
+ *          schema:
+ *            type: object
+ *            properties:
+ *              title:
+ *               type: string
+ *              content:
+ *                type: string
+ *              author:
+ *                 type: integer
+ *              banner:
+ *                  type: image/*
+ *      responses:
+ *         204:
+ *          description: 글 수정 성공
+ *         400:
+ *           description: 유효성 검사 실패
+ */
 
 router.delete("/:id", destroy);
 

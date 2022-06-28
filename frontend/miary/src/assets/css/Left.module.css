@@ -3,11 +3,14 @@
     width: 40%;
     padding-right: 10px;
     text-align: left;
+    padding-left: 55%;
 }
+
 a {
     text-decoration: none;
     color: black;
 }
+
 /* 사용자 관리 */
 .MU{
     font-size: 12px;

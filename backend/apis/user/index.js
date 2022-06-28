@@ -37,7 +37,7 @@ router.get("/out", (req, res, next) => {
  *      responses:
  *         201:
  *          description: 유저 추가 성공
- *         404: 
+ *         400: 
  *           description: 유효성 검사 실패
  */
 

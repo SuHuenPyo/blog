@@ -32,7 +32,7 @@ h1 {
     font-size: 1.0rem;
     border-radius: 0.25rem;
     font-weight: bold;
-    width: 12%;
+    width: 15%;
     height: auto;
     margin: 10px;
 }
@@ -69,7 +69,7 @@ h1 {
     font-size: 1.0rem;
     border-radius: 0.25rem;
     font-weight: bold;
-    width: 7%;
+    width: 9%;
     height: auto;
     margin: 10px;
 }
@@ -88,7 +88,7 @@ h1 {
     margin: 20px;
 }
 .Rname1 {
-    width: 98%;
+    width: 97%;
     height: 30px;
     padding-left: 15px;
     font-weight: bold;
@@ -102,7 +102,7 @@ h1 {
     margin: 20px;
 }
 .Password1 {
-    width: 97%;
+    width: 96%;
     height: 30px;
     font-weight: bold;
     font-size: 1.0rem;
@@ -110,7 +110,7 @@ h1 {
 }
 .Passwordcheck {
     margin-top: 10px;
-    width: 97%;
+    width: 96%;
     height: 30px;
     font-weight: bold;
     font-size: 1.0rem;
@@ -123,23 +123,32 @@ h1 {
     padding: 10px;
     border-radius: 0.75rem;
     margin: 20px;
-}
-.PIP {
-    display: flex;
+    width: auto;
 }
 
-.PIP label {
-    font-size: 1.0rem;
-    font-weight: bold;
-    width: auto;
-    margin-bottom: 10px;
+.PIP {
+    width: 100%;
+    height: auto;
+    padding-bottom: 10px;
 }
 
 .PIP input {
     width: 13px;
     height: 13px;
-    margin-right: 10px;
+    margin-right: -27%;
+    margin-left:  -28%;
+    display: inline-block;
 }
+
+
+.PIP label {
+    font-size: 1.0rem;
+    font-weight: normal;
+    width: auto;
+    margin-bottom: 13px;
+    display: inline;
+}
+
 
 input[id="Protection1"] + label {
 	cursor: pointer;
