@@ -62,7 +62,6 @@ export const Header = (props) => {
                 
                 <ul>
                     <li><a href="#"><FaSearch/></a></li>
-                    <li><a href="#"><FaBell/></a></li>
                     <li>
                         <Link to="/write_post">
                             글 쓰기
