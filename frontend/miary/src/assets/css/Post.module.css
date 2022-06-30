@@ -1,0 +1,96 @@
+.Postfull {
+    float: left;
+}
+
+.Title {
+    float: left;
+    background-color: #f8f9fa;
+    margin-left: 10px;
+    padding: 5px 16px;
+    border-radius: 15px;
+}
+
+.Quantity {
+    float: left;
+    background-color: #f8f9fa;
+    margin-left: 10px;
+    padding: 5px 16px;
+    border-radius: 15px;
+}
+
+.Produce {
+    float: left;
+    background-color: #f8f9fa;
+    margin-left: 10px;
+    padding: 5px 16px;
+    border-radius: 15px;
+}
+
+.Revise {
+    float: left;
+    background-color: #f8f9fa;
+    margin-left: 10px;
+    padding: 5px 16px;
+    border-radius: 15px;
+}
+
+.Recommend {
+    float: left;
+    background-color: #f8f9fa;
+    margin-left: 10px;
+    padding: 5px 16px;
+    border-radius: 15px;
+}
+
+.Comment {
+    float: left;
+    background-color: #f8f9fa;
+    margin-left: 10px;
+    padding: 5px 16px;
+    border-radius: 15px;
+}
+
+.hiding {
+    float: left;
+    background-color: #f8f9fa;
+    margin-left: 10px;
+    padding: 5px 16px;
+    border-radius: 15px;
+}
+
+.Tviews {
+    float: left;
+    background-color: #f8f9fa;
+    margin-left: 10px;
+    padding: 5px 16px;
+    border-radius: 15px;
+}
+
+.Yviews {
+    float: left;
+    background-color: #f8f9fa;
+    margin-left: 10px;
+    padding: 5px 16px;
+    border-radius: 15px;
+}
+
+.Pagenumber {
+    width: 100%;
+    float: left;
+    border: 1px solid black;
+}
+
+.Page {
+    width: 45%;
+    max-width: 45%;
+    border: 1px solid red;
+    text-align: left;
+    float: left;
+}
+
+.Gopage {
+    width: 45%;
+    max-width: 45%;
+    border: 1px solid;
+    display: inline-block;
+}
