@@ -7,7 +7,7 @@
     padding-left: 10px;
     font-size: 1.0rem;
     font-weight: bold;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 1px solid#ced4da;
 }
 
@@ -17,7 +17,7 @@
     margin-bottom: 20px;
     font-size: 1.0rem;
     font-weight: bold;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 1px solid#ced4da;
 }
 
@@ -30,5 +30,5 @@
     font-size: 1.0rem;
     font-weight: bold;
     border: 1px solid #343a40;
-    border-radius: 10px;
+    border-radius: 5px;
 }

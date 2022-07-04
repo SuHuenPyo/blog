@@ -35,10 +35,36 @@ export const Post = () => {
         </div>
         <nav className={Style.Pagenumber}>
             <div>
+                <div>
+                    <a href="/">
+                        &lt;
+                        {/* 임시 */}
+                    </a>
+                </div>
+                <div>
+                    <a href="/">
+                        &lt;&lt;
+                        {/* 임시 */}
+                    </a>
+                </div>
                 <div className={Style.Page}>1</div>
+                <div>
+                    <a href="/">
+                        &gt;
+                        {/* 임시 */}
+                    </a>
+                </div>
+                <div>
+                    <a href="/">
+                        &gt;&gt;
+                        {/* 임시 */}
+                    </a>
+                </div>
             </div>
             <div className={Style.Gopage}>
-                <span>Go to page</span>
+                <span className={Style.Gopage1}>Go to page</span>
+                <input className={Style.Page2} type="number" min="1" max="1"></input>
+                <button className={Style.Gobutton}>Go&gt;</button>
             </div>
         </nav>
     </div>
