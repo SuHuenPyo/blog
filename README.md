@@ -1,8 +1,8 @@
 # Miary
 Miary Project 1.0.0
 
+![Squretype (1)](https://user-images.githubusercontent.com/45797097/177556192-1661a7d4-02db-45fd-8748-1f4c2048854c.png)
 
-![Squretype](https://user-images.githubusercontent.com/45797097/177555663-a6293942-793e-4877-907e-d20ccf87c993.png)  
 
 
 ## 기능 소개
@@ -16,4 +16,4 @@ Miary Project 1.0.0
    <p>✔️ Database </p>
    <p>✔️ Frontend : 리액트 버전</p>
    <p>✔️ HTML : HTML버전(프로토타입)</p>
- 
+  
