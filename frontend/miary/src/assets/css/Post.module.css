@@ -4,6 +4,9 @@
 
 .Post2 {
     min-width: 450px;
+    max-width: 700px;
+    margin-top: 20px;
+    margin-left: 15px;
 }
 
 .Title {
@@ -13,6 +16,19 @@
     padding: 5px 16px;
     border-radius: 15px;
     font-size: 15px;
+    color: purple;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.Title2 {
+    font-weight: normal;
+    color: #777777;
+}
+
+.Title2:hover {
+    font-weight: bold;
+    color: black;
 }
 
 .Quantity {
@@ -22,6 +38,19 @@
     padding: 5px 16px;
     border-radius: 15px;
     font-size: 15px;
+    color: purple;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.Quantity2 {
+    font-weight: normal;
+    color: #777777;
+}
+
+.Quantity2:hover {
+    font-weight: bold;
+    color: black;
 }
 
 .Produce {
@@ -31,6 +60,19 @@
     padding: 5px 16px;
     border-radius: 15px;
     font-size: 15px;
+    color: purple;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.Produce2 {
+    font-weight: normal;
+    color: #777777;
+}
+
+.Produce2:hover {
+    font-weight: bold;
+    color: black;
 }
 
 .Revise {
@@ -40,6 +82,19 @@
     padding: 5px 16px;
     border-radius: 15px;
     font-size: 15px;
+    color: purple;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.Revise2 {
+    font-weight: normal;
+    color: #777777;
+}
+
+.Revise2:hover {
+    font-weight: bold;
+    color: black;
 }
 
 .Recommend {
@@ -49,6 +104,19 @@
     padding: 5px 16px;
     border-radius: 15px;
     font-size: 15px;
+    color: purple;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.Recommend2 {
+    font-weight: normal;
+    color: #777777;
+}
+
+.Recommend2:hover {
+    font-weight: bold;
+    color: black;
 }
 
 .Comment {
@@ -58,15 +126,41 @@
     padding: 5px 16px;
     border-radius: 15px;
     font-size: 15px;
+    color: purple;
+    font-weight: bold;
+    margin-top: 10px;
 }
 
-.hiding {
+.Comment2 {
+    font-weight: normal;
+    color: #777777;
+}
+
+.Comment2:hover {
+    font-weight: bold;
+    color: black;
+}
+
+.Hiding {
     float: left;
     background-color: #f8f9fa;
     margin-left: 10px;
     padding: 5px 16px;
     border-radius: 15px;
     font-size: 15px;
+    color: purple;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.Hiding2 {
+    font-weight: normal;
+    color: #777777;
+}
+
+.Hiding2:hover {
+    font-weight: bold;
+    color: black;
 }
 
 .Tviews {
@@ -76,6 +170,19 @@
     padding: 5px 16px;
     border-radius: 15px;
     font-size: 15px;
+    color: purple;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.Tviews2 {
+    font-weight: normal;
+    color: #777777;
+}
+
+.Tviews2:hover {
+    font-weight: bold;
+    color: black;
 }
 
 .Yviews {
@@ -85,6 +192,19 @@
     padding: 5px 16px;
     border-radius: 15px;
     font-size: 15px;
+    color: purple;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.Yviews2 {
+    font-weight: normal;
+    color: #777777;
+}
+
+.Yviews2:hover {
+    font-weight: bold;
+    color: black;
 }
 
 /* 이전,다음 페이지 */
@@ -92,6 +212,7 @@
 .Pagenumber {
     width: 100%;
     float: left;
+    margin-left: 10px;
 }
 
 .Nextpage {
@@ -125,7 +246,6 @@
     max-width: 45%;
     text-align: left;
     float: left;
-    border: 1px solid red;
     margin-top: 20px;
 }
 
@@ -153,7 +273,6 @@
     text-align: right;
     width: 45%;
     max-width: 45%;
-    border: 1px solid black;
     display: inline-block;
     margin-top: 20px;
 }
@@ -168,13 +287,13 @@
     border: 2px solid #8e44ad;
     border-radius: 5px;
     width: 50px;
-    height: 30px;
+    height: 26px;
 }
 
 .Gobutton {
     background-color: white;
     border: none;
-    
+    font-size: 16px;
 }
 
 .Faangleright {

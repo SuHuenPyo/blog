@@ -12,31 +12,31 @@ export const Post = () => {
     <div className={Style.Postfull}>
         <div className={Style.Post2}>
             <div className={Style.Title}>#
-                <a href="/">제목</a>
+                <a href="/" className={Style.Title2}>제목</a>
             </div>
             <div className={Style.Quantity}>#
-                <a href="/">분량</a>
+                <a href="/" className={Style.Quantity2}>분량</a>
             </div>
             <div className={Style.Produce}>#
-                <a href="/">생성</a>
+                <a href="/" className={Style.Produce2}>생성</a>
             </div>
             <div className={Style.Revise}>#
-                <a href="/">수정</a>
+                <a href="/" className={Style.Revise2}>수정</a>
             </div>
             <div className={Style.Recommend}>#
-                <a href="/">추천</a>
+                <a href="/" className={Style.Recommend2}>추천</a>
             </div>
             <div className={Style.Comment}>#
-                <a href="/">댓글</a>
+                <a href="/" className={Style.Comment2}>댓글</a>
             </div>
-            <div className={Style.hiding}>#
-                <a href="/">숨김</a>
+            <div className={Style.Hiding}>#
+                <a href="/" className={Style.Hiding2}>숨김</a>
             </div>
             <div className={Style.Tviews}>#
-                <a href="/">오늘 조회수</a>
+                <a href="/" className={Style.Tviews2}>오늘 조회수</a>
             </div>
             <div className={Style.Yviews}>#
-                <a href="/">어제 조회수</a>
+                <a href="/" className={Style.Yviews2}>어제 조회수</a>
             </div>
         </div>
         <nav className={Style.Pagenumber}>
