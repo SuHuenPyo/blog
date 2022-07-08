@@ -2,7 +2,7 @@
  * @author [Shun]
  * @email [vytngms@mail.com]
  * @create date 2022-06-03 15:16:51
- * @modify date 2022-06-28 18:24:52
+ * @modify date 2022-06-28 18:56:38
  * @desc [컨텐츠 뷰를 위한 개별 블록 컴포넌트]
  */
 import React, { useState} from 'react'
