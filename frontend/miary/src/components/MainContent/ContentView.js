@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-06-03 15:23:37
- * @modify date 2022-06-28 18:09:56
+ * @modify date 2022-07-08 16:46:17
  * @desc [content영역에 불러올 컴포넌트 메인 글들을 불러온다.]
  */
 import axios from 'axios';
@@ -19,7 +19,7 @@ export const ContentView = (props) => {
   useEffect(()=>{
     let response = null;
     (async ()=>{
-      response = await MiaryGetAxios("http://miary.duckdns.org:8800/post", "글가져오기 성공" , "글 가져오기 실패");
+      response = await MiaryGetAxios("http://localhost:8080/post", "글가져오기 성공" , "글 가져오기 실패");
       console.log(response);
       setContent(response);
     })();

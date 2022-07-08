@@ -2,10 +2,10 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-06-16 18:06:39
- * @modify date 2022-07-08 15:15:04
+ * @modify date 2022-07-08 16:41:44
  * @desc [React Markdown 라이브러리를 사용해서 사용자 입력값을 받음]
  */
-import React from 'react'
+import React, { useRef } from 'react'
 
 import MarkdownIt from 'markdown-it';
 import MdEditor from 'react-markdown-editor-lite';
@@ -15,6 +15,7 @@ import 'react-markdown-editor-lite/lib/index.css';
 //toast ui editor
 import '@toast-ui/editor/dist/toastui-editor.css';
 import {Editor} from '@toast-ui/react-editor';
+import '@toast-ui/editor/dist/i18n/ko-kr'; 
 
 //toast ui viewer
 import '@toast-ui/editor/dist/toastui-editor-viewer.css';
@@ -32,23 +33,30 @@ function handleEditorChange({ html, text }) {
 }
 
 export const EditorBox = () => {
+
+  const editorRef = useRef();
+
   const handleClickButton = ()=>{
-    console.log("Focus!!");
+    const data = editorRef.current.getInstance().getHTML();
+    console.log(data);
   }
   return (
 
-    // <MdEditor style={{ height: '500px' }} renderHTML={text => mdParser.render(text)} onChange={handleEditorChange} />
     <>
+
     <Editor
       previewStyle="vertical"
-      height="400px"
+      height="600px"
       initialEditType="markdown"
-      initialValue="hello"
+      initialValue="여기에 글을 써주세요. 모바일 또는 마크다운이 아닌 글로 발행하려면 위지윅 탭을 눌러주세요"
+      language='ko-KR'
+      ref={editorRef}
     />
-    <button onClick={handleClickButton}>Click!</button>
-    <Viewer initialValue={"## 뷰어 샘플 "}>
+    <input className="postButton" type='submit' value={'포스트 발행하기(현재 콘솔로그)'} onClick={handleClickButton}></input>
 
-    </Viewer>
+    {/* <Viewer initialValue={"## 뷰어 샘플 "}>
+
+    </Viewer> */}
 
   </>
   )
