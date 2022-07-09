@@ -4,7 +4,7 @@
   "description": "blog named miary",
   "main": "app.js",
   "scripts": {
-    "test": "NODE_ENV=test mocha ./apis/image/image.spec.js --timeout 10000",
+    "test": "NODE_ENV=test mocha ./apis/profile/profile.spec.js --timeout 10000",
     "start": "nodemon -w ./apis app.js"
   },
   "keywords": [
