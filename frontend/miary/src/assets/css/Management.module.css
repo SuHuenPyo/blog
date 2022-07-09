@@ -2,6 +2,7 @@
     width: 80%;
     max-width: 80%;
     display: flex;
+    height: 100%;
 }
 
 .Leftside {
@@ -11,9 +12,11 @@
     max-width: 50%;
     padding-top: 40px;
     padding-left: 70px;
+    height: 100%;
 }
 
 .Accountside {
     width: 70%;
     max-width: 70%;
+    height: 100%;
 }

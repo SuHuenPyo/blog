@@ -99,14 +99,14 @@ textarea {
     margin-bottom: 10px;
 }
 
-label {
+.Address label {
     width: 100%;
     display: inline-block;
     margin-bottom: 10px;
     font-weight: bold;
 }
 
-span {
+.Address span {
 
     height: 20px;
     padding: 3.5px 7px 7.5px;
@@ -116,7 +116,7 @@ span {
     border-radius: 0.35rem 0 0 0.35rem;
 }
 
-input {
+.Address input {
     display: inline;
     border: 1px solid #ced4da;
     width: auto;

@@ -7,3 +7,68 @@
  */
  @import '../Common_Scss/mixin';
  @import '../Common_Scss/variables';
+
+
+  @mixin mixinWriteBoxContainer($maxWidthSize){
+    max-width: $maxWidthSize;
+    margin: 0 auto;
+ }
+//  @include desktop{
+//      .WriteBoxContainer{
+//          @include mixinContentBlockContainer($bp-desktop)
+//      }
+//   }
+//   @include tablet{
+//      .WriteBoxContainer{
+//          @include mixinContentBlockContainer($bp-tablet)
+//      }
+//   }
+//   @include mobile{
+//      .WriteBoxContainer{
+//          @include mixinContentBlockContainer($bp-mobile)
+//      }
+//   }
+
+.WriteBoxContainer{
+  @include mixinWriteBoxContainer(1400px);
+}
+.postButton{
+  &:hover{
+    background-color: #030303;
+    -webkit-transition: all .8s ease-out;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease-out;
+    
+  }
+  
+  background-position: 25px 0px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  height: 50px;
+  line-height: 50px;
+  text-align: left;
+  text-decoration: none;
+  text-transform: uppercase;
+  vertical-align: middle;
+  width: 100%;
+  border-radius: 3px;
+  margin: 10px auto;
+  margin-top: 30px;
+  outline: rgb(255, 255, 255) none 0px;
+  padding-left: 20%;
+  transition: all 0.2s cubic-bezier(0.72, 0.01, 0.56, 1) 0s;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+  background-color: #2e2e2e;
+  color: white;
+  padding: 0;
+  text-align: center;
+  vertical-align: middle;
+  
+}
