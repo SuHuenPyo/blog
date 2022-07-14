@@ -1,5 +1,6 @@
 import React from 'react'
 import Style from '../../assets/css/Left.module.css'
+import { Link } from 'react-router-dom'
 
 export const Left = () => {
   return (
@@ -8,9 +9,11 @@ export const Left = () => {
         사용자 관리
       </div>
         <div className={Style.MU1}>
-          <a href="/">
-            <div className={Style.Account}>계정</div>
-          </a>
+          <Link to="/Management/Account">
+            <a href="/">
+              <div className={Style.Account}>계정</div>
+            </a>
+          </Link>
           <a href="/">
             <div className={Style.Profile}>프로필</div>
           </a>
