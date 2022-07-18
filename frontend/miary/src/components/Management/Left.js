@@ -10,24 +10,22 @@ export const Left = () => {
       </div>
         <div className={Style.MU1}>
           <Link to="/Management/Account">
-            <a href="/">
               <div className={Style.Account}>계정</div>
-            </a>
           </Link>
-          <a href="/">
+          <Link to="/Management/Profile">
             <div className={Style.Profile}>프로필</div>
-          </a>
+          </Link>
         </div>
       <div className={Style.PM}>
         포스트 관리
       </div>
         <div className={Style.PM1}>
-          <a href="/">
+          <Link to="/Management/Post">
             <div className={Style.Post}>포스트</div>
-          </a>
-          <a href="/">
+          </Link>
+          <Link to="/Management/Form">
             <div className={Style.Form}>서식</div>
-          </a>
+          </Link>
         </div>
     </div>
   )
