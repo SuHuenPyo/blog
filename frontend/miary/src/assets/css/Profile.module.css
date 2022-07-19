@@ -119,37 +119,30 @@ textarea {
 .Address input {
     display: inline;
     border: 1px solid #ced4da;
-    width: auto;
     height: 30px;
     border-radius: 0 0.35rem 0.35rem 0;
 }
 
 .Homepage {
-    max-width: 515px;
-    width: 100%;
+    width: 515px;
 }
 
 .Github {
-    max-width: 430px;
-    width: 100%;
+    width: 430px;
 }
 
 .Twitter {
-    max-width: 430px;
-    width: 100%;
+    width: 430px;
 }
 
 .Facebook {
-    max-width: 410px;
-    width: 100%;
+    width: 410px;
 }
 
 .Instagram {
-    max-width: 405px;
-    width: 100%;
+    width: 405px;
 }
 
 .Youtube {
-    max-width: 355px;
-    width: 100%;
+    width: 355px;
 }

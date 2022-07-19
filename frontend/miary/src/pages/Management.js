@@ -15,7 +15,7 @@ export const Management = () => {
         <Left></Left>
       </div>
       <div className={Style.Accountside}>
-        <Account></Account>
+        <Profile></Profile>
       </div>
     </div>
   )
