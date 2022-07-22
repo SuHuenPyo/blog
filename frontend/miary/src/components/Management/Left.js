@@ -1,5 +1,6 @@
 import React from 'react'
 import Style from '../../assets/css/Left.module.css'
+import { Link } from 'react-router-dom'
 
 export const Left = () => {
   return (
@@ -8,23 +9,23 @@ export const Left = () => {
         사용자 관리
       </div>
         <div className={Style.MU1}>
-          <a href="/">
-            <div className={Style.Account}>계정</div>
-          </a>
-          <a href="/">
+          <Link to="/Management/Account">
+              <div className={Style.Account}>계정</div>
+          </Link>
+          <Link to="/Management/Profile">
             <div className={Style.Profile}>프로필</div>
-          </a>
+          </Link>
         </div>
       <div className={Style.PM}>
         포스트 관리
       </div>
         <div className={Style.PM1}>
-          <a href="/">
+          <Link to="/Management/Post">
             <div className={Style.Post}>포스트</div>
-          </a>
-          <a href="/">
+          </Link>
+          <Link to="/Management/Form">
             <div className={Style.Form}>서식</div>
-          </a>
+          </Link>
         </div>
     </div>
   )

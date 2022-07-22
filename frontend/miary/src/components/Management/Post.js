@@ -52,7 +52,7 @@ export const Post = () => {
                     </a>
                 </div>
                 <div className={Style.Nextpage2}>
-                    <a href="/">
+                    <a href="/" className={Style.Nextpagebtn}>
                         1
                     </a>
                 </div>

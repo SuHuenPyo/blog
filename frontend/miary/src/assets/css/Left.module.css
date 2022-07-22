@@ -1,14 +1,10 @@
 /* 공통 */
 .Left {
     width: 40%;
-    padding-right: 10px;
+    min-width: 40%;
+    max-width: 70%;
     text-align: left;
-    padding-left: 55%;
-}
-
-a {
-    text-decoration: none;
-    color: black;
+    float: right;
 }
 
 /* 사용자 관리 */

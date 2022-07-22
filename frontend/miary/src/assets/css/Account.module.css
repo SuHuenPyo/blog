@@ -1,6 +1,9 @@
 /* 공통 */
 .Fullaccount {
     text-align: left;
+    width: 100%;
+    min-width: 60%;
+    max-width: 100%;
 }
 
 h1 {
@@ -32,8 +35,8 @@ h1 {
     font-size: 1.0rem;
     border-radius: 0.25rem;
     font-weight: bold;
-    width: 15%;
-    height: auto;
+    width: 100%;
+    max-width: 100px;
     margin: 10px;
 }
 
@@ -69,8 +72,8 @@ h1 {
     font-size: 1.0rem;
     border-radius: 0.25rem;
     font-weight: bold;
-    width: 9%;
-    height: auto;
+    width: 100%;
+    max-width: 55px;
     margin: 10px;
 }
 /* email */
@@ -135,8 +138,6 @@ h1 {
 .PIP input {
     width: 13px;
     height: 13px;
-    margin-right: -27%;
-    margin-left:  -28%;
     display: inline-block;
 }
 
@@ -147,6 +148,7 @@ h1 {
     width: auto;
     margin-bottom: 13px;
     display: inline;
+    margin-left: 5px;
 }
 
 
