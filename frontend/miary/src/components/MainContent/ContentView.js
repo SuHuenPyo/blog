@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-06-03 15:23:37
- * @modify date 2022-07-20 15:13:36
+ * @modify date 2022-07-23 09:39:01
  * @desc [content영역에 불러올 컴포넌트 메인 글들을 불러온다.]
  */
 import axios from 'axios';
@@ -34,7 +34,6 @@ export const ContentView = (props) => {
           
         )) : "데이터를 불러오는데 실패했습니다."
 
-        
 
       }
       {console.log("다시:" + content)}
