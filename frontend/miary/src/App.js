@@ -1,7 +1,12 @@
 import logo from './logo.svg';
 import './App.scss';
+import { useState } from 'react';
 import React from "react";
 import {Route, Routes} from "react-router-dom";
+
+
+
+
 
 
 import Home from './pages/Home';
@@ -12,11 +17,14 @@ import Setting from './pages/Setting';
 import WritePost from './pages/WritePost';
 import Login from './components/Login/Login';
 import Management from './pages/Management';
+import SideBarModal from './components/Login/SideBarModal';
 
 
 
 function App() {
 //jira test
+
+
   return (
     <div className="App">
 
@@ -31,7 +39,9 @@ function App() {
         <Route path="/management" element={<Management />} />
       </Routes>
 
-      <Login></Login>
+      {/* <Login></Login> */}
+
+
     </div>
   );
 }

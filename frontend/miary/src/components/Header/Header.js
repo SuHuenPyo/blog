@@ -11,6 +11,7 @@ import {
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import SideBar from '../Login/SideBar';
+import SideBarModal from '../Login/SideBarModal';
 
 const throttle = function (callback, waitTime) {
     let timerId = null;
@@ -47,7 +48,11 @@ export const Header = (props) => {
         return () => documentRef.current.removeEventListener('scroll', throttleScroll);
     }, [pageY]);
 
+    const [showModal, setShowModal] = useState(false);
 
+    const openModal = () => {
+      setShowModal(true);
+    }
     
   return (
     // error point
@@ -72,11 +77,16 @@ export const Header = (props) => {
                             프로필
                         </Link>
                     </li>
+                    <li>
+                    <button onClick={openModal}>임시로그인</button>
+      
+                    </li>
                 </ul>
             </div>
 
         </div>
-
+        
+        <SideBarModal showModal={showModal} /*closeModal={closeModal}*/></SideBarModal>
     </header>
 
   )
