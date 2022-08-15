@@ -1,0 +1,6 @@
+2022-08-15
+TABLE miary.members COLUMN rdate		NN 해제 (사용자에게 입력받는게 아닌 DB 트랜잭션이 수행되는 시간기준으로 기록해야함 (CURRENT_TIMESTAMP))
+TABLE miary.members COLUMN auto		NN 해제 (마찬가지로 인증값도 서버에서만 보내주는걸 받을것이기에 NN 불필요 기본값이 0임)
+
+TABLE miary.boards COLUMN b_rdate		default CURRENT_TIMESTAMP
+TABLE miary.boards COLUMN b_mdate	default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP  ( 수정시 시간 자동업데이트 )

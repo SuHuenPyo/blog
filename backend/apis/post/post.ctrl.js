@@ -105,6 +105,7 @@ const popular = async (req, res, next) => {
   try {
     dbcon = await pool.getConnection(async (conn) => conn);
 
+    
     const sql =
       "SELECT b_id 'id', b_title 'title', b_banner 'banner', b_content 'content', m_id 'author', b_mdate 'date', b_hits 'hits', b_like 'like' FROM boards ORDER BY b_hits DESC, b_like DESC";
 
@@ -149,6 +150,7 @@ const recent = async (req, res, next) => {
   return res.status(200).json(json);
 };
 
+//글쓰기   ##### Tag 기능 현재안됨
 const create = async (req, res, next) => {
   let dbcon = null;
   const title = req.body.title?.trim();
@@ -166,30 +168,24 @@ const create = async (req, res, next) => {
 
   console.log(Object.keys(banner).length);
 
-  console.log(banner);
   
   try {
     regex.value(title, "[POST /post title]");
-
     regex.value(content, "[POST /post content]");
-
     regex.value(author, "[POST /post author]");
-
     regex.length(title, 2, 45, "[POST /post title]");
-
     regex.length(title, 3, 1000, "[POST /post content]");
-
     regex.number(author, "[POST /post author]");
   } catch (err) {
     logger.error(`[${err.name}] ${err.message}`);
 
     if (banner !== null) {
-      deleteImg(banner.key);
-    }
+       deleteImg(banner.key);
+       console.log("에러 발생으로 업로드된 이미지 삭제")
+      }
 
     return res.status(400).send("DATA를 확인해주세요.").end();
   }
-
   try {
     const input_data = [
       title,
@@ -201,36 +197,35 @@ const create = async (req, res, next) => {
       like,
       author,
     ];
+    // 풀 가져오기 
+    dbcon = await pool.getConnection(async (cb) => cb);
 
-    dbcon = await pool.getConnection(async (conn) => conn);
 
     const sql =
       "INSERT INTO boards( b_title, b_banner, b_content, b_rdate, b_mdate, b_hits, b_like, m_id ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
+
+    //풀에서 커넥션을 가지고 query를 보내야 하지만 일단은 그냥 사용 
     const [boardRT] = await dbcon.query(sql, input_data);
 
     const boardId = boardRT.insertId;
+
 
     // tag 처리
     const tagRT = await Promise.all(
       tags.map(async (tag, i) => {
         let tagId;
 
+        //사용자가 입력한 태그가 있는지 확인
         const findId = "SELECT t_id FROM tags WHERE name = ?";
-
         const [result1] = await dbcon.query(findId, [tag]);
-
         tagId = result1[0]?.t_id || 0;
 
+        //태그가 DB에 존재하지 않는다면 생성한다.
         if (tagId < 1) {
-          console.log("tag가 없으므로 생성합니다");
-
           const inputTag = "INSERT INTO tags(name) VALUES ( ? )";
-
           const [result2] = await dbcon.query(inputTag, [tag]);
-
           tagId = result2.insertId;
-
           logger.info(`[Tag] - ID: ${result2.insertId} is created`);
         }
 
