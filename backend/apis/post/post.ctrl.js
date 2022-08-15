@@ -25,7 +25,7 @@ const index = async (req, res, next) => {
     json = result;
   } catch (err) {
     logger.error(err);
-
+    console.log(err);
     return res.status(500).send("Internal Server Error");
   } finally {
     await dbcon.release();
@@ -160,8 +160,14 @@ const create = async (req, res, next) => {
   const hits = 0;
   const like = 0;
 
-  logger.info(`[POST /post/${id}] ${req.ip} is access`);
+  //logger.info(`[POST /post/${id}] ${req.ip} is access`); id 알수없음 
+  logger.info(`[POST /post/] ${req.ip} is access`);
+  
 
+  console.log(Object.keys(banner).length);
+
+  console.log(banner);
+  
   try {
     regex.value(title, "[POST /post title]");
 
