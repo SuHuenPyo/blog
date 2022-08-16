@@ -166,7 +166,7 @@ const create = async (req, res, next) => {
   logger.info(`[POST /post/] ${req.ip} is access`);
   
 
-  console.log(Object.keys(banner).length);
+  //console.log(Object.keys(banner).length); 오브젝트 길이 측정
 
   
   try {

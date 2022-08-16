@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-06-27 18:21:30
- * @modify date 2022-08-16 23:00:21
+ * @modify date 2022-08-17 00:39:03
  * @desc [Axios 요청을 위한 간편 모듈]
  */
 
@@ -34,8 +34,9 @@ export const MiaryPostAxios = async(url, form) =>{
       },
     });
   }catch{
-    console.error(response);
+    //handle error
+    console.error(response); 
   }
 
-  return response.data;
+  return response;
 }

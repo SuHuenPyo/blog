@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-06-16 18:06:39
- * @modify date 2022-08-16 23:01:21
+ * @modify date 2022-08-17 00:44:43
  * @desc [React Markdown 라이브러리를 사용해서 사용자 입력값을 받음]
  */
 import React, { useRef } from 'react'
@@ -39,9 +39,37 @@ export const EditorBox = () => {
 
   const editorRef = useRef();
 
-  const handleClickButton = ()=>{
-    const data = editorRef.current.getInstance().getHTML();
-    console.log(data);
+  const handleClickButton = async()=>{
+    if(window.confirm("글을 발행합니까?")){
+      let data = editorRef.current.getInstance().getHTML();
+      console.log(data);
+      
+      let bodyFormData = new FormData();
+      bodyFormData.append('title', "타이틀 들어갈 내용");
+      bodyFormData.append('content', data);
+      bodyFormData.append('author', 3); // 추후에 세션값에서 m_id를 추출해서 자동으로 들어가게 해줄 예정
+      //bodyFormData.append('banner', "배너 url"); 추가해야합니다.
+
+      let response = null ; 
+      try{
+        response = await MiaryPostAxios("http://localhost:3300/post", bodyFormData);
+        
+        //console.log("response : " + JSON.stringify(response, null, 2)); //stringify (,replace, 문자열간격);
+      }catch{
+        console.error(response) // handle error
+      }
+
+      if(response.status == 201){
+        //1. 성공되었단 메시지 .
+        window.alert("글이 성공적으로 발행되었습니다.");
+
+        //2. 홈 화면으로 리다이렉션 해주거나 &  자기가 쓴 글로 이동시켜 주거나 
+      }else{
+        window.alert("시스템 에러가 발생했습니다. 관리자에게 문의해주세요.");
+      }
+      
+    }
+    
   }
   return (
 
@@ -67,10 +95,10 @@ export const EditorBox = () => {
             bodyFormData.append('imgs',blob);
 
             let response = await MiaryPostAxios("http://localhost:3300/images", bodyFormData);
-            console.log(response);
+            console.log(response.data);
 
             //2. callback으로 이미지 화면에 넣기
-            callback(response, "이미지");
+            callback(response.data, "이미지");
           }
         }
       }
