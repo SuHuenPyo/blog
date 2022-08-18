@@ -75,19 +75,13 @@ const create = async (req, res, next) => {
         "SELECT name FROM members WHERE m_id=?",
         [input_result.insertId]
       );
-  
       json = await get_result[0];
 
     } catch (err) {
-
       logger.error(err);
-
       return res.status(500).send("Internal Server Error");
-
     } finally {
-
       await dbcon.release();
-
     }
   
     return res.status(201).json(json);

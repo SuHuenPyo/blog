@@ -1,4 +1,11 @@
 /**
+ * @author Shun
+ * @email vytngms@gmail.com
+ * @create date 2022-08-18 22:56:00
+ * @modify date 2022-08-18 22:56:31
+ * @desc [description]
+ */
+/**
  * author: ejback
  * description: swagger 사용을 위한 기본 세팅
  */

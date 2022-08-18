@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-06-16 18:06:39
- * @modify date 2022-08-17 00:44:43
+ * @modify date 2022-08-18 22:48:47
  * @desc [React Markdown 라이브러리를 사용해서 사용자 입력값을 받음]
  */
 import React, { useRef } from 'react'
@@ -88,8 +88,6 @@ export const EditorBox = () => {
           addImageBlobHook: async(blob, callback) =>{
             console.log(blob);
             //1. 이미지 서버로 전송, url 리턴받기 
-            
-           
 
             let bodyFormData = new FormData();
             bodyFormData.append('imgs',blob);
