@@ -35,7 +35,8 @@ const AuthCode = async (req, res, next) => {
       html: '<h1>Miary Auth Code 입니다.</h1> <h2> 인증번호 : '+ RandAuthCode +' </h2> <h2>절대 타인에게 알리지 마세요.</h2>' 
     }
 
-    let [result] = await dbcon.query("SELECT COUNT(*) as cnt FROM miary.")
+    let [result] = await dbcon.query("SELECT COUNT(*) as cnt FROM miary.auth WHERE auth_email=?", email);
+
 
 
     const sql =
