@@ -4,11 +4,10 @@ const cors = require("cors");
 const port = 3300;
 
 //router
-const user    = require("./apis/user/index");
-const post    = require("./apis/post/index");
-const image   = require("./apis/image/index");
+const user = require("./apis/user/index");
+const post = require("./apis/post/index");
+const image = require("./apis/image/index");
 const profile = require("./apis/profile/index");
-const mail    = require("./apis/mail/index");
 
 // modules
 const { swaggerUI, specs } = require("./utils/swagger");
@@ -54,7 +53,6 @@ app.use("/profile", profile);
  */
 
 app.use("/images", image);
-app.use("/mail", mail);
 
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
 
