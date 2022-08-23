@@ -15,9 +15,8 @@ import AboutAll from './pages/AboutAll';
 import {Search} from './pages/Search';
 import Setting from './pages/Setting';
 import WritePost from './pages/WritePost';
-import Login from './components/Login/Login';
 import Management from './pages/Management';
-import SideBarModal from './components/Login/SideBarModal';
+
 
 
 

@@ -19,6 +19,20 @@ const AuthCode = async(req, res, next) => {
 
     const email = req.query.email?.trim();
 
+    console.log(req.query)
+
+    if(!email){
+      return res.status("400").json("이메일이 존재하지 않습니다.");
+    }
+
+    console.log("aaaa : "+email);
+    let result = await dbcon.query("SELECT COUNT(*) as cnt FROM auth WHERE (auth_done=1 AND auth_email=?)",[email]);
+
+    if(result[0].cnt > 0){
+      return res.status("400").json("이미 가입된 계정입니다.");
+    }
+    
+
     RandAuthCode = await((digit)=>{return Math.random().toString(36).slice(2).substring(0,digit)})(6); // 나중에 helper로 따로 빼기
 
     //메일 객체생성
@@ -82,6 +96,14 @@ const VerifyCode = async( req, res, next)=>{
 
   try{
     dbcon = await pool.getConnection(async (conn) => conn);
+
+    result = await dbcon.query("SELECT * FROM auth WHERE auth_done=1 AND auth_email=?",[email]);
+
+    if(result){
+      return res.status("400").json("이미 가입된 계정입니다.");
+    }
+
+
     [result] = await dbcon.query("SELECT auth_code from auth WHERE auth_email = ?", [email]);
     
     if(result[0].auth_code == authCode){

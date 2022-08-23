@@ -16,7 +16,9 @@ const create = async (req, res, next) => {
     const pw = req.body.pw?.trim(); 
     const name = req.body.name?.trim();
     const email = req.body.email?.trim();
-    let intro = req.body.intro.trim() || null;
+    const authCode = req.body.authCode?.trim();
+
+    let intro = req.body.intro?.trim() || null;
     let date = dayjs(new Date).format('YYYY-MM-DD HH:mm:ss');
     let img = req.file || null;
 
@@ -62,9 +64,28 @@ const create = async (req, res, next) => {
     
     try {
 
+      dbcon = await pool.getConnection(async (conn) => conn);
+
+      if(!authCode) return res.status(400).json("올바른 인증코드를 입력해주세요!");
+
+      [result] = await dbcon.query("SELECT * FROM auth WHERE auth_done=1 AND auth_email=?",[email]);
+
+      if(result[0]){
+        return res.status("400").json("이미 가입된 이메일 입니다.");
+      }
+      [result] = await dbcon.query("SELECT auth_code from auth WHERE auth_email = ?", [email]);
+
+      if(result[0].auth_code != authCode){
+        return res.status(400).json("올바른 인증코드를 입력해주세요!");
+      }
+        
+      logger.info(`[POST /user] AuthCode ${req.ip} 인증완료`);
+      
+
+
       const input_data = [id, pw, name, email, intro, date, false, img?.location || null];
 
-      dbcon = await pool.getConnection(async (conn) => conn);
+      
   
       const input_sql =
         'INSERT INTO members(userId,password,name,email,intro,rdate,auto,image) VALUES (?,?,?,?,?,?,?,?)';
@@ -76,6 +97,12 @@ const create = async (req, res, next) => {
         [input_result.insertId]
       );
       json = await get_result[0];
+
+      
+      //마지막으로 auth_done을 true로 설정해주고 해당계정은 이메일인증과 함께 가입되있음을 저장한다.
+      await dbcon.query("UPDATE auth SET auth_done = 1 WHERE auth_email = ?", [email]);
+      
+      logger.info(`[POST /user] AuthCode ${req.ip} 가입완료. auth_done=1`);
 
     } catch (err) {
       logger.error(err);

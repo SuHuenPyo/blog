@@ -10,8 +10,8 @@ import {
        
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import SideBar from '../Login/SideBar';
-import SideBarModal from '../Login/SideBarModal';
+import RegisterModal from '../Login/RegisterModal';
+import SignUpContent from '../Login/RegisterContent';
 
 const throttle = function (callback, waitTime) {
     let timerId = null;
@@ -31,6 +31,9 @@ export const Header = (props) => {
     //스크롤 감지 헤더숨김
     const [hide, setHide] = useState(false);
     const [pageY, setPageY] = useState(0);
+    //회원가입 모달창 스위치
+    const [signUp, setSignUp] = useState(false);
+    
     const documentRef = useRef(document);
 
     const handleScroll = () => {
@@ -48,12 +51,16 @@ export const Header = (props) => {
         return () => documentRef.current.removeEventListener('scroll', throttleScroll);
     }, [pageY]);
 
-    const [showModal, setShowModal] = useState(false);
+    // const [showModal, setShowModal] = useState(false);
 
-    const openModal = () => {
-      setShowModal(true);
-    }
+    // const openModal = () => {
+    //   setShowModal(true);
+    // }
     
+    const switchModal = ()=>{
+        setSignUp(!signUp);
+    }
+
   return (
     // error point
     <header className={hide && 'hide'}>
@@ -78,15 +85,20 @@ export const Header = (props) => {
                         </Link>
                     </li>
                     <li>
-                    <button onClick={openModal}>임시로그인</button>
-      
+                        <input type="button" value="회원가입" className="RegisterBtn" onClick={switchModal}/> 
+                        {/* <button onClick={openModal}>임시로그인</button> */}
+                        {signUp && (
+                            <RegisterModal closeModal={()=> setSignUp(!signUp)}>
+                                <SignUpContent/>
+                            </RegisterModal>
+                        )}
                     </li>
                 </ul>
             </div>
 
         </div>
-        
-        <SideBarModal showModal={showModal} /*closeModal={closeModal}*/></SideBarModal>
+
+        {/* <RegisterModal showModal={showModal} closeModal={closeModal}></RegisterModal> */}
     </header>
 
   )
