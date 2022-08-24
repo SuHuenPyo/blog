@@ -16,7 +16,8 @@ import {Search} from './pages/Search';
 import Setting from './pages/Setting';
 import WritePost from './pages/WritePost';
 import Management from './pages/Management';
-
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 
 
 
@@ -26,7 +27,7 @@ function App() {
 
   return (
     <div className="App">
-
+      <Header></Header>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
@@ -37,7 +38,7 @@ function App() {
         <Route path="/write_post" element={<WritePost />} />
         <Route path="/management" element={<Management />} />
       </Routes>
-
+      <Footer></Footer>
       {/* <Login></Login> */}
 
 

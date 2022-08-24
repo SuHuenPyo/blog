@@ -10,7 +10,6 @@ import Style from '../assets/css/Management.module.css'
 export const Management = () => {
   return (
     <div className={Style.Management}>
-      <Header></Header>
       <div className={Style.Leftside}>
         <Left></Left>
       </div>

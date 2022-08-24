@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-06-15 15:48:22
- * @modify date 2022-06-21 16:20:28
+ * @modify date 2022-08-24 17:42:24
  * @desc [내 블로그 페이지]
  */
 import React from 'react'
@@ -13,9 +13,7 @@ import MyBlogContent from '../components/MyBlog/MyBlogContent';
 export const MyBlog = () => {
   return (
     <div>
-        <Header/>
         <MyBlogContent/>
-        <Footer/>
     </div>
   )
   
