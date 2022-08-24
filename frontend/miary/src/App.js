@@ -16,6 +16,9 @@ import {Search} from './pages/Search';
 import Setting from './pages/Setting';
 import WritePost from './pages/WritePost';
 import Management from './pages/Management';
+import ContentDetail from './pages/ContentDetail';
+
+
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
@@ -37,6 +40,7 @@ function App() {
         <Route path="/aboutall" element={<AboutAll />} />
         <Route path="/write_post" element={<WritePost />} />
         <Route path="/management" element={<Management />} />
+        <Route path="/contentDetail" element={<ContentDetail/>} />
       </Routes>
       <Footer></Footer>
       {/* <Login></Login> */}
