@@ -9,6 +9,7 @@ export const MyBlogContent = () => {
 
       <MyBlogTop/>
       <MyBlogTabView/>
+      
 
     </div>
   )
