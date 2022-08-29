@@ -162,6 +162,10 @@ const create = async (req, res, next) => {
   const hits = 0;
   const like = 0;
 
+
+  //임시 m_id 
+  const m_id = 2;
+
   //logger.info(`[POST /post/${id}] ${req.ip} is access`); id 알수없음 
   logger.info(`[POST /post/] ${req.ip} is access`);
   
@@ -195,7 +199,7 @@ const create = async (req, res, next) => {
       date,
       hits,
       like,
-      author,
+      m_id,
     ];
     // 풀 가져오기 
     dbcon = await pool.getConnection(async (cb) => cb);

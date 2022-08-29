@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-06-16 18:06:39
- * @modify date 2022-08-18 22:48:47
+ * @modify date 2022-08-29 07:57:32
  * @desc [React Markdown 라이브러리를 사용해서 사용자 입력값을 받음]
  */
 import React, { useRef } from 'react'
@@ -22,6 +22,8 @@ import '@toast-ui/editor/dist/i18n/ko-kr';
 //toast ui viewer
 import '@toast-ui/editor/dist/toastui-editor-viewer.css';
 import { Viewer } from '@toast-ui/react-editor';
+
+//common functions
 import { MiaryPostAxios } from '../Common_function/MiaryAxios';
 
 
