@@ -9,35 +9,35 @@ const { reset } = require("nodemon");
 const regex = new RegexHelper();
 
 const index = async (req, res, next) => {
-  logger.info(`[GET /post] ${req.ip} is access`);
+  logger.info(`[GET /post (index)] ${req.ip} is access`);
+  console.log("[index] DB pool current Count == " + pool.pool._allConnections._tail);
 
   let dbcon = null;
   let json = null;
 
   try {
+    
     dbcon = await pool.getConnection(async (conn) => conn);
-
     const sql =
       "SELECT b_id 'id', b_title 'title', b_banner 'banner', b_content 'content', m_id 'author', b_mdate 'date', b_hits 'hits', b_like 'like' FROM boards";
 
     const [result] = await dbcon.query(sql);
-
     json = result;
   } catch (err) {
     logger.error(err);
-    console.log(err);
     return res.status(500).send("Internal Server Error");
   } finally {
     await dbcon.release();
   }
-
   return res.status(200).json(json);
 };
 
+//상세 글 가져오기
 const detail = async (req, res, next) => {
-  const id = parseInt(req.params.id, 10);
+  const id = parseInt(req.query.id, 10);
 
   logger.info(`[GET /post/${id}] ${req.ip} is access`);
+  console.log("[full post detail] DB pool current Count == " + pool.pool._allConnections._tail);
 
   if (Number.isNaN(id)) {
     return res.status(400).send("ID를 확인해주세요.");
@@ -54,39 +54,47 @@ const detail = async (req, res, next) => {
 
     const [result] = await dbcon.query(sql, [id]);
 
+
     if (!result[0]) {
       return res.status(400).send("ID를 확인해주세요.");
     }
 
-    const author_id = result[0].author;
-
-    const sql2 = "SELECT name , image 'profile' FROM members WHERE m_id = ?";
-
-    const [author_info] = await dbcon.query(sql2, [author_id]);
-
-    const board_id = result[0].id;
-
     const findTagsId = "SELECT t_id FROM board_tags WHERE b_id = ?";
 
+    const board_id = result[0].id;
     const [TagsId] = await dbcon.query(findTagsId, [board_id]);
 
-    const tags = await Promise.all(
-      TagsId.map(async (tagId, index) => {
+    // Promise all -> DB 가져가서 안돌려줌 . connection pool 10개 가득차서 DB 동작을 안함. 
+    // const tags = await Promise.all(
+    //   TagsId.map(async (tagId, index) => {
+    //     const findTag = "SELECT name FROM tags WHERE t_id = ?";
+
+    //     const [tag] = await dbcon.query(findTag, [tagId.t_id]);
+
+    //     return tag[0].name;
+    //   })
+    // );
+
+    let tags =null;
+    await(()=>{
+      TagsId.map(async(tagId, index) =>{
         const findTag = "SELECT name FROM tags WHERE t_id = ?";
-
         const [tag] = await dbcon.query(findTag, [tagId.t_id]);
-
         return tag[0].name;
       })
-    );
+    })();
+
+
+
+
+
 
     json = result[0];
-
-    json.author = author_info[0];
 
     json.tags = tags;
   } catch (err) {
     logger.error(err);
+    console.error(err);
 
     return res.status(500).send("Interal Server Error");
   } finally {
