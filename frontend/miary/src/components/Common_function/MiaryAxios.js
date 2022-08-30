@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-06-27 18:21:30
- * @modify date 2022-08-23 22:29:46
+ * @modify date 2022-08-30 14:12:48
  * @desc [Axios 요청을 위한 간편 모듈]
  */
 
@@ -11,19 +11,19 @@ import axios from "axios"
 export const ServerUrl = "http://172.30.1.29:3300/"
 
 export const MiaryGetAxios = async(url, log="", errLog="" , query={}) =>{
-  let response, returnResult = null;
+  let response = null;
 
-  console.log(JSON.stringify(query));
+  //console.log(JSON.stringify(query));
   try{
-    response = await axios.get(url, {params: query});
-    returnResult = response.data;
-
-    console.log(log + "OK");
+    response = await axios.get(url, {params: query}); 
+    console.log(log);
   }catch(err){
     console.error(errLog + '\n\n' + err);
+  }finally{
+    console.log("결과 : "+ url + " == "+ response.status);
   }
+  return response;
   
-  return returnResult;
 }
 
 export const MiaryPostAxios = async(url, form) =>{

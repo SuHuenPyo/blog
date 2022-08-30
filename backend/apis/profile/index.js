@@ -5,7 +5,7 @@ const { full } = require('./profile.ctrl');
 
 
 router.get("/",()=>{})
-router.get("/full/:id",full)
+router.get("/id",full)
 router.get("/intro",()=>{})
 router.get("/simple",()=>{})
 router.put("/intro",()=>{})

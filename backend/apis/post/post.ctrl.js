@@ -39,6 +39,7 @@ const detail = async (req, res, next) => {
   logger.info(`[GET /post/${id}] ${req.ip} is access`);
   console.log("[full post detail] DB pool current Count == " + pool.pool._allConnections._tail);
 
+
   if (Number.isNaN(id)) {
     return res.status(400).send("ID를 확인해주세요.");
   }
@@ -83,11 +84,6 @@ const detail = async (req, res, next) => {
         return tag[0].name;
       })
     })();
-
-
-
-
-
 
     json = result[0];
 

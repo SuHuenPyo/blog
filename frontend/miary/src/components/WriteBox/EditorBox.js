@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-06-16 18:06:39
- * @modify date 2022-08-29 07:57:32
+ * @modify date 2022-08-30 07:32:50
  * @desc [React Markdown 라이브러리를 사용해서 사용자 입력값을 받음]
  */
 import React, { useRef } from 'react'
@@ -44,7 +44,7 @@ export const EditorBox = () => {
   const handleClickButton = async()=>{
     if(window.confirm("글을 발행합니까?")){
       let data = editorRef.current.getInstance().getHTML();
-      console.log(data);
+      
       
       let bodyFormData = new FormData();
       bodyFormData.append('title', "타이틀 들어갈 내용");

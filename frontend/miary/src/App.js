@@ -12,7 +12,7 @@ import {Route, Routes} from "react-router-dom";
 import Home from './pages/Home';
 import MyBlog from './pages/MyBlog';
 import AboutAll from './pages/AboutAll';
-import {Search} from './pages/Search';
+import Search from './pages/Search';
 import Setting from './pages/Setting';
 import WritePost from './pages/WritePost';
 import Management from './pages/Management';

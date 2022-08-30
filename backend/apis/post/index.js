@@ -81,7 +81,7 @@ router.get("/recent", recent);
  *        description: 아이디 확인 필요
  */
 
-router.get("/:id", detail);
+router.get("/detail", detail);
 
 /**
  * @swagger

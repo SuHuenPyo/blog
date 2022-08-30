@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-08-23 13:46:50
- * @modify date 2022-08-23 22:28:07
+ * @modify date 2022-08-30 07:32:26
  * @desc [회원가입을 위한 내용 컴포넌트]
  */
 import React, { useEffect } from 'react'
@@ -50,7 +50,7 @@ export const SignUpContent = ()=>{
         };
 
         let result = await MiaryPostAxios(ServerUrl+"user", body);
-        console.log(result);
+        
     }
 
     //authcode
@@ -62,7 +62,7 @@ export const SignUpContent = ()=>{
         e.preventDefault();
         
         let result = await MiaryGetAxios(ServerUrl+"mail","발급성공", "발급실패", {'email': UserEmail});
-        console.log(result);
+        
         if(result){
             console.log("발급성공했네요");
         }

@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-06-03 15:23:37
- * @modify date 2022-08-30 02:53:41
+ * @modify date 2022-08-30 15:13:09
  * @desc [content영역에 불러올 컴포넌트 메인 글들을 불러온다.]
  */
 import axios from 'axios';
@@ -18,11 +18,11 @@ export const ContentView = (props) => {
 
 
   useEffect(()=>{
+    console.log("ContentView useEffect 시작");
     let response = null;
     (async ()=>{
       response = await MiaryGetAxios("http://172.30.1.29:3300/post", "글가져오기 성공" , "글 가져오기 실패");
-      console.log(response);
-      setContent(response);
+      setContent(response.data);
     })();
     
   }, []);
@@ -34,8 +34,7 @@ export const ContentView = (props) => {
           
           <Link to="/contentDetail" state={{
             data:{
-              contentId: idx.id,
-              content: idx.content
+              contentId: idx.id
             }
           }}>
           <ContentBlock id={idx.id} title={idx.title} banner={idx.banner} content={idx.content} author={idx.author} hits={idx.hits} like={idx.like}/>
@@ -45,9 +44,6 @@ export const ContentView = (props) => {
 
 
       }
-      {console.log("다시:" + content)}
-      
-
     </div>
   )
 }
