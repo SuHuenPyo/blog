@@ -1,10 +1,27 @@
+/**
+ * @author Shun
+ * @email vytngms@gmail.com
+ * @create date 2022-09-01 12:53:58
+ * @modify date 2022-09-01 12:53:58
+ * @desc [마이어리 메인 헤더를 위한 css]
+ */
+ @font-face {
+    font-family: 'LeferiPoint-WhiteObliqueA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-WhiteObliqueA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 
 header{
+    font-family: LeferiPoint-WhiteObliqueA;
+    font-size: 14px;
+    font-weight: 900;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 0;
+    z-index: 100000;
     &.hide {
         transform: translateY(-100px);
         transition: all .5s;

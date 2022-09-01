@@ -1,3 +1,15 @@
+@font-face {
+    font-family: 'EF_MACHO';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/EF_MACHO.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'MICEGothic Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
 .BannerTitle{
     background-color: rgba(247, 247, 247, 0.719);
     display: block;
@@ -28,11 +40,12 @@
         height: 100%;
         top: 0;
         width: 100%;
-        font-size: 1.7em;
-        font-weight: 900;
+        font-size: 2.4em;
+        font-family: 'MICEGothic Bold';
         background-color: rgba(255, 255, 255, 0.315);
         color: rgb(0, 0, 0);
         overflow: hidden;
+        
         
         
         

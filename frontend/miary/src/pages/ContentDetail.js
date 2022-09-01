@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react'
+import { useLocation, useParams } from 'react-router-dom';
 import {BannerTitle} from '../components/Content/BannerTitle';
 import './ContentDetail.scss';
 
@@ -20,43 +20,55 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getContentDetail } from '../slices/ContentDetailSlice';
 
 
+//icon
+import {
+  FaHeart,
+  FaComment,
+  FaArrowUp
+
+     
+} from 'react-icons/fa';
+
 export const ContentDetail = () => {
 
-  //랜더링전에 useEffect를 먼저호출하기 위한 꼼수 loading 
-  const {rt, item, loading} = useSelector((state) => state.myContentDetail);
-  const dispatch = useDispatch();
+
 
 
   //useRef는 리렌더링 하지않는다. 컴포넌트의 속성만 조회 & 수정한다. 
 
 
-  const location = useLocation();
-  const contentId = location.state.data.contentId;
+  // const location = useLocation();
+  // const contentId = location.state.data.contentId;
+  const {contentId} = useParams();
 
   //프로필 카드 로딩 지연을 위한 
   const [profileCardSwitch, setProfileCardSwitch] = useState(false);
 
 
+    //랜더링전에 useEffect를 먼저호출하기 위한 꼼수 loading 
+  const {rt, item, loading} = useSelector((state) => state.myContentDetail);
+  const dispatch = useDispatch();
 
   useEffect(()=>{
-
-    if(!loading) dispatch(getContentDetail({id:contentId}));
-    
-    if(rt!=200){
-      return alert(`[getContentDetail] error`);
+    console.log("ContentDetail dispatch 시작");
+    if(!loading) {
+      dispatch(getContentDetail({id:contentId}));
     }
 
-    setProfileCardSwitch(true);
-    // let result=null;
-    // (async()=>{
-    //   result = await MiaryGetAxios(ServerUrl+"post/detail", "상세 글 가져오기 성공", "상세 글 가져오기 실패", {id:contentId});
-    //   setContentDetail(result);
-    //   console.log(2);
-    // })(); 
+  }, [contentId]);
 
-  }, []);
+  useEffect(()=>{
+    if(rt!=200){
+      console.log("[ContentDetail] 컨텐츠 정보 불러오는중..")
+      
+    }else{
+      setProfileCardSwitch(true);
+      console.log("[ContentDetail] 컨텐츠 정보 불러오기 완료");
+    }
 
+  }, [rt])
 
+  //따라다니는 배너
 
   return (
     <>
@@ -64,27 +76,65 @@ export const ContentDetail = () => {
       
       {!loading && rt === 200 && (
         <div className='ContentDetail'>
+
+
           <BannerTitle title={item.title} banner={item.banner}></BannerTitle>
-          <Viewer initialValue={item.content}  />
-          <ProfileCard authorId={item.author} switch={profileCardSwitch} ></ProfileCard>
+          <div className='ContentDetailContainer'>
+            <ProfileCard authorId={item.author} switch={profileCardSwitch} ></ProfileCard>
+
+            <div className='viewerContainer'>
+
+
+                <div className='followingMenuBox'>
+                   <div className='followingMenu'> 
+                    <div className='followingMenuLikeBtn'><FaHeart/></div>
+                    <div className='followingMenuCommentBtn'><FaComment/></div>
+                    <div className='followingMenuTopBtn'><FaArrowUp/></div>
+                </div>
+              </div>
+
+              <div className='detailViewerContainer'>
+                <Viewer initialValue={item.content} className='ContentDetailViewer'  />
+              </div>
+
+            </div>
+            
+      
+          </div>
+          <div className='detailViewerComment'>
+              <ContentComment/>
+              <ContentComment/>
+              <ContentComment/>
+              <ContentComment/>
+              <ContentComment/>
+              <ContentComment/>
+              <ContentComment/>
+              <ContentComment/>
+              
+              
+          </div>
+          
+          
+ 
+          
           
 
           {/* <br></br>
           여기에 세미 타이틀 한개 넣을지 곰민중 ...
-          <br/>
-
-          <ContentDetails></ContentDetails>
-          <br/>
           <TagList/>
           <br/>
           <GetContentList/>
           <br/>
-          <ContentComment/>
+
           <br/>
           만약 모바일~테블릿 사이즈는 좋아요와 댓글을 하단에 고정때리기
           but 태블릿~ 사이즈는 왼쪽에 고정때리기   */}
       
-      </div>
+
+          
+
+
+        </div>
       )}
       
     </>

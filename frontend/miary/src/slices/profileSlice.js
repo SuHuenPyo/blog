@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-08-30 11:32:43
- * @modify date 2022-08-30 15:05:16
+ * @modify date 2022-08-31 21:58:23
  * @desc [프로필 카드에서 사용하는 슬라이스]
  */
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
@@ -43,8 +43,9 @@ const myProfile = createSlice({
             };
         },
         [getProfile.fulfilled]: (state, {meta, payload})=>{
-            console.log("fulfilled : " + JSON.stringify(payload));
-            console.log(payload.status);
+            //console.log("fulfilled : " + JSON.stringify(payload));
+            //console.log(payload.status);
+            if(payload.data.intro == "null") payload.data.intro = null;
             return{
                 rt: payload.status,
                 rtmsg: payload.statusText,

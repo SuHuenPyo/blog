@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-06-03 15:23:37
- * @modify date 2022-08-30 15:13:09
+ * @modify date 2022-08-31 23:46:34
  * @desc [content영역에 불러올 컴포넌트 메인 글들을 불러온다.]
  */
 import axios from 'axios';
@@ -32,11 +32,7 @@ export const ContentView = (props) => {
       { content ?
         content.map(idx => (
           
-          <Link to="/contentDetail" state={{
-            data:{
-              contentId: idx.id
-            }
-          }}>
+          <Link to={`/contentDetail/${idx.id}`}>
           <ContentBlock id={idx.id} title={idx.title} banner={idx.banner} content={idx.content} author={idx.author} hits={idx.hits} like={idx.like}/>
           </Link>
           

@@ -40,7 +40,7 @@ function App() {
         <Route path="/aboutall" element={<AboutAll />} />
         <Route path="/write_post" element={<WritePost />} />
         <Route path="/management" element={<Management />} />
-        <Route path="/contentDetail" element={<ContentDetail/>} />
+        <Route path="/contentDetail/:contentId" element={<ContentDetail/>} />
       </Routes>
       <Footer></Footer>
       {/* <Login></Login> */}
