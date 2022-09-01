@@ -1,13 +1,14 @@
 import React from 'react'
 import './MyBlogTop.scss';
+import defaultProfileImg from '../../assets/img/miary_img/profile_default_03.png'
 
 export const MyBlogTop = () => {
-  const userId = "vytngms"
-  const userName = "suhuen Pyo"
+  const userId = null || "유저 아이디 불러오는중..";
+  const userName = null || "유저 이름 불러오는중..";
   return (
     <div className='MyBlogTop'>
         <div className='MyBlogProfileBox'>
-          <img src={require('../../assets/img/miary_img/temp_profile.png')}></img>
+          <img src={defaultProfileImg}></img>
         </div>
         <div className='MyBlogNameBox'>
           <h2>{userName}</h2>

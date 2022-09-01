@@ -1,9 +1,21 @@
 import React from 'react'
+import './MyBlogPost.scss';
 
-export const MyBlogPost = () => {
+import replaceEmptyImg from '../../assets/img/miary_img/birds-979262_1920.jpg'
+
+const MyBlogPost = () => {
   return (
-    <div>MyBlogPost</div>
+    <div className='MyBlogPost'>
+        <div className='MyBlogPostContainer'>
+            {null || 
+                <div className='MyBlogPostEmptyContentReplaceImg'>
+                    <img src={replaceEmptyImg}/>
+                    블로그가 비었습니다.
+                </div>
+            }
+        </div>
+    </div>
   )
 }
 
-export default MyBlogPost;
+export default MyBlogPost

@@ -1,3 +1,11 @@
+/**
+ * @author Shun
+ * @email vytngms@gmail.com
+ * @create date 2022-09-01 15:04:40
+ * @modify date 2022-09-01 15:04:40
+ * @desc [나의 블로그 상단 프로필]
+ */
+
 .MyBlogTop{
     //background-color: aqua;
     margin-top: 30px;
@@ -27,10 +35,10 @@
             margin: 0;
             margin-top: 0.5em;
             padding: 0;
-            font-weight: 600;
+            font-weight: 900;
             word-spacing: 0.4em;
             letter-spacing: 0.05em;
-            color:#463a3c
+            color:#000000
         }
     }
     .MyBlogIdBox{
@@ -51,7 +59,6 @@
             display: inline-block;
             padding: 15px 30px;
             border-radius: 15px;
-            font-family: "paybooc-Light", sans-serif;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             text-decoration: none;
             font-weight: 600;
