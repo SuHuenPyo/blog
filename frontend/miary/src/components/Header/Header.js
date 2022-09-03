@@ -10,8 +10,9 @@ import {
        
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import RegisterModal from '../Login/RegisterModal';
+import AccountModal from '../Login/AccountModal';
 import SignUpContent from '../Login/RegisterContent';
+import LoginContent from '../Login/LoginContent';
 
 const throttle = function (callback, waitTime) {
     let timerId = null;
@@ -31,8 +32,10 @@ export const Header = (props) => {
     //스크롤 감지 헤더숨김
     const [hide, setHide] = useState(false);
     const [pageY, setPageY] = useState(0);
-    //회원가입 모달창 스위치
+
+    //회원가입, 로그인 모달창 스위치
     const [signUp, setSignUp] = useState(false);
+    const [Login, setLogin] = useState(false);
     
     const documentRef = useRef(document);
 
@@ -57,8 +60,11 @@ export const Header = (props) => {
     //   setShowModal(true);
     // }
     
-    const switchModal = ()=>{
+    const switchModalRegister = ()=>{
         setSignUp(!signUp);
+    }
+    const switchModalLogin = ()=>{
+        setLogin(!Login);
     }
 
   return (
@@ -67,7 +73,7 @@ export const Header = (props) => {
         
         {/* <div className={hide ? 'HeaderContainer' + 'HeaderContainer:hide' : 'HeaderContainer'}> */}
         <div className='HeaderContainer'>
-            <div className='HeaderLogo'><Link to="/home"><img src={require('../../assets/img/miary_img/Symbol.png')}></img></Link></div>
+            <div className='HeaderLogo'><Link to="/"><img src={require('../../assets/img/miary_img/Symbol.png')}></img></Link></div>
             <div className='HeaderBlank'></div>
 
             <div className='HeaderToolsContainer'>
@@ -84,13 +90,20 @@ export const Header = (props) => {
                             프로필
                         </Link>
                     </li>
-                    <li>
-                        <input type="button" value="회원가입" className="RegisterBtn" onClick={switchModal}/> 
-                        {/* <button onClick={openModal}>임시로그인</button> */}
+                    <li className="accountBtn" onClick={switchModalRegister}>
+                        회원가입
                         {signUp && (
-                            <RegisterModal closeModal={()=> setSignUp(!signUp)}>
+                            <AccountModal closeModal={()=> switchModalRegister(!signUp)}>
                                 <SignUpContent/>
-                            </RegisterModal>
+                            </AccountModal>
+                        )}
+                    </li>
+                    <li className="accountBtn" onClick={switchModalLogin}>
+                        로그인
+                        {Login && (
+                            <AccountModal closeModal={()=> switchModalLogin(!Login)}>
+                                <LoginContent/>
+                            </AccountModal>
                         )}
                     </li>
                 </ul>
