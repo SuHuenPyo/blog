@@ -1,157 +1,169 @@
 @import '../Common_Scss/variables';
 .SignUpContentBackgroundWrap{
-    background-color: #000000e0;
-    padding-top: 20px;
-    height: 75%;
-    width: 75%;
-    min-width: $bp-mobile;
-    max-width: $bp-desktop;
-    margin: 0 auto;
-    .SignUpContent{
-        padding-left: 20px;
-        padding-right: 20px;
-        width: 80%;
-        height: 80%;
+    background-color: #ffffff;
+    border: 2px solid rgb(158, 250, 222);
+    width: 300px;
+    height: auto;
+    border-radius: 7px;
+    position: relative;
+
+    .RegisterFoldedRibbon {
+        --f: 10px; /* control the folded part*/
+        --r: 20px; /* control the ribbon shape */
+        --t: 33px; /* the top offset */
+        color: beige;
+        position: absolute;
+        inset: var(--t) calc(-1*var(--f)) auto auto;
+        padding: 0 10px var(--f) calc(7px + var(--r));
+        clip-path: 
+          polygon(0 0,100% 0,100% calc(100% - var(--f)),calc(100% - var(--f)) 100%,
+            calc(100% - var(--f)) calc(100% - var(--f)),0 calc(100% - var(--f)),
+            var(--r) calc(50% - var(--f)/2));
+        background: rgb(207, 180, 69);
+        box-shadow: 0 calc(-1*var(--f)) 0 inset #0005;
+        line-height: 50px; // 리본 높이(길이)
+    }
+
+    .RegisterContentMiaryLogo{
+        
+        width: 150px;
+        height: 90px;
         margin: 0 auto;
-        max-width: $bp-tablet;
-
-        
-        
-        .RegisterModalTitle{
-            text-align: center;
-            font-size: 1em;
-            font-weight: bold;
-            line-height: 40px;
-            font-family: inherit;
-            
-            color: #e6e6e6;
-        }
-
-    
-        //input[type=text], input[type=password]{
-        .RegisterInput{
-            
-            display: inline-block;
-            //height: 2.4em;
-            width: 95%;
-            padding-left: 1.1em;
-            font-size: inherit;
-            font-family: inherit;
-            line-height: 2.5em;
-            vertical-align: middle;
-            background-color: #e6e6e6;
-            //border: 1px solid #000000;
-            border-color: white;
-            border-style: none;
-            
-                   
-            //background-color: rgb(223, 223, 223);
-        }
-
-        
-
-        .google-connect{
-            background: rgb(255, 255, 255) url('https://raw.githubusercontent.com/eswarasai/social-login/master/img/google-plus.png') no-repeat scroll 5px 0px / 50px 50px padding-box border-box;
-            border: 1px solid rgb(220, 74, 61);
-            color: rgb(221, 96, 96);
-        }
-        .google-connect:hover {
-            border-color: rgb(220, 74, 61);
-            background: rgb(220, 74, 61) url('https://raw.githubusercontent.com/eswarasai/social-login/master/img/google-plus-white.png') no-repeat scroll 5px 0px / 50px 50px padding-box border-box;
-            color: white;
-            -webkit-transition: all .8s ease-out;
-            -moz-transition: all .3s ease;
-            -ms-transition: all .3s ease;
-            -o-transition: all .3s ease;
-            transition: all .3s ease-out;
-            
-        }
-
-        .social-button{
-            
-            background-position: 25px 0px;
-            box-sizing: border-box;
-            cursor: pointer;
-            display: inline-block;
-            height: 50px;
-            line-height: 50px;
-            text-align: left;
-            text-decoration: none;
-            text-transform: uppercase;
-            vertical-align: middle;
+        margin-top: 15px;
+        overflow: hidden;
+        img{
             width: 100%;
-            border-radius: 3px;
-            margin: 10px auto;
-            outline: rgb(255, 255, 255) none 0px;
-            padding-left: 20%;
-            transition: all 0.2s cubic-bezier(0.72, 0.01, 0.56, 1) 0s;
-            -webkit-transition: all .3s ease;
-            -moz-transition: all .3s ease;
-            -ms-transition: all .3s ease;
-            -o-transition: all .3s ease;
-            transition: all .3s ease;
+            height: 90px;
+            object-fit: contain;
         }
-        .RegisterHorizon{
-            // border-top: #c4c2c2;
-            // border-width: 1px 0 0 0 ;
-            // border-style: solid;
-
-            font-size: 0.9em;
-            color:rgb(255, 255, 255);
-            height: 20px;
-            line-height: 20px;
-
-        }
-        .register-button{
-            background-color: #000000;
-            color: white;
-            padding: 0;
-            text-align: center;
-            vertical-align: middle;
-            
-        }
-        .register-button:hover{
-            
-            background-color: #292929;
-            -webkit-transition: all .8s ease-out;
-            -moz-transition: all .3s ease;
-            -ms-transition: all .3s ease;
-            -o-transition: all .3s ease;
-            transition: all .3s ease-out;
-        }
-
-        .AuthBox{
-            width: 70%;
-            height: 100%;
-            display:flex;
-            padding-left: 0.2em;
-            
-            
-            
-            .AuthInputText{
-                flex:3;
-                display: inline-block;
-                vertical-align: middle;
-                font-family: inherit;
-                background-color: #e6e6e6;
-                border-color: white;
-                border-style: none;
-                line-height: 2.8em;
-                padding-left: 1.2em;
-                min-width: 150px;
-            }
-            .AuthBtn{
-                flex:1;
-                height: 3em;
-                margin-left: 0.5em;
-                padding-bottom: 0.1em;
-                color: #ffffff;
-                background-color: #161616;
-                min-width: 100px;
-            }
-        }
+        
         
     }
-    
-}
+    .RegisterContentContainer{
+        
+        padding-bottom: 50px;
+        .Registerinput-contain{
+            position: relative;
+            height: 50px;
+            padding-top: 10px;
+            
+            &:focus{
+                input{
+                    border: 2px solid black;
+                }
+            }
+           input{
+               height: 35px;
+               width: 220px;
+               border: 2px solid black;
+               border-radius: 6px;
+               
+               
+           }
+           .placeholder-RegisterText{
+               
+                position: absolute;
+                top: 2.6em;
+                bottom: 0;
+                left: 15px;
+                right: 0;
+                border: 3px solid transparent;
+                background-color: transparent;
+                display: flex;
+                align-items: flex-start;
+                pointer-events: none;
+           }
+           .RegisterLabelText{
+                max-height: 20px;
+                line-height: 18px;
+                padding: 0 5px;
+                
+                width: auto;
+               
+                background-color: transparent;
+                color: black;
+                
+                
+                transition: transform 0.15s ease-out, font-size 0.15s ease-out, background-color 0.2s ease-out, color 0.15s ease-out;
+           }
+            input, .placeholder-RegisterText{
+                font-size: 14px;
+                padding: 0 1.2rem;
+            }
+            
+            input:focus{
+                outline: none;
+                border-color: green;
+            }
 
+            
+            input:focus + .placeholder-RegisterText .RegisterLabelText, :not(input[value=""]) + .placeholder-RegisterText .RegisterLabelText{
+                background-color: rgb(255, 255, 255);
+                font-size: 13px;
+                color: black;
+                transform: translate(0, -90%);
+                border-color: blueviolet;
+                color: rgb(53, 140, 161);
+                
+                
+       
+            }
+
+            .Registerinput-Auth{
+                position: absolute;
+                left: 1.4em;
+                top: 0.6em;
+                width: 100px;
+                
+            }
+
+            .BtnSendAuthCode{
+                border-radius: 2px;
+                background-color: rgb(207, 180, 69);
+                color: beige;
+                font-size: 13px;
+                font-weight: 900;
+                width: 37%;
+                height: 2.9em;
+                position: absolute;
+                top:0.7em;
+                right: 1.5em;
+                line-height: 3.0em;
+                transition: all 0.2s;
+                &:hover{
+                    transition: all 0.2s;
+                    background-color: rgb(160, 139, 55);;
+ 
+                }
+            }   
+        
+            
+            
+        }
+        .RegisterInputSubmit{
+            border: none;
+            background-color: rgb(207, 180, 69);
+            color: beige;
+            width: 87%;
+            height: 2.8em;
+            margin: 0;
+            padding: 0;
+            font-weight: 900;
+
+            transition: all 0.2s;
+            &:hover{
+                transition: all 0.2s;
+                background-color: rgb(160, 139, 55);
+            }
+        }
+    }
+ 
+}
+@keyframes vibration {
+    from {
+      transform: translate(2px,0);
+    }
+    to {
+        transform: translate(-2px,0);
+    }
+}

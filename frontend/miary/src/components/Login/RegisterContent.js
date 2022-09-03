@@ -2,22 +2,35 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-08-23 13:46:50
- * @modify date 2022-08-30 07:32:26
+ * @modify date 2022-09-03 11:35:55
  * @desc [회원가입을 위한 내용 컴포넌트]
  */
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import { useState } from 'react';
 import './RegisterContent.scss';
 import {FaMailBulk} from 'react-icons/fa';
 import { MiaryGetAxios, MiaryPostAxios, ServerUrl } from '../Common_function/MiaryAxios';
+import RegisterLogo from "../../assets/img/miary_img/Vertical.png"
+import { UNSAFE_NavigationContext, useNavigate } from 'react-router-dom';
 
 export const SignUpContent = ()=>{
+    
+    //input 필드값 저장
     const [UserId, setUserId] = useState("");
     const [UserPassword, setUserPassword] = useState("");
     const [UserName, setUserName] = useState("");
     const [UserEmail, setUserEmail] = useState("");
     const [UserAuthCode, setUserAuthCode] = useState("");
 
+    //css 변경을 위한 Ref 
+    const RefId = useRef();
+    const RefPw = useRef();
+    const RefName = useRef();
+    const RefEmail = useRef();
+    const resetCssStyle = (targetRef) => {if(targetRef.current?.style) targetRef.current.style=``;}
+
+
+    //event listener
     const userIdHandler = (e) =>{
         e.preventDefault();
         setUserId(e.target.value);
@@ -35,9 +48,19 @@ export const SignUpContent = ()=>{
         setUserEmail(e.target.value);
     }
 
+
+
     //submit
     const submitHandler = async(e) =>{
         e.preventDefault();
+
+        // aaID.current.style = `
+        // border-color: red;
+        // animation: vibration 0.1s 5;
+        // `
+
+        
+        
 
         //console.log("id : " + UserId + "  userPassword: " + UserPassword + "  UserName : " + UserName + "   UserEmail : " + UserEmail);
 
@@ -50,6 +73,7 @@ export const SignUpContent = ()=>{
         };
 
         let result = await MiaryPostAxios(ServerUrl+"user", body);
+
         
     }
 
@@ -68,33 +92,56 @@ export const SignUpContent = ()=>{
         }
     }
     
+    
+
+    
 
     return(
         <div className='SignUpContentBackgroundWrap'>
-            <div className='SignUpContent'>
-                <div className='RegisterModalTitle'>마이어리 회원등록</div>
-                {/* react에서는 action, method안씀 */}
-
+            <div className='RegisterFoldedRibbon'>Sign Up</div>
+            <div className='RegisterContentMiaryLogo'>
+                <img src={RegisterLogo} alt={'마이어리 로그인 로고'}/>
+            </div>
+            <div className='RegisterContentContainer'>
+                Love yourself
                 <form onSubmit={submitHandler}>
-                    <input className='RegisterInput' type='text' placeholder='사용자의 아이디' onChange={userIdHandler}></input>
-                    <input className='RegisterInput' type='password' placeholder='패스워드' onChange={userPasswordHandler}></input>
-                    <input className='RegisterInput' type='password' placeholder='패스워드 확인' ></input>
-                    <input className='RegisterInput' type='text' placeholder='사용자의 실명' onChange={userNameHandler}></input>
-                    <input className='RegisterInput' type='text' placeholder='사용자의 이메일' onChange={UserEmailHandler}></input>
-                
 
-                    <div className='AuthBox'>
-                        <input className='AuthInputText' type='text' placeholder='이메일 인증번호 6자리' onChange={userAuthCodeHandler}></input>
-                        <input className='AuthBtn' type='button' value={'인증번호 발송'} onClick={sendAuthHandler}></input>
+                    <div className='Registerinput-contain'>
+                        <input className='RegisterInput' ref={RefId} type='text' name="fname" value={UserId} onChange={userIdHandler} onClick={resetCssStyle(RefId)} />
+                        <label className='placeholder-RegisterText' for="fname" >
+                            <div className='RegisterLabelText'>유저 아이디</div>
+                        </label>
+                    </div>
+                    <div className='Registerinput-contain'>
+                        <input className='RegisterInput' ref={RefPw} type='password' name="fname" value={UserPassword} onChange={userPasswordHandler} onClick={resetCssStyle(RefPw)} />
+                        <label className='placeholder-RegisterText' for="fname" >
+                            <div className='RegisterLabelText'>유저 패스워드</div>
+                        </label>
+                    </div>
+                    <div className='Registerinput-contain '>
+                        <input className='RegisterInput' ref={RefName} type='text' name="fname" value={UserName} onChange={userNameHandler} onClick={resetCssStyle(RefName)} />
+                        <label className='placeholder-RegisterText' for="fname" >
+                            <div className='RegisterLabelText'>유저이름(닉네임) </div>
+                        </label>
+                    </div>
+                    <div className='Registerinput-contain'>
+                        <input className='RegisterInput' ref={RefEmail} type='text' name="fname" value={UserEmail} onChange={UserEmailHandler} onClick={resetCssStyle(RefEmail)} />
+                        <label className='placeholder-RegisterText' for="fname" >
+                            <div className='RegisterLabelText'>유저 이메일</div>
+                        </label>
+                    </div>
+                    <div className='Registerinput-contain'>
+                        <input className='RegisterInput Registerinput-Auth' type='text' name="fname" placeholder='인증코드 6자리' value={UserAuthCode} onChange={userAuthCodeHandler} />
+                        <div className='BtnSendAuthCode'>인증코드 전송</div>
                     </div>
 
-                    <input className='' type='submit' value={"회원가입"} ></input>
-                    
+                    <input className='RegisterInputSubmit' type='submit' value={"가입하기"}/>
 
-                    <div className="RegisterHorizon">―― or social sign in ―― </div>
-                    <div className="social-button google-connect"> Google 계정으로 시작하기</div>
                 </form>
+                    <div className="RegisterHorizon">―― or social sign Up ―― </div>
+                    <div className="social-button google-connect"> Google 계정으로 시작하기</div>
             </div>
+            
       </div>
   
     );
