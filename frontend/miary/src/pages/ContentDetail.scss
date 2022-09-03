@@ -43,25 +43,50 @@
                         
                         display: flex;
                         flex-direction: column;
+
+                        h1{
+                            font-size: 8px;
+                            margin: 0;
+                            padding: 0;
+                            padding-left: 1px;
+                            line-height: 6px;
+                        }
+                        
                         .followingMenuLikeBtn{
                             flex:1;
                             font-size: 20px;
                             color: rgb(124, 124, 124);
                             border-bottom: 1px dotted rgb(187, 187, 187);
-                            margin: 10px 0;
+                            //background-color: aqua;
+                            margin-top: 5px;
+
+                            &:hover{
+                                cursor: pointer;
+                            }
+
                         }
                         .followingMenuCommentBtn{
                             flex:1;
+                            
                             font-size: 20px;
                             color: rgb(124, 124, 124);
                             border-bottom: 1px dotted rgb(187, 187, 187);
+                            padding-top: 5px;
+
+                            &:hover{
+                                cursor: pointer;
+                            }
                             
                         }
                         .followingMenuTopBtn{
                             flex:1;
                             font-size: 20px;
                             color: rgb(124, 124, 124);
-                            margin-top: 5px;
+                            padding-top: 5px;
+
+                            &:hover{
+                                cursor: pointer;
+                            }
                         }
                     }
                     
@@ -80,10 +105,9 @@
             }
             
         }
-        
-        
-
-
     
-    
+}
+.svgBtn{
+    padding: 0;
+    margin: 0;
 }

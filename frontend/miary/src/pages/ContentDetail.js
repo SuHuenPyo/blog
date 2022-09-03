@@ -13,6 +13,7 @@ import TagList from '../components/Tag/TagList';
 import GetContentList from '../components/Content/GetContentList';
 import ContentComment from '../components/Comment/ContentComment';
 import {MiaryGetAxios, MiaryPostAxios, ServerUrl} from '../components/Common_function/MiaryAxios';
+import useMoveScroll from '../components/Common_function/Miary_useMoveScroll';
 
 //redux
 import { getProfile } from '../slices/profileSlice';
@@ -28,6 +29,7 @@ import {
 
      
 } from 'react-icons/fa';
+
 
 export const ContentDetail = () => {
 
@@ -68,7 +70,38 @@ export const ContentDetail = () => {
 
   }, [rt])
 
-  //따라다니는 배너
+
+  //좌측 제어패널 
+  const followingControllMenu = {
+    Like : (data) => { 
+      console.log(data);
+    },
+    Comment : (data) => {
+      console.log(data);
+    },
+    moveToTop: (data=null)=>{
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      })
+    },
+    length: 3,
+
+  }
+
+  //댓글창 이동을 위한 Ref
+  const commentRef = useRef(null);
+  const onCommentClick = () => {
+    commentRef.current?.scrollIntoView({behavior: 'smooth'});
+  };
+
+
+  //좌측패널 컨트롤러
+  const followingMenuController = (cb,number)=> cb(number);
+  
+
+  //MoveToTop
+  
 
   return (
     <>
@@ -87,9 +120,9 @@ export const ContentDetail = () => {
 
                 <div className='followingMenuBox'>
                    <div className='followingMenu'> 
-                    <div className='followingMenuLikeBtn'><FaHeart/></div>
-                    <div className='followingMenuCommentBtn'><FaComment/></div>
-                    <div className='followingMenuTopBtn'><FaArrowUp/></div>
+                    <div className='followingMenuLikeBtn'><FaHeart className='svgBtn'/><h1>{null ||"N/A"}</h1></div>
+                    <div className='followingMenuCommentBtn' onClick={onCommentClick}><FaComment className='svgBtn'/><h1>{null ||"N/A"}</h1></div>
+                    <div className='followingMenuTopBtn' onClick={()=>{followingMenuController(followingControllMenu.moveToTop, null)}}><FaArrowUp className='svgBtn'/><h1>Top</h1></div>
                 </div>
               </div>
 
@@ -101,7 +134,7 @@ export const ContentDetail = () => {
             
       
           </div>
-          <div className='detailViewerComment'>
+          <div className='detailViewerComment'  ref={commentRef}>
               <ContentComment/>
               <ContentComment/>
               <ContentComment/>
