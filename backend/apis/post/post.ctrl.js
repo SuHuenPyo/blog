@@ -18,8 +18,12 @@ const index = async (req, res, next) => {
   try {
     
     dbcon = await pool.getConnection(async (conn) => conn);
-    const sql =
-      "SELECT b_id 'id', b_title 'title', b_banner 'banner', b_content 'content', m_id 'author', b_mdate 'date', b_hits 'hits', b_like 'like' FROM boards";
+    const sql =`SELECT boards.b_id as boardId , boards.b_title as boardTitle ,
+    boards.b_banner as boardBanner, boards.b_content as boardContent ,
+    boards.m_id as boardMemberId, boards.b_mdate as boardMDate,
+    boards.b_hits as boardHits, boards.b_like  as boardLike,
+    members.userId as memberUserId
+    FROM boards, members WHERE boards.m_id = members.m_id;`
 
     const [result] = await dbcon.query(sql);
     json = result;
@@ -51,7 +55,7 @@ const detail = async (req, res, next) => {
     dbcon = await pool.getConnection(async (conn) => conn);
 
     const sql =
-      "SELECT b_id 'id', b_title 'title', b_banner 'banner', b_content 'content', m_id 'author', b_mdate 'date', b_hits 'hits', b_like 'like' FROM boards WHERE b_id = ?";
+      "SELECT b_id 'id', b_title 'title', b_banner 'banner', b_content 'content', m_id 'author_id', b_mdate 'date', b_hits 'hits', b_like 'like' FROM boards WHERE b_id = ?";
 
     const [result] = await dbcon.query(sql, [id]);
 

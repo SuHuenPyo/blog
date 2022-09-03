@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-06-27 18:21:30
- * @modify date 2022-08-30 14:12:48
+ * @modify date 2022-09-03 08:29:22
  * @desc [Axios 요청을 위한 간편 모듈]
  */
 

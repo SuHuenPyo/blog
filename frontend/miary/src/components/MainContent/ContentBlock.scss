@@ -98,6 +98,7 @@
         background-color: rgb(251, 255, 255);
         
         flex-direction: column;
+        overflow: hidden;
         text-align: left;
 
         .ContentBlockArticleTitle{
@@ -122,11 +123,13 @@
             padding: 10px 10px 0 0;
         }
         .ContentBlockArticleAuthorContainer{ //writer box.. 
-            //background-color: darkgoldenrod;
+            //background-color: rgba(184, 135, 11, 0.418);
             height: 25%;
-            margin: 0 20px;
+            margin: 0 0px;
             display: flex;
             font-size: 13px;
+            
+
             .ContentBlockArticleAuthorPic{ // writer pic
                 flex: 1;
             }

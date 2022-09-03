@@ -1,0 +1,38 @@
+.RegisterModal{
+  
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  
+  background-color: rgba(0, 0, 0, 0.699);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  pointer-events: auto;
+  cursor: pointer;
+
+  .RegisterBody{
+    position: relative;
+    .RegisterModalCloseBtn{
+      z-index: 100;
+      position: absolute;
+      top: 2%;
+      left: 5%;
+      border: none;
+      color: rgb(0, 0, 0);
+      background-color: rgb(207, 180, 69);
+      color: beige;
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      font-size: 20px;
+  }
+  
+}
+  
+}
+
+

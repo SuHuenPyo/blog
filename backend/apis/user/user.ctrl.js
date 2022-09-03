@@ -27,14 +27,9 @@ const create = async (req, res, next) => {
     try {
         // 값
         regex.value(id,"[POST /user ID]");
-
-
         regex.value(pw,"[POST /user PW]");
-
         regex.value(name,"[POST /user NAME]");
-
         regex.value(email,"[POST /user EMAIL]");
-
 
         //길이
         regex.length(id,3,50,"[POST /user ID]");

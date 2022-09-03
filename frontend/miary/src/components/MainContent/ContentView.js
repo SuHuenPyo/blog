@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-06-03 15:23:37
- * @modify date 2022-08-31 23:46:34
+ * @modify date 2022-09-03 08:36:22
  * @desc [content영역에 불러올 컴포넌트 메인 글들을 불러온다.]
  */
 import axios from 'axios';
@@ -12,28 +12,34 @@ import { MiaryGetAxios } from '../Common_function/MiaryAxios';
 import ContentBlock from './ContentBlock';
 import './ContentView.scss';
 
+//redux;
+import {useSelector, useDispatch} from "react-redux";
+import { getContent } from '../../slices/ContentSlice';
+
 export const ContentView = (props) => {
 
-  const [content, setContent] = useState([]);
-
+  const {rt, rtmsg, item, loading} = useSelector((state)=> state.myContent);
+  const dispatch = useDispatch();
 
   useEffect(()=>{
-    console.log("ContentView useEffect 시작");
-    let response = null;
-    (async ()=>{
-      response = await MiaryGetAxios("http://172.30.1.29:3300/post", "글가져오기 성공" , "글 가져오기 실패");
-      setContent(response.data);
-    })();
+    if(!loading){
+      dispatch(getContent({}));
+    }
+    console.log("contentView Use Effect 실행");
+  }, [])
+
     
-  }, []);
+ 
 
   return (
     <div className='ContentViewContainer'>
-      { content ?
-        content.map(idx => (
+      { !loading && item ?
+        item.map((idx, index) => (
           
-          <Link to={`/contentDetail/${idx.id}`}>
-          <ContentBlock id={idx.id} title={idx.title} banner={idx.banner} content={idx.content} author={idx.author} hits={idx.hits} like={idx.like}/>
+          <Link to={`/contentDetail/${idx.boardId}`} key={index}>
+            <ContentBlock boardId={idx.boardId} title={idx.boardTitle} banner={idx.boardBanner} content={idx.boardContent}
+            memberId={idx.boardMemberId} boardMDate={idx.boardMDate} hits={idx.boardHits} 
+            like={idx.boardLike} memberName={idx.memberUserId}/>
           </Link>
           
         )) : "데이터를 불러오는데 실패했습니다."
