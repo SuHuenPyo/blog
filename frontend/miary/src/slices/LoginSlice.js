@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-09-03 03:57:05
- * @modify date 2022-09-03 03:59:36
+ * @modify date 2022-09-06 01:24:44
  * @desc [login을 위한 slice]
  */
 
@@ -17,13 +17,28 @@
      "POST/MYLOGIN", 
      async (payload, {rejectWithValue})=>{
          let result = null;
-         try{
-             result = await MiaryPostAxios(ServerUrl+"user/login","", "",{...payload});
-         }catch(err){
-             return rejectWithValue(err.response);
-         }
-         return await result;
-     }
+         let response = null;
+        try{
+            response = await axios({
+                method: 'post',
+                url: ServerUrl+"user/signin",
+                data: {...payload},
+                header: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+                    'withCredentials' : true,
+                },
+           });
+           
+        }catch(err){
+            console.error(err);
+            return rejectWithValue(err);
+        
+        }finally{
+
+        }
+        
+        return await response;
+    }
  );
  
  const myLogin = createSlice({
@@ -35,15 +50,30 @@
          m_item: [],
          loading: false,
      },
-     reducers: {},
+     reducers: {
+        /**
+         * 
+         * @param {number} state rt 그냥 rt만 쓰기
+         * @param {*} action 바꿀값 {data: xx}
+         */
+        setRt: (state, {payload}) =>{
+            
+            return {
+                ...state,
+                rt: payload
+            };
+        },
+     },
      extraReducers:{
          [postLogin.pending]: (state, action) =>{
+             
              return {
                  ...state,
                  loading: true,
              };
          },
          [postLogin.fulfilled]: (state, {meta, payload})=>{
+             console.log(payload?.status);
              return{
                  rt: payload.status,
                  rtmsg: payload.statusText,
@@ -51,19 +81,21 @@
                  loading: false
              };
          },
-         [postLogin.rejected]: (state, {payload})=>{
+         [postLogin.rejected]: (state, {error, payload})=>{
              
+
              return{
                  ...state,
-                 rt: payload.status,
-                 rtmsg: payload.statusText,
+                 rt: payload.response.status,
+                 rtmsg: payload.response.data,
                  loading: false,
              };
          },
-     }
+     },
+     
  })
  
  
- 
+ export const {setRt} = myLogin.actions;
  export default myLogin.reducer;
  
