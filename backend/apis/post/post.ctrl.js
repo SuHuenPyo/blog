@@ -6,9 +6,14 @@ const RegexHelper = require("../../utils/RegexHelper");
 const { deleteImg } = require("../../utils/multer");
 const { reset } = require("nodemon");
 
+
+
 const regex = new RegexHelper();
 
+//홈 컨텐츠 가져오기 
 const index = async (req, res, next) => {
+  console.log(req.session);
+
   logger.info(`[GET /post (index)] ${req.ip} is access`);
   console.log("[index] DB pool current Count == " + pool.pool._allConnections._tail);
 
@@ -19,14 +24,18 @@ const index = async (req, res, next) => {
     
     dbcon = await pool.getConnection(async (conn) => conn);
     const sql =`SELECT boards.b_id as boardId , boards.b_title as boardTitle ,
-    boards.b_banner as boardBanner, boards.b_content as boardContent ,
+    boards.b_banner as boardBanner, LEFT(boards.b_markdown, 300) as boardMarkdown ,
     boards.m_id as boardMemberId, boards.b_mdate as boardMDate,
     boards.b_hits as boardHits, boards.b_like  as boardLike,
-    members.userId as memberUserId
+    members.userId as memberUserId, members.image as memberPic
     FROM boards, members WHERE boards.m_id = members.m_id;`
 
     const [result] = await dbcon.query(sql);
     json = result;
+
+
+    
+
   } catch (err) {
     logger.error(err);
     return res.status(500).send("Internal Server Error");
@@ -164,15 +173,27 @@ const create = async (req, res, next) => {
   const title = req.body.title?.trim();
   const banner = req.file || null;
   const content = req.body.content?.trim();
+  const markdown = req.body.markdown;
   const author = parseInt(req.body.author, 10);
-  const tags = req.body.tags ?? [];
+  let tags = req.body.tags;
   const date = dayjs(new Date()).format("YYYY-MM-DD HH:mm:ss");
   const hits = 0;
   const like = 0;
 
+  let boardId = null;
+
 
   //임시 m_id 
   const m_id = 2;
+
+  console.log(typeof(tags));
+  console.log(tags);
+  console.log(req.body);
+
+  if(tags){
+    tags.replace (/"/g,'');
+    tags = JSON.parse(tags);
+  }
 
   //logger.info(`[POST /post/${id}] ${req.ip} is access`); id 알수없음 
   logger.info(`[POST /post/] ${req.ip} is access`);
@@ -184,6 +205,7 @@ const create = async (req, res, next) => {
   try {
     regex.value(title, "[POST /post title]");
     regex.value(content, "[POST /post content]");
+    regex.value(markdown, "[POST /post markdown]");
     regex.value(author, "[POST /post author]");
     regex.length(title, 2, 45, "[POST /post title]");
     regex.length(title, 3, 1000, "[POST /post content]");
@@ -203,6 +225,7 @@ const create = async (req, res, next) => {
       title,
       banner?.location || null,
       content,
+      markdown,
       date,
       date,
       hits,
@@ -214,49 +237,53 @@ const create = async (req, res, next) => {
 
 
     const sql =
-      "INSERT INTO boards( b_title, b_banner, b_content, b_rdate, b_mdate, b_hits, b_like, m_id ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+      "INSERT INTO boards( b_title, b_banner, b_content, b_markdown, b_rdate, b_mdate, b_hits, b_like, m_id ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 
     //풀에서 커넥션을 가지고 query를 보내야 하지만 일단은 그냥 사용 
     const [boardRT] = await dbcon.query(sql, input_data);
 
-    const boardId = boardRT.insertId;
+    boardId = boardRT.insertId;
 
 
     // tag 처리
-    const tagRT = await Promise.all(
-      tags.map(async (tag, i) => {
-        let tagId;
+    if(tags){
+      const tagRT = await Promise.all(
+        tags.map(async (tag, i) => {
+          let tagId;
+  
+          //사용자가 입력한 태그가 있는지 확인
+          const findId = "SELECT t_id FROM tags WHERE name = ?";
+          const [result1] = await dbcon.query(findId, [tag]);
+          tagId = result1[0]?.t_id || 0;
+  
+          //태그가 DB에 존재하지 않는다면 생성한다.
+          if (tagId < 1) {
+            const inputTag = "INSERT INTO tags(name) VALUES ( ? )";
+            const [result2] = await dbcon.query(inputTag, [tag]);
+            tagId = result2.insertId;
+            logger.info(`[Tag] - ID: ${result2.insertId} is created`);
+          }
+  
+          const inputTagBoard = "INSERT INTO board_tags(t_id, b_id) VALUES (?,?)";
+  
+          const [boardRT] = await dbcon.query(inputTagBoard, [tagId, boardId]);
+  
+          logger.info(`[POST] - ID: ${boardRT.insertId} is created`);
+        })
+      );
+    }
 
-        //사용자가 입력한 태그가 있는지 확인
-        const findId = "SELECT t_id FROM tags WHERE name = ?";
-        const [result1] = await dbcon.query(findId, [tag]);
-        tagId = result1[0]?.t_id || 0;
-
-        //태그가 DB에 존재하지 않는다면 생성한다.
-        if (tagId < 1) {
-          const inputTag = "INSERT INTO tags(name) VALUES ( ? )";
-          const [result2] = await dbcon.query(inputTag, [tag]);
-          tagId = result2.insertId;
-          logger.info(`[Tag] - ID: ${result2.insertId} is created`);
-        }
-
-        const inputTagBoard = "INSERT INTO board_tags(t_id, b_id) VALUES (?,?)";
-
-        const [boardRT] = await dbcon.query(inputTagBoard, [tagId, boardId]);
-
-        logger.info(`[POST] - ID: ${boardRT.insertId} is created`);
-      })
-    );
   } catch (err) {
     logger.error(err);
+    console.error(err);
 
     return res.status(500).send("Internal Server Error");
   } finally {
     dbcon.release();
   }
 
-  return res.status(201).end();
+  return res.status(201).send({boardId});
 };
 
 const update = async (req, res, next) => {

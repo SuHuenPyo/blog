@@ -100,7 +100,7 @@ const VerifyCode = async( req, res, next)=>{
     result = await dbcon.query("SELECT * FROM auth WHERE auth_done=1 AND auth_email=?",[email]);
 
     if(result){
-      return res.status("400").json("이미 가입된 계정입니다.");
+      return res.status(400).json("이미 가입된 계정입니다.");
     }
 
 
