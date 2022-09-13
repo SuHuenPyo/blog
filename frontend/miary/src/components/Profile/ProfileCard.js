@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-08-30 06:40:20
- * @modify date 2022-09-01 13:43:26
+ * @modify date 2022-09-05 11:45:46
  * @desc [프로필 카드를 보여주는 컴포넌트]
  */
 import React, { useEffect, useState } from 'react'
@@ -16,10 +16,9 @@ import defaultProfileImg from '../../assets/img/miary_img/defaultProfile.jpg'
 import profileCardMarkImg from '../../assets/img/miary_img/Vertical.png'
 
 //icon
-import {
-  FaMailBulk, // 돋보기
-     
-} from 'react-icons/fa';
+import { 
+  AiOutlineMail, //이메일
+} from "react-icons/ai";
 
 /**
  * backend userId,name,email,intro,image FROM members WHERE m_id
@@ -88,7 +87,7 @@ export const ProfileCard = (props) => {
 
 
               <div className='ProfileCardEmailContainer'>
-                <h1><FaMailBulk/>{" "+item.email}</h1>
+                <h1><AiOutlineMail/></h1><h2>{" "+item.email}</h2>
               </div>
               
               <div className='ProfileCardIntroContainer'>

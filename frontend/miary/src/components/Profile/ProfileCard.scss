@@ -5,12 +5,6 @@
  * @modify date 2022-08-31 22:23:23
  * @desc [프로필카드를 위한 css]
  */
- @font-face {
-    font-family: 'LeferiPoint-WhiteObliqueA';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-WhiteObliqueA.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
 
  $profileCard-radius: 15px;
 .ProfileCard{
@@ -105,7 +99,6 @@
                 margin: 0;
                 padding: 0;
                 text-align: left;
-                font-family: LeferiPoint-WhiteObliqueA;
                 
             }
 
@@ -121,16 +114,36 @@
             .ProfileCardUserIdContainer{
                 flex: 1;
                 h1{
-                    font-size: 1.0em;
+                    font-size: 0.8em;
                     color: gray;
                 }
             }
             .ProfileCardEmailContainer{
                 flex: 1;
+                display: flex;
+                flex-direction: row;
+                
                 h1{
+                    min-width: 6%;
+                    width: 6%;
+                    line-height: 30px;
                     margin-top: -10px;
                     font-size: 1.1em;
                     font-weight: 500;
+                    color: rgba(0, 0, 0, 0.664);
+                }
+                h2{
+                    flex: 5;
+                    margin: 0;
+                    margin-top: -0.6em;
+                    padding: 0;
+                    text-align: left;
+                    font-size: 0.8em;
+                    font-weight: 600;
+                    color: rgba(0, 0, 0, 0.685);
+                }
+                h1{
+
                 }
             }
             .ProfileCardIntroContainer{
