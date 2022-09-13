@@ -5,3 +5,177 @@
  * @modify date 2022-06-16 18:09:49
  * @desc [description]
  */
+
+//포스트잇 색상조절 
+// $postItPointColor : #8ae4c6;
+// $postItBaseColor : #c4f5e9;
+// $postItFontColor : #555;
+
+$postItPointColor       : #c5c5c56c;
+$postItNullPointColor   : #c00b0b6c;
+$postItBaseColor        : #dddddd27;
+$postItFontColor        : rgb(100, 100, 100);
+
+
+
+.EditorBox{
+    height: auto;
+     .EditorTitleContainer{
+
+        padding: 30px 35px 30px 0px;
+        margin: 0 auto;
+        width: 96%;
+        height: auto;
+        
+
+        
+         .titlePostIt{
+            
+            border:  1px solid $postItPointColor;
+            border-left: 15px solid $postItPointColor;
+            
+            font-size:  27px;
+            color:  $postItFontColor;
+
+            background: $postItBaseColor;
+
+            
+            width: 100%;
+            height: 60px;
+
+            margin: 0 auto;
+
+
+
+           
+
+            .titlePostitInput{
+
+
+                background-color: rgba(255, 255, 255, 0);
+                border: none;
+                height: 100%;
+                width: 90%;
+                vertical-align: middle;
+                align-items: center;
+                text-align: left;
+                font-size: 20px;
+                line-height: 100%;
+                color: $postItFontColor;
+                margin: 0 auto;
+                &:focus{
+                    outline: none;
+
+                }
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
+                overflow: hidden;
+
+            }
+            
+
+        }
+        
+        .BannerArea{
+            padding: 20px 0px;
+            text-align: left;
+            width: 100%;
+            display: flex;
+            height: auto;
+           .BannerAreaInputImg{
+               visibility: hidden;
+               width: 0;
+               height: 0;
+           }
+           .BannerAreaInputBtn{
+               background-color: rgb(228, 228, 228);
+               width: 7em;
+               height: 1.8em;
+               border-radius: 20px;
+               border: none;
+   
+               transition: all 0.3s;
+   
+               &:hover{
+                   background-color: rgb(206, 206, 206);
+                   transition: all 0.3s;
+                   cursor: pointer;
+               }
+           }
+           .BannerAreaImgName{
+               font-size: 0.7em;
+               font-weight: normal;
+               padding: 0 0 0 0.7em;
+               margin: 0;
+               line-height: 2.3em;
+               color: gray;
+               
+           }
+   
+       }
+       .TagArea{
+           display: flex;
+           flex-direction: row;
+           width: 90%;
+           height: auto;
+           
+           .HashTagOuter{
+               
+               //background-color: aqua;
+               
+               display:flex;
+               
+               
+               flex-direction: row;
+               height: auto;
+               align-items: flex-start;
+               flex-wrap: wrap;
+               
+   
+               .HashTagInner{
+                   
+                   white-space: nowrap;
+                   height: 1.5em;
+                   border-radius: 0.7em;
+                   margin: 0.3em 0.3em;
+                   padding: 0 0.8em;
+                   font-family: NanumBarunGothic;
+                   &:hover{
+                       cursor: pointer;
+                   }
+                   
+               }
+               input{
+   
+   
+                   width: 8em;
+                   height: 1.6em;
+                   align-items: flex-start;
+                   
+                   margin-left: 0.3em;
+                   margin-top: 0.3em;
+                   
+                   background-color: rgba(187, 186, 186, 0.363);
+                   ::placeholder{
+                       color: black;
+                       font-weight: 600;
+                   }
+                   border: none;
+                   border-radius: 0.7em;
+       
+                   outline: none;
+                   padding-left: 0.7em;
+               }
+           }
+   
+       }
+
+    }
+
+    .EditorArea{
+        
+    }
+
+}
+

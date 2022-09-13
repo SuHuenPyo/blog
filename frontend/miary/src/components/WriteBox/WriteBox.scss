@@ -12,6 +12,7 @@
   @mixin mixinWriteBoxContainer($maxWidthSize){
     max-width: $maxWidthSize;
     margin: 0 auto;
+    padding: 10px;
  }
 //  @include desktop{
 //      .WriteBoxContainer{
