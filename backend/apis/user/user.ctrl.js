@@ -5,9 +5,14 @@ const logger = require("../../utils/winston");
 const RegexHelper = require("../../utils/RegexHelper");
 const { deleteImg } = require("../../utils/multer")
 
+const express = require("express");
+const router = express.Router();
+
+
 const regex = new RegexHelper;
 
 const create = async (req, res, next) => {
+    logger.info(`[POST /USER/CREATE] ${req.ip} is access`);
     // 회원가입
     let json = null;
     let dbcon = null;
@@ -105,10 +110,68 @@ const create = async (req, res, next) => {
     } finally {
       await dbcon.release();
     }
-  
+    
     return res.status(201).json(json);
+}
+//로그인
+const signIn = async (req, res, next) => {
+  logger.info(`[POST /USER/SIGNIN] ${req.ip} is access`);
+
+  console.log(req.body);
+
+  let json = null;
+  let dbcon = null;
+
+  console.log("[full post detail] DB pool current Count == " + pool.pool._allConnections._tail);
+
+// 정규식 검사
+  try {
+
+    const userId = req.body.id?.trim();
+    const userPw = req.body.pw?.trim(); 
+
+    // 값
+    regex.value(userId,"[POST /user ID]");
+    regex.value(userPw,"[POST /user PW]");
+
+    //길이
+    regex.length(userId,3,50,"[POST /user ID]");
+    regex.length(userPw,3,50,"[POST /user PW]");
+
+    //정규식
+    //regex.idTest(userId,"[POST /user ID]");
+    //regex.pwTest(userPw,"[POST /user PW]");
+
+    logger.info(`[POST /user/SignIn]  ${req.ip}이(가) 정규식을 통과함`);
+
+    dbcon = await pool.getConnection(async (conn) => conn);
+    [result] = await dbcon.query("SELECT COUNT(*) as cnt FROM members WHERE userId=? AND password=?",[userId, userPw]);
+
+
+    if(result[0].cnt!=1){
+      logger.info(`[POST /user/SignIn]  ${req.ip}이(가) 아이디 또는 패스워드를 틀림`);
+      throw new Error('검증실패');
+    }
+    logger.info(`[POST /user/SignIn] ${req.ip} 로그인 성공`);
+    
+
+  } catch(err){
+    logger.error(`[${err.name}] ${err.message}`);
+    return res.status(400).send('아이디 또는 패스워드가 틀리거나 존재하지 않습니다.').end();
+  } finally{
+    if(dbcon) await dbcon.release();
   }
+
+  req.session.nickname = req.body.id;
+  req.session.save();
+  
+  console.log(req.session)
+
+  return res.status(200).json("로그인에 성공했습니다.");
+}
 
   module.exports = {
       create,
+      signIn,
+      
   }

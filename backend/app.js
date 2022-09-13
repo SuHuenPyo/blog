@@ -1,5 +1,5 @@
 const express = require("express");
-const app = express();
+const app = module.exports = express();
 const cors = require("cors");
 const port = 3300;
 
@@ -14,7 +14,49 @@ const mail    = require("./apis/mail/index");
 const { swaggerUI, specs } = require("./utils/swagger");
 const logger = require("./utils/winston");
 
+//session
+const session = require('express-session');
+const cookieParser = require("cookie-parser");
+const MySQLStore = require("express-mysql-session");
+const sessionConfig = require('./configs/_config.json').MYSQL_SESSION_OPTION;
+const mysql = require("mysql2/promise");
+
 app.set("trust proxy", 1);
+
+const options={
+  host:     sessionConfig.HOST,
+  port:     sessionConfig.PORT,
+  user:     sessionConfig.USER,
+  password: sessionConfig.PASSWORD,
+  database: sessionConfig.DATABASE,
+  clearExpired: true,                 //만료된 세션 자동제거 
+  checkExpirationInterval: 10000,     //자동제거할 Interval  단위 ms 
+  expiration: 10000,
+  connectionLimit: 1, //계정 동시접속을 1명으로 제한한다. 
+};
+
+
+const secretKey = 'S2cre2t';
+app.use(cookieParser(secretKey));
+const MySQLStoreSession = MySQLStore(session);
+const connection = mysql.createPool(options);
+
+const sessionStore = new MySQLStoreSession({}, connection);
+
+app.use(session({
+  key: 'LoginSession',
+  secret: 'Secret',
+  store: sessionStore,
+  resave: false,
+  saveUninitialized: true, 
+  cookie: {
+    maxAge: 60*60*1000
+  }
+}));
+
+
+
+
 
 app.use(
   cors({
@@ -25,6 +67,7 @@ app.use(
 ); // cors 해결
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
 
 /**
  * @swagger
@@ -57,6 +100,8 @@ app.use("/images", image);
 app.use("/mail", mail);
 
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
+
+
 
 app.listen(port, () => {
   logger.info("-------------------");

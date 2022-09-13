@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { create } = require('./user.ctrl');
+const { create, signIn } = require('./user.ctrl');
 const { upload } = require('../../utils/multer');
 
 router.get("/out", (req, res, next) => {
@@ -43,9 +43,10 @@ router.get("/out", (req, res, next) => {
 
 router.post("/", upload.single('profile') ,create);
 
-router.post("/in", (req, res, next) => {
-  // 로그인
-});
+//로그인
+router.post("/signin", signIn);
+
+
 
 router.delete("/out", (req, res, next) => {
   // 탈퇴
