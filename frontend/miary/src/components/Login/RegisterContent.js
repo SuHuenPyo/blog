@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-08-23 13:46:50
- * @modify date 2022-09-03 11:35:55
+ * @modify date 2022-09-05 17:34:27
  * @desc [회원가입을 위한 내용 컴포넌트]
  */
 import React, { useContext, useEffect, useRef } from 'react'
@@ -108,25 +108,25 @@ export const SignUpContent = ()=>{
 
                     <div className='Registerinput-contain'>
                         <input className='RegisterInput' ref={RefId} type='text' name="fname" value={UserId} onChange={userIdHandler} onClick={resetCssStyle(RefId)} />
-                        <label className='placeholder-RegisterText' for="fname" >
+                        <label className='placeholder-RegisterText' htmlFor="fname" >
                             <div className='RegisterLabelText'>유저 아이디</div>
                         </label>
                     </div>
                     <div className='Registerinput-contain'>
                         <input className='RegisterInput' ref={RefPw} type='password' name="fname" value={UserPassword} onChange={userPasswordHandler} onClick={resetCssStyle(RefPw)} />
-                        <label className='placeholder-RegisterText' for="fname" >
+                        <label className='placeholder-RegisterText' htmlFor="fname" >
                             <div className='RegisterLabelText'>유저 패스워드</div>
                         </label>
                     </div>
                     <div className='Registerinput-contain '>
                         <input className='RegisterInput' ref={RefName} type='text' name="fname" value={UserName} onChange={userNameHandler} onClick={resetCssStyle(RefName)} />
-                        <label className='placeholder-RegisterText' for="fname" >
+                        <label className='placeholder-RegisterText' htmlFor="fname" >
                             <div className='RegisterLabelText'>유저이름(닉네임) </div>
                         </label>
                     </div>
                     <div className='Registerinput-contain'>
                         <input className='RegisterInput' ref={RefEmail} type='text' name="fname" value={UserEmail} onChange={UserEmailHandler} onClick={resetCssStyle(RefEmail)} />
-                        <label className='placeholder-RegisterText' for="fname" >
+                        <label className='placeholder-RegisterText' htmlFor="fname" >
                             <div className='RegisterLabelText'>유저 이메일</div>
                         </label>
                     </div>

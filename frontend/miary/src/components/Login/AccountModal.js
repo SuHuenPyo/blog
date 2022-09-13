@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-08-23 13:47:08
- * @modify date 2022-09-03 11:56:45
+ * @modify date 2022-09-05 17:18:16
  * @desc [회원가입을 위한 모달 컴포넌트]
  */
 import React, { useContext, useEffect } from 'react'
@@ -37,15 +37,22 @@ export const AccountModal = (props) =>{
   const {navigator} = useContext(UNSAFE_NavigationContext);
 
   useEffect(()=>{
+    
       const unblock = navigator.block(()=>{
+          console.log("뒤로가기 감지")
           props.closeModal();
+          return;
       })
       return unblock;
+      
   },[]);
 
+  
+
   return (
+
     <div className='RegisterModal' onClick={(e)=>e.stopPropagation()} >
-      <div className='RegisterBody'>
+      <div className='RegisterBody' >
         <button className='RegisterModalCloseBtn' onClick={closeModal} > X </button>
         {props.children}
       </div>
