@@ -27,11 +27,10 @@
 
     height: 450px;
     background-color: inherit;
-    //border-radius: 15px;
+    border-radius: 8px;
     margin: $marginValue;
     cursor: pointer;
     flex-direction: column;
-    border-radius: 30px;
     transition: .5s;
 
     
@@ -55,15 +54,20 @@
     //border-top-left-radius: 30px;
     //border-top-right-radius: 30px;
     overflow: hidden;
+    box-shadow: 0 0 20px #d8d8d8;
     &:hover {
         overflow: hidden;
         box-shadow: 0 0 20px #696969;
         transition: .5s;
-        border-top-left-radius: 30px;
-        border-top-right-radius: 30px;
-        border-bottom-right-radius: 30px;
-        border-bottom-left-radius: 30px;
-        border-radius: 30px;
+        // border-top-left-radius: 30px;
+        // border-top-right-radius: 30px;
+        // border-bottom-right-radius: 30px;
+        // border-bottom-left-radius: 30px;
+        // border-radius: 30px;
+
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+
         .ContentBlockImage{
             overflow: hidden;
             img{
@@ -79,8 +83,8 @@
         height: 50%;
         max-height: 50%;
         background-color: rgb(138, 138, 138);
-        border-top-left-radius: 30px;
-        border-top-right-radius: 30px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
         overflow: hidden;
         
         img{
@@ -95,59 +99,140 @@
     .ContentArticlContainer{
         //background-color: blanchedalmond;
         height: 50%;
-        background-color: rgb(251, 255, 255);
-        
-        flex-direction: column;
+        background-color: rgba(240, 240, 240, 0.945);
         overflow: hidden;
         text-align: left;
 
-        .ContentBlockArticleTitle{
-            //background-color: cadetblue;
-            height: 10%;
-            margin: -5px 20px;
+        .ContentBlockArticleTitleBox{
+            height: 18%;
+            text-align: center;
+            margin: -5px 15px;
             padding-top: 10px;
-            
+            font-size: 15px;
             text-overflow: ellipsis; 
-            font-size: large;
-            font-weight: bold;
+            font-weight:  bolder;
+            color: black;
+            
+            .ContentBlockArticleTitle{
+                //셋트 (문단사이즈 글 자르기)
+                margin-top: 0.8em;
+                margin-left: 0.3em;
+                text-align: left;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
+                overflow: hidden;
+            }
+            //background-color: cadetblue;
+
         }
-        .ContentBlockArticleContent{
+        .ContentBlockArticleContentBox{
             //background-color: cornflowerblue;
-            color: rgb(129, 129, 129);
-            height: 65%;
+            color: rgba(0, 0, 0, 0.521);
+            font-weight: 900;
+            height: 50%;
             font-size: 13px;
-            //font-weight: bold;
-            text-overflow: ellipsis;
+            margin: 0 auto;
             overflow: hidden;
+            text-overflow: ellipsis;
             margin: 0 20px;
             padding: 10px 10px 0 0;
+
+            //font-weight: bold;
+            .ContentBlockArticleContent{
+                //셋트 (문단사이즈 글 자르기)
+
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 5;
+                
+               
+                overflow: hidden;
+            }
+            
         }
         .ContentBlockArticleAuthorContainer{ //writer box.. 
             //background-color: rgba(184, 135, 11, 0.418);
-            height: 25%;
+            height: 32%;
             margin: 0 0px;
             display: flex;
+            flex-direction: row;
             font-size: 13px;
+            background-color: rgb(235, 235, 235);
+            
             
 
-            .ContentBlockArticleAuthorPic{ // writer pic
+            .ContentBlockArticleAuthorPic{ // 저자 프로필 이미지 
+
+                $AuthorPicSize :60px;
+                max-width: $AuthorPicSize;
+                max-height: $AuthorPicSize;
+                min-width: $AuthorPicSize;
+                min-height: $AuthorPicSize;
+
+                .ContentBlockArticleAuthorPicBox{
+                    width: 75%;
+                    height: 75%;
+                    margin: 0 auto;
+                    margin-top: 0.6em;
+                    border-radius: 8px;
+                    overflow: hidden;
+
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+                
                 flex: 1;
+                
             }
             .ContentBlockArticleAuthorInfo{ // writer Name, writer's register Date, HitCount(up to every Read times)
                 flex: 9;
+                display: flex;
+                margin-left: 0.5em;
+                flex-direction: column;
+                
                 .ContentBlockArticleAuthorName{
-                    
+                    flex: 1;
+                    margin-top: 0.4em;
+                    font-weight: 600;
+                    font-size: 0.7em;
+                    h1{
+                        margin: 0;
+                        margin-top: 0.3em;
+                        padding: 0;
+
+                    }
                 }
                 .ContentBlockArticleAuthorDateHit{
+                    flex: 1;
                     display: flex;
-                    .ContentBlockArticleAuthorDate{
-                        
+                    margin-top: -1.7em;
+                    font-weight: 600;
+                    line-height: 1.1em;
+                    h1{
+                        margin: 0;
+                        padding: 0;
+                        font-size:  0.7em;
                     }
-                    .ContentBlockArticleAuthorBlank{
-
+                    
+                    .ContentBlockArticleAuthorDate{
+                        flex: 1;
+                        min-width: 10em;
+                        max-width: 10em;
+                        font-size: 0.7em;
+                        //background-color: cadetblue;
+                    }
+                    .ContentBlockArticleAuthorLike{
+                        flex: 1;
+                        //background-color: tan;
                     }
                     .ContentBlockArticleAuthorHit{
-
+                        flex: 1;
+                        
+                        //background-color: red;
                     }
                 }
             }

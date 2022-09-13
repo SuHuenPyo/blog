@@ -113,7 +113,7 @@ export const ContentDetail = () => {
 
           <BannerTitle title={item.title} banner={item.banner}></BannerTitle>
           <div className='ContentDetailContainer'>
-            <ProfileCard authorId={item.author} switch={profileCardSwitch} ></ProfileCard>
+            <ProfileCard authorId={item.author_id} switch={profileCardSwitch} ></ProfileCard>
 
             <div className='viewerContainer'>
 
