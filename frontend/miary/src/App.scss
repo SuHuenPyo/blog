@@ -4,11 +4,44 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'NanumBarunGothic';
+  font-style: normal;
+  font-weight: 400;
+  src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+  src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+ }
+ ::placeholder{
+  font-family: NanumBarunGothic;
+ }
 body{
   background-color: #ffffff;
-  font-family: LeferiPoint-WhiteObliqueA;
+  //font-family: LeferiPoint-WhiteObliqueA;
+  font-family: NanumBarunGothic;
+
+  //가로 스크롤바 제거
+  overflow-x:hidden;
+  overflow-y: auto;
   
 }
+
+body::-webkit-scrollbar {
+  width: 4px;  /* 스크롤바의 너비 */
+}
+
+body::-webkit-scrollbar-thumb {
+  height: 30%; /* 스크롤바의 길이 */
+  background: rgba(26, 212, 203, 0.589); /* 스크롤바의 색상 */
+  
+  border-radius: 10px;
+
+  
+}
+
+body::-webkit-scrollbar-track {
+  background: rgba(143, 141, 141, 0.247);  /*스크롤바 뒷 배경 색상*/
+}
+
 
 .App {
   text-align: center;

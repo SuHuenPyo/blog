@@ -67,6 +67,8 @@ export const Header = (props) => {
         setLogin(!Login);
     }
 
+
+    
   return (
     // error point
     <header className={hide && 'hide'}>
@@ -102,7 +104,7 @@ export const Header = (props) => {
                         로그인
                         {Login && (
                             <AccountModal closeModal={()=> switchModalLogin(!Login)}>
-                                <LoginContent/>
+                                <LoginContent closeModal={()=>switchModalLogin(!Login)}/>
                             </AccountModal>
                         )}
                     </li>
