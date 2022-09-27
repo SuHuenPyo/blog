@@ -22,7 +22,22 @@ const MySQLStore = require("express-mysql-session");
 const sessionConfig = require('./configs/_config.json').MYSQL_SESSION_OPTION;
 const mysql = require("mysql2/promise");
 
+
+const httpsOptions = {
+  key: fs.readFileSync('./.certification/privkey1.pem'),
+  cert: fs.readFileSync('./.certification/cert1.pem')
+};
+const httpsPort = 7799;
+
+https.createServer(httpsOptions, app).listen(httpsPort, ()=>{
+  console.log("Https server listening on port " + httpsPort);
+});
+
 app.set("trust proxy", 1);
+
+const https = require('https');
+const fs = require('fs');
+
 
 const options={
   host:     sessionConfig.HOST,

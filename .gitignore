@@ -102,3 +102,5 @@ dist
 
 # TernJS port file
 .tern-port
+backend/apis/certification/cert.pem
+backend/apis/certification/privkey.pem
