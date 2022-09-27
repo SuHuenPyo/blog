@@ -4,8 +4,8 @@ const router = express.Router();
 const { create, signIn, out, current } = require('./user.ctrl');
 const { upload } = require('../../utils/multer');
 
-router.get("/api/out", out);
-router.get("/api/current", current);
+router.get("/out", out);
+router.get("/current", current);
 
 /**
  * @swagger
@@ -40,14 +40,14 @@ router.get("/api/current", current);
  *           description: 유효성 검사 실패
  */
 
-router.post("/api/", upload.single('profile') ,create);
+router.post("/", upload.single('profile') ,create);
 
 //로그인
-router.post("/api/signin", signIn);
+router.post("/signin", signIn);
 
 
 
-router.delete("/api/out", (req, res, next) => {
+router.delete("/out", (req, res, next) => {
   // 탈퇴
 });
 

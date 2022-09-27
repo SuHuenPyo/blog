@@ -24,7 +24,7 @@ const logger = require("../../utils/winston");
  */
 
 module.exports = router.post(
-  "/api/",
+  "/",
   upload.array("imgs", 5),
   async (req, res, next) => {
     logger.info(`[POST /image] ${req.ip} is access`);

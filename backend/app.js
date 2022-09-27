@@ -103,7 +103,7 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
  *   description: 유저 추가 수정 삭제 조회
  */
 
-app.use("/user", user);
+app.use("/api/user", user);
 
 /**
  * @swagger
@@ -112,10 +112,10 @@ app.use("/user", user);
  *   description: 글 추가 수정 삭제 조회
  */
 
-app.use("/post", post);
+app.use("/api/post", post);
 
-app.use("/profile", profile);
-app.use("/comment", comment)
+app.use("/api/profile", profile);
+app.use("/api/comment", comment)
 
 /**
  * @swagger
@@ -124,10 +124,10 @@ app.use("/comment", comment)
  *   description: 글 작성시 이미지 번환
  */
 
-app.use("/images", image);
-app.use("/mail", mail);
+app.use("/api/images", image);
+app.use("/api/mail", mail);
 
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
+app.use("/api/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
 
 
 
