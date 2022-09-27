@@ -29,6 +29,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "startLinux": "export PORT=80 && react-scripts start",
+    "startWindow": "set PORT=80 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
