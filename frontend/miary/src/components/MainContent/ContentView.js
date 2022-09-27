@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-06-03 15:23:37
- * @modify date 2022-09-05 07:55:39
+ * @modify date 2022-09-23 13:58:26
  * @desc [content영역에 불러올 컴포넌트 메인 글들을 불러온다.]
  */
 import axios from 'axios';
@@ -39,13 +39,14 @@ export const ContentView = (props) => {
           <Link to={`/contentDetail/${idx.boardId}`} key={index}>
             <ContentBlock boardId={idx.boardId} title={idx.boardTitle} banner={idx.boardBanner} content={idx.boardMarkdown}
             memberId={idx.boardMemberId} boardMDate={idx.boardMDate} hits={idx.boardHits} 
-            like={idx.boardLike} memberName={idx.memberUserId} memberPic={idx.memberPic}/>
+            like={idx.boardLike} memberName={idx.memberUserId} memberPic={idx.memberPic} memberUserName={idx.memberName}/>
           </Link>
          
         )) : "데이터를 불러오는데 실패했습니다."
 
 
       }
+      
     </div>
   )
 }

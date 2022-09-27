@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import React from "react";
 import {Route, Routes} from "react-router-dom";
 
@@ -26,7 +26,13 @@ import Footer from './components/Footer/Footer';
 
 function App() {
 //jira test
+  useEffect(()=>{
+    
+    console.log("App.실행");
 
+    //sessionStorage.setItem("userName", userInfo.data.name);
+    //sessionStorage.setItem("userImage",userInfo.data.image);
+  },[]);
 
   return (
     <div className="App">
@@ -36,8 +42,6 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/search" element={<Search />} />
         <Route path="/myblog" element={<MyBlog />} />
-        <Route path="/setting" element={<Setting />} />
-        <Route path="/aboutall" element={<AboutAll />} />
         <Route path="/write_post" element={<WritePost />} />
         <Route path="/management" element={<Management />} />
         <Route path="/contentDetail/:contentId" element={<ContentDetail/>} />

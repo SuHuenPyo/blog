@@ -9,6 +9,7 @@ const post    = require("./apis/post/index");
 const image   = require("./apis/image/index");
 const profile = require("./apis/profile/index");
 const mail    = require("./apis/mail/index");
+const comment = require("./apis/comment/index");
 
 // modules
 const { swaggerUI, specs } = require("./utils/swagger");
@@ -49,9 +50,11 @@ app.use(session({
   store: sessionStore,
   resave: false,
   saveUninitialized: true, 
-  cookie: {
-    maxAge: 60*60*1000
-  }
+  // cookie: {
+  //   maxAge: 60*60*1000*6
+  // },
+  rolling: true, // 새로고침이나 페이지 이동시 쿠키 만료일 갱신
+
 }));
 
 
@@ -88,6 +91,7 @@ app.use("/user", user);
 app.use("/post", post);
 
 app.use("/profile", profile);
+app.use("/comment", comment)
 
 /**
  * @swagger

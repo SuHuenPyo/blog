@@ -1,0 +1,109 @@
+/**
+ * @author Shun
+ * @email vytngms@gmail.com
+ * @create date 2022-09-25 13:33:45
+ * @modify date 2022-09-25 13:33:45
+ * @desc [ManagementWrap으로 둘러싸는 scss]
+ */
+
+.ManagementWrap{
+    
+    
+    margin: 0 auto;
+    
+    
+    margin-bottom: -30px;
+    
+    z-index: -1;
+    
+    .ManagementContainer{
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+            
+        .ManagementGroupBox{ //커버ㅏ
+            padding-top:10em;
+
+            flex: 1;
+            background-color: #F5F5F8;
+            padding-bottom: 3em;
+            display: flex;
+            flex-direction:row-reverse;
+
+            .ManagementGroupContainer{
+                flex-grow: 1;
+                min-width: 140px;
+                max-width: 180px;
+                .ManagementGroupTabName{
+                    height: 2em;
+                    
+                    margin: 0 1.2em;
+                    margin-top: 0.5em;
+                    display: flex;
+                    .ManagementTabIcon{
+                        font-size: 0.8em;
+                        color: rgb(121, 121, 121);
+                    }
+                    .ManagementTabName{
+                        padding-left: 0.4em;
+                        line-height: 1.2em;
+                        font-size: 0.8em;
+                        color: rgb(92, 92, 92);
+                    }
+                }
+                .ManagementTabDetailBox{
+                    padding: 0.5em 1em;
+                    display: flex;
+                    flex-direction: column;
+                    justify-items: flex-start;
+                    .ManagementTabDetailContent{
+                        text-align: left;
+                        margin: 0;
+                        padding: 0.3em 0;
+                        padding-left: 0.5em;
+                        font-size: 1em;
+                        font-weight: 500;
+                        transition: all 0.3s;
+    
+                        &:hover{
+                            border-radius: 3px;
+                            background-color: rgb(80, 80, 80);
+                            box-shadow: 0 2px 5px rgb(151, 151, 151);
+                            color: #f7f7f7;
+                            transition: all 0.3s;
+                            cursor: pointer;
+                        }
+                    }
+                    .ManagementTabContentClicked{ // 선택되어있는 녀석
+                        border-radius: 3px;
+                        background-color: rgb(80, 80, 80);
+                        box-shadow: 0 2px 5px rgb(151, 151, 151);
+                        color: #f7f7f7;
+                    }
+                }
+                hr{
+                    height: 2px;
+                    
+                    border: none;
+                    border-top: 1px solid rgb(189, 189, 189);
+                }
+            }
+        
+            
+        }
+        .ManagementContentBoxContainer{
+            flex: 2;
+            .ManagementContentBox{
+                background-color: white;
+                max-width: 800px;
+                padding-top:6em;
+                
+            }
+        }
+
+        
+        
+
+    }
+}

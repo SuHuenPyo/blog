@@ -5,13 +5,169 @@
  * @modify date 2022-08-30 04:14:27
  * @desc [컨텐츠 상세보기를 위한 css ]
  */
-//  @import '../Common_Scss/mixin';
-//  @import '../Common_Scss/variables';
- 
-.ContentDetail{
 
+@import '../components//Common_Scss/mixin';
+@import '../components//Common_Scss/variables';
+
+$mobile :1;
+
+@mixin mixinSidebarPosition($device:0){ // device = 0 : 모바일빼고 전부다.  device 1 = 모바일
+    .followingMenuBox{
+        @if $device != $mobile{
+            flex:1;
+            position: sticky;
+            min-width: 60px;
+            max-width: 60px;
+            margin-left: 10px;
+            height: 200px;
+            top: 10%;       //스크롤 상향시 헤더에 가리게되니 여유분 10% 
+        }@else{
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 2.5em;
+            background-color: rgba(255, 255, 255, 0.719);
+            z-index: 99999999999;
+
+            
+        }
+        .followingMenu{
+            display: flex;
+
+            @if $device != $mobile{
+                position: absolute;
+                width: 40px;
+                height: 150px;
+                right: 5px;
+                background-color: rgb(247, 247, 247);
+                margin-top: 50px; //컨텐츠 상세보기가 50px 만큼 top에서 떨어져있는 이유로
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                border: 1px solid rgb(226, 226, 226);
+                
+
+                flex-direction: column;
+            }@else{
+                margin-top: 0.4em;
+                //background-color: aquamarine;
+                width: 100%;
+                height: 100%;
+                flex-direction: row;
+                color: rgba(0, 0, 0, 0.568);
+            }
+
+
+            h1{ //안에 들어가는 모든 글자 
+                
+                @if $device != $mobile{
+                    font-size: 8px;
+                    margin: 0;
+                    padding: 0;
+                    padding-left: 1px;
+                    line-height: 6px;
+                }@else{
+                    font-size: 8px;
+                    margin: 0;
+                    padding: 0;
+                    padding-left: 5%;
+                    line-height: 6px;
+                }
+
+
+            }
+            
+            .followingMenuLikeBtn{
+
+
+                @if $device != $mobile{
+
+                    border-bottom: 1px dotted rgb(187, 187, 187);
+                    //background-color: aqua;
+                    margin-top: 5px;
+                    flex:1;
+                    font-size: 20px;
+                    color: rgb(124, 124, 124);
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }@else{
+                    flex: 1;
+                    
+                }
+
+
+            }
+            .followingMenuCommentBtn{
+                flex:1;
+                @if $device != $mobile{
+
+                
+                    font-size: 20px;
+                    color: rgb(124, 124, 124);
+                    border-bottom: 1px dotted rgb(187, 187, 187);
+                    padding-top: 5px;
     
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }@else{
 
+                }
+
+                
+            }
+            .followingMenuTopBtn{
+                flex:1;
+                @if $device != $mobile{
+ 
+                    font-size: 20px;
+                    color: rgb(124, 124, 124);
+                    padding-top: 5px;
+    
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }
+
+            }
+        }
+    }
+
+
+}
+
+@include desktop{
+    .ContentDetail{
+        .ContentDetailContainer{
+            .viewerContainer{
+                @include mixinSidebarPosition();
+            }
+        }
+    }
+ }
+ @include tablet{
+    .ContentDetail{
+        .ContentDetailContainer{
+            .viewerContainer{
+                @include mixinSidebarPosition();
+            }
+        }
+    }
+ }
+ @include mobile{
+    .ContentDetail{
+        .ContentDetailContainer{
+            .viewerContainer{
+                @include mixinSidebarPosition($mobile);
+            }
+        }
+    }
+ }
+
+.ContentDetail{
+    padding-top: 7em;
 
         .ContentDetailContainer{
             max-width: 1100px;
@@ -20,75 +176,8 @@
             .viewerContainer{
                 display:flex;
                 position: relative;
-                .followingMenuBox{
-                    flex:1;
-                    position: sticky;
-                    min-width: 60px;
-                    max-width: 60px;
-                    margin-left: 10px;
-                    height: 200px;
-                    top: 10%;       //스크롤 상향시 헤더에 가리게되니 여유분 10% 
-                    .followingMenu{
-                        position: absolute;
-                        width: 40px;
-                        height: 150px;
-                        right: 5px;
-                        background-color: rgb(247, 247, 247);
-                        margin-top: 50px; //컨텐츠 상세보기가 50px 만큼 top에서 떨어져있는 이유로
-                        border-top-left-radius: 10px;
-                        border-top-right-radius: 10px;
-                        border-bottom-left-radius: 10px;
-                        border-bottom-right-radius: 10px;
-                        border: 1px solid rgb(226, 226, 226);
-                        
-                        display: flex;
-                        flex-direction: column;
+                .followingMenuBox{  /////////////////////////////////
 
-                        h1{
-                            font-size: 8px;
-                            margin: 0;
-                            padding: 0;
-                            padding-left: 1px;
-                            line-height: 6px;
-                        }
-                        
-                        .followingMenuLikeBtn{
-                            flex:1;
-                            font-size: 20px;
-                            color: rgb(124, 124, 124);
-                            border-bottom: 1px dotted rgb(187, 187, 187);
-                            //background-color: aqua;
-                            margin-top: 5px;
-
-                            &:hover{
-                                cursor: pointer;
-                            }
-
-                        }
-                        .followingMenuCommentBtn{
-                            flex:1;
-                            
-                            font-size: 20px;
-                            color: rgb(124, 124, 124);
-                            border-bottom: 1px dotted rgb(187, 187, 187);
-                            padding-top: 5px;
-
-                            &:hover{
-                                cursor: pointer;
-                            }
-                            
-                        }
-                        .followingMenuTopBtn{
-                            flex:1;
-                            font-size: 20px;
-                            color: rgb(124, 124, 124);
-                            padding-top: 5px;
-
-                            &:hover{
-                                cursor: pointer;
-                            }
-                        }
-                    }
                     
                 }   
 

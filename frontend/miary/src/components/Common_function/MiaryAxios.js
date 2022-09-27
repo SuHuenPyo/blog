@@ -2,13 +2,13 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-06-27 18:21:30
- * @modify date 2022-09-14 03:16:22
+ * @modify date 2022-09-21 03:35:58
  * @desc [Axios 요청을 위한 간편 모듈]
  */
 
 import axios from "axios"
 
-//export const ServerUrl = "http://172.30.1.29:3300/"
+//export const ServerUrl = "http://172.30.1.27:3300/"
 export const ServerUrl = "http://localhost:3300/"
 
 export const MiaryGetAxios = async(url, log="", errLog="" , query={}) =>{
@@ -17,7 +17,7 @@ export const MiaryGetAxios = async(url, log="", errLog="" , query={}) =>{
   //console.log(JSON.stringify(query));
   try{
     response = await axios.get(url, {params: query}); 
-    console.log(log);
+    if(log) console.log(log);
   }catch(err){
     console.error(errLog + '\n\n' + err);
     return err;
@@ -49,11 +49,12 @@ export const MiaryPostAxios = async(url,form, contentType=0) =>{
       },
     });
   }catch(err){
-    //console.error(err);
-    throw err;
+    console.error(err);
+    response = err;
+    
 
   }finally{
-    console.log("결과 : "+ url + " == "+ response.status);
+    //console.log("결과 : "+ url + " == "+ response.status);
 
   }
 

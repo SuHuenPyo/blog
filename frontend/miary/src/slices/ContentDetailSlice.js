@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-08-30 13:16:55
- * @modify date 2022-08-30 14:28:27
+ * @modify date 2022-09-25 00:54:00
  * @desc [컨텐츠 상세보기시 사용할 slice ]
  */
 

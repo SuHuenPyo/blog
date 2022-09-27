@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-09-02 10:37:51
- * @modify date 2022-09-06 00:37:59
+ * @modify date 2022-09-20 07:17:42
  * @desc [마이어리 로그인 모달안의 내용 컴포넌트]
  */
 import React, { useEffect, useRef, useState } from 'react'
@@ -90,8 +90,7 @@ export const LoginContent =(props)=> {
                     </label>
                 </div>
                 <input className='RegisterInputSubmit' type='submit' value={"로그인"}/>
-                <div className="RegisterHorizon">―― or social sign in ―― </div>
-                <div className="social-button google-connect"> Google 계정으로 시작하기</div>
+
             </form>
         </div>
             

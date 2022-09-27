@@ -31,6 +31,7 @@
 //   }
 
 .WriteBoxContainer{
+  
   @include mixinWriteBoxContainer(1400px);
 }
 .postButton{

@@ -11,6 +11,8 @@ const {
   destroy,
 } = require("./post.ctrl");
 
+const {verifySession} = require('../../utils/sessionVerify')
+
 /**
  * @swagger
  *   /post:
@@ -114,7 +116,7 @@ router.get("/detail", detail);
  *           description: 유효성 검사 실패
  */
 
-router.post("/", upload.single("banner"), create);
+router.post("/", upload.single("banner"), verifySession,  create);
 
 /**
  * @swagger

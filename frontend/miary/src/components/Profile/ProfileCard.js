@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-08-30 06:40:20
- * @modify date 2022-09-05 11:45:46
+ * @modify date 2022-09-22 12:26:35
  * @desc [프로필 카드를 보여주는 컴포넌트]
  */
 import React, { useEffect, useState } from 'react'
@@ -12,7 +12,7 @@ import './ProfileCard.scss';
 //redux
 import { getProfile } from "../../slices/profileSlice"
 import { useDispatch, useSelector } from 'react-redux';
-import defaultProfileImg from '../../assets/img/miary_img/defaultProfile.jpg'
+import defaultProfileImg from '../../assets/img/miary_img/profile_default_03.png'
 import profileCardMarkImg from '../../assets/img/miary_img/Vertical.png'
 
 //icon
@@ -32,34 +32,23 @@ export const ProfileCard = (props) => {
   const {rt , item, loading} = useSelector((state) => state.profile);
   const dispatch = useDispatch();
 
-  // useEffect(()=>{
-  //   let result = null;
-    
-  //   (async()=>{
-  
-  //     result = await MiaryGetAxios(ServerUrl+"profile/id", "유저정보 가져오기 성공", "유저정보 가져오기 실패", {id: props.authorId});
-  //     setUserInfo(result);
-  //   })();
-    
-  // },[props]);
-
   useEffect(()=>{
-    console.log("ProfileCard useEffect 시작");
-    console.log("Profile Card - props.switch 값 : " + props.switch);
     if(props.switch == true){
-      dispatch(getProfile({id:props.authorId}));
+      (async()=>{
+        console.log("ProfileCard useEffect 시작");
+        await dispatch(getProfile({id:props.authorId}));
+        
+        if(rt!=200){
+          console.log("[ProfileCard] 사용자 정보 불러오기 실패");
+        }else{
+          console.info("[ProfileCard] 사용자 정보 불러오기 완료");
+        }
+        
+      })();
+      
     }
-
-    console.log(item);
   }, [props.switch]);
 
-  useEffect(()=>{
-    if(rt!=200){
-      console.log("[ProfileCard] 사용자 정보 불러오는중..");
-    }else{
-      console.log("[ProfileCard] 사용자 정보 불러오기 완료");
-    }
-  },[rt]);
 
   return (
     <>

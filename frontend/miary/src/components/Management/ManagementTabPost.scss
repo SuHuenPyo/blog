@@ -1,0 +1,131 @@
+/**
+ * @author Shun
+ * @email vytngms@gmail.com
+ * @create date 2022-09-27 01:16:42
+ * @modify date 2022-09-27 01:16:42
+ * @desc [ManagementTabPost scss ]
+ */
+ 
+ .ManagementTabPost{
+    
+    width: 90%;
+    height: 100%;
+    //background-color:rgb(160, 101, 101);
+    padding: 1em 1.5em;
+    
+    
+    .ManageUserBox{
+        width: 100%;
+        margin: 1.3em 0;
+        padding: 1% 2%;
+        background-color: #F5F5F8;
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        border: 1px solid rgb(224, 224, 224);
+
+        .ManageUserTitle{
+            
+            font-size: 1.3em;
+            font-weight: bolder;
+            margin: 0;
+            padding: 0;
+            padding-top: 0.6em;
+        }
+        
+        .ManageUserTitleBox{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+
+
+            .ManageButton{
+                line-height: 2em;
+                height: 2em;
+                padding: 0 0.8em;
+                margin-top: 0.6em;
+                //margin-right: 0.7em;
+                background-color: rgb(43, 43, 43);
+                color: white;
+                border-radius: 4px;
+                transition: all 0.3s;
+
+                &:hover{
+                    cursor: pointer;
+                    background-color: rgb(83, 83, 83);
+                    transition: all 0.3s;
+                }
+            }
+        }
+        .ManageNoticeArea{
+            width: 100%;
+            background-color: #DFFFF8;
+            padding: 0.8em 0;
+            color: rgb(53, 126, 101);
+            border-left: 5px solid rgb(96, 218, 191);
+            box-sizing: border-box;
+            margin-top: 0.6em;
+            text-align: left;
+            padding-left: 0.7em;
+            
+        }
+        .ManageInputBox{
+            
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            padding-top: 0.5em;
+            .ManageInputText{
+                flex-grow: 1;
+                padding: 0;
+                margin: 0;
+                border: none;
+                outline: none;
+                
+                border: 1px solid rgb(163, 163, 163);
+                border-radius: 4px;
+                height: 2.3em;
+                padding: 0 10px;
+                margin-top: 0.5em;
+                
+                
+            }
+            .ManageProfileImg{
+                width: 120px;
+                height: 120px;
+                border-radius: 50%;
+                border: 1px solid rgb(96, 218, 191);
+            }
+            .ManageIntroArea{
+                width: 100%;
+                min-height: 7em;
+                padding: 1em 1em;
+                
+                box-sizing: border-box;
+                resize: none;
+            }
+            ::placeholder{
+                font-size: 15px;
+                font-weight: bolder;
+            }
+
+            .ManagePostBoxFlex{
+                display: flex;
+                flex-wrap: wrap;
+                width: 100%;
+
+                .ManagePostBox{
+                    min-width: 8em;
+                    border-radius: 4px;
+                    line-height: 2.2em;
+                    height: 8em;
+                    border: 1px solid black;
+                    margin: 0.2em 0.4em;
+                }
+            }
+            
+        }
+        
+    }
+}

@@ -29,6 +29,7 @@ import {
 
      
 } from 'react-icons/fa';
+import CommentWrap from '../components/Comment/CommentWrap';
 
 
 export const ContentDetail = () => {
@@ -43,8 +44,9 @@ export const ContentDetail = () => {
   // const contentId = location.state.data.contentId;
   const {contentId} = useParams();
 
-  //프로필 카드 로딩 지연을 위한 
-  const [profileCardSwitch, setProfileCardSwitch] = useState(false);
+  // 로딩 지연을 위한 
+  const [ProfileCardSwitch, setProfileCardSwitch] = useState(false);
+  const [CommentSwitch, setCommentSwitch] = useState(false);
 
 
     //랜더링전에 useEffect를 먼저호출하기 위한 꼼수 loading 
@@ -52,8 +54,9 @@ export const ContentDetail = () => {
   const dispatch = useDispatch();
 
   useEffect(()=>{
-    console.log("ContentDetail dispatch 시작");
+    
     if(!loading) {
+    
       dispatch(getContentDetail({id:contentId}));
     }
 
@@ -61,10 +64,11 @@ export const ContentDetail = () => {
 
   useEffect(()=>{
     if(rt!=200){
-      console.log("[ContentDetail] 컨텐츠 정보 불러오는중..")
+      
       
     }else{
       setProfileCardSwitch(true);
+      setCommentSwitch(true);
       console.log("[ContentDetail] 컨텐츠 정보 불러오기 완료");
     }
 
@@ -113,7 +117,7 @@ export const ContentDetail = () => {
 
           <BannerTitle title={item.title} banner={item.banner}></BannerTitle>
           <div className='ContentDetailContainer'>
-            <ProfileCard authorId={item.author_id} switch={profileCardSwitch} ></ProfileCard>
+            <ProfileCard authorId={item.author_id} switch={ProfileCardSwitch} ></ProfileCard>
 
             <div className='viewerContainer'>
 
@@ -135,14 +139,9 @@ export const ContentDetail = () => {
       
           </div>
           <div className='detailViewerComment'  ref={commentRef}>
-              <ContentComment/>
-              <ContentComment/>
-              <ContentComment/>
-              <ContentComment/>
-              <ContentComment/>
-              <ContentComment/>
-              <ContentComment/>
-              <ContentComment/>
+            
+            <CommentWrap boardId ={contentId} switch={CommentSwitch}/>
+
               
               
           </div>

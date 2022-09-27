@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-09-03 03:57:05
- * @modify date 2022-09-06 01:24:44
+ * @modify date 2022-09-21 13:46:24
  * @desc [login을 위한 slice]
  */
 
@@ -18,7 +18,10 @@
      async (payload, {rejectWithValue})=>{
          let result = null;
          let response = null;
+         let userInfo = null;
+        console.log("슬라이스 함수 시작입니다.");
         try{
+
             response = await axios({
                 method: 'post',
                 url: ServerUrl+"user/signin",
@@ -28,6 +31,12 @@
                     'withCredentials' : true,
                 },
            });
+
+           //성공했다면 
+           userInfo = await axios.get(ServerUrl+ "profile/userinfo"); 
+
+           sessionStorage.setItem("userName", userInfo.data.name);
+           sessionStorage.setItem("userImage",userInfo.data.image);
            
         }catch(err){
             console.error(err);
@@ -37,6 +46,7 @@
 
         }
         
+        console.log("슬라이스 함수 종료직전입니다.");
         return await response;
     }
  );
@@ -66,6 +76,7 @@
      },
      extraReducers:{
          [postLogin.pending]: (state, action) =>{
+             console.log("펜딩 입니다.");
              
              return {
                  ...state,
@@ -73,7 +84,9 @@
              };
          },
          [postLogin.fulfilled]: (state, {meta, payload})=>{
-             console.log(payload?.status);
+//             console.log(payload?.status);
+            console.log("풀필입니다..");
+            console.log(222222222222222);
              return{
                  rt: payload.status,
                  rtmsg: payload.statusText,
@@ -83,7 +96,8 @@
          },
          [postLogin.rejected]: (state, {error, payload})=>{
              
-
+            console.log("리젝트입니다...");
+            window.alert("아이디 또는 비밀번호가 틀렸거나 존재하지 않습니다.");
              return{
                  ...state,
                  rt: payload.response.status,

@@ -50,7 +50,7 @@
         
         .Logininput-contain{
             position: relative;
-            
+            height: 60px;
 
            input{
                height: 30px;
@@ -74,11 +74,12 @@
                 
            }
            .LoginLabelText{
-                max-height: 40px;
+                max-height: 10px;
                 width: auto;
-                padding: 0 5px;
-                padding-bottom: -50px;
-                margin-bottom: 32px;
+                padding: 5px 5px;
+                
+                margin-bottom: 0.9em;
+                line-height: 15px;
                 
                 background-color: transparent;
                 color: rgba(0, 0, 0, 0.329);
@@ -101,7 +102,7 @@
                 background-color: rgb(255, 255, 255);
                 font-size: 13px;
                 color: black;
-                transform: translate(0, -40%);
+                transform: translate(0, -90%);
                 border-color: blueviolet;
                 color: rgb(53, 140, 161);
                 

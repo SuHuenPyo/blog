@@ -1,0 +1,47 @@
+/**
+ * @author Shun
+ * @email vytngms@gmail.com
+ * @create date 2022-09-17 17:48:53
+ * @modify date 2022-09-17 17:48:53
+ * @desc [CommentWrap 에서 사용할 scss]
+ */
+
+
+ .CommentWrap{
+     padding-top: 3em;
+
+     hr{
+        margin-top: 50px;
+        max-width: 1100px;
+        background: rgba(233, 233, 233, 0.377);
+        height: 1px;
+        border: 0;
+
+     }
+     .CommentHrCutContainer{
+         
+         border-bottom: 1px solid rgba(153, 152, 152, 0.253);
+         height: 1.2em;
+         max-width: 1100px;
+         margin: 0 auto;
+        .CommentHrCut{
+            margin: 0 auto;
+            color: rgb(104, 104, 104);
+            margin-bottom: -0.7em;
+            font-weight: 100;
+            font-size: 1.5em;
+
+            
+
+        }
+     }
+     
+     .CommentWrapImgBox{
+         
+         img{
+            height: 100px;
+            width: 100px;
+            object-fit: contain;
+         }
+     }
+ }

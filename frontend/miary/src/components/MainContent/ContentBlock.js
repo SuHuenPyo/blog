@@ -2,7 +2,7 @@
  * @author [Shun]
  * @email [vytngms@mail.com]
  * @create date 2022-06-03 15:16:51
- * @modify date 2022-09-05 10:14:19
+ * @modify date 2022-09-20 08:13:08
  * @desc [컨텐츠 뷰를 위한 개별 블록 컴포넌트]
  */
 import React, { useEffect, useRef, useState} from 'react'
@@ -39,7 +39,7 @@ export const ContentBlock = (props) => {
   
         <div className='ContentArticlContainer'>
             <div className='ContentBlockArticleTitleBox'>
-              <div className='ContentBlockArticleTitle' ref={refTitle}>{` ${props.title}인데 어디까지어디까지어디까지어디까지어디까지어디까지어디까지 `}</div>
+              <div className='ContentBlockArticleTitle' ref={refTitle}>{` ${props.title}`}</div>
               
             </div>
             <div className='ContentBlockArticleContentBox'>
@@ -56,12 +56,12 @@ export const ContentBlock = (props) => {
               </div>
               <div className='ContentBlockArticleAuthorInfo'>
                 <div className='ContentBlockArticleAuthorName'>
-                  <h1>{props.memberName + ' 님의 작성글' || "무명의 저자 님이 작성함"}</h1>
+                  <h1>{props.memberUserName + ' 님의 작성글' || "무명의 저자 님이 작성함"}</h1>
                 </div>
                 <div className='ContentBlockArticleAuthorDateHit'>
                   <div className='ContentBlockArticleAuthorDate'>{props.boardMDate}</div>
-                  <div className='ContentBlockArticleAuthorLike'>Like<h1>5</h1> </div>
-                  <div className='ContentBlockArticleAuthorHit'>Read<h1>300</h1></div>
+                  <div className='ContentBlockArticleAuthorLike'>Like<h1>{props.like}</h1> </div>
+                  <div className='ContentBlockArticleAuthorHit'>Read<h1>{props.hits}</h1></div>
                   
                 </div>
 

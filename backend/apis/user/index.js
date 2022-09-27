@@ -1,12 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-const { create, signIn } = require('./user.ctrl');
+const { create, signIn, out, current } = require('./user.ctrl');
 const { upload } = require('../../utils/multer');
 
-router.get("/out", (req, res, next) => {
-  // 로그아웃
-});
+router.get("/out", out);
+router.get("/current", current);
 
 /**
  * @swagger

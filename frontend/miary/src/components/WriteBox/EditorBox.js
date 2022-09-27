@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-06-16 18:06:39
- * @modify date 2022-09-14 07:58:10
+ * @modify date 2022-09-21 13:58:10
  * @desc [React Markdown 라이브러리를 사용해서 사용자 입력값을 받음]
  */
 import React, { Children, useCallback, useRef, useState } from 'react'
@@ -24,7 +24,7 @@ import '@toast-ui/editor/dist/toastui-editor-viewer.css';
 import { Viewer } from '@toast-ui/react-editor';
 
 //common functions
-import { MiaryPostAxios } from '../Common_function/MiaryAxios';
+import { MiaryPostAxios, ServerUrl } from '../Common_function/MiaryAxios';
 import { Link } from 'react-router-dom';
 
 //스타일 시트 editorBox.js
@@ -104,6 +104,7 @@ export const EditorBox = () => {
     //let bodyFormData = new FormData();
     //bodyFormData.append('imgs',e.target.files[0]);
     setBannerImg(e.target.files[0]);
+    setBannerName(e.target.files[0].name);
     // console.log(e.target.files);
 
     // let response = await MiaryPostAxios("http://localhost:3300/images", bodyFormData);
@@ -242,7 +243,7 @@ export const EditorBox = () => {
                 let bodyFormData = new FormData();
                 bodyFormData.append('imgs',blob);
 
-                let response = await MiaryPostAxios("http://localhost:3300/images", bodyFormData);
+                let response = await MiaryPostAxios(ServerUrl+'images/', bodyFormData);
                 console.log(response.data);
 
                 //2. callback으로 이미지 화면에 넣기

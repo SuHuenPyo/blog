@@ -11,10 +11,12 @@
   src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
   src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
  }
+
  ::placeholder{
   font-family: NanumBarunGothic;
  }
 body{
+  height: -webkit-fill-available;
   background-color: #ffffff;
   //font-family: LeferiPoint-WhiteObliqueA;
   font-family: NanumBarunGothic;
@@ -22,9 +24,9 @@ body{
   //가로 스크롤바 제거
   overflow-x:hidden;
   overflow-y: auto;
+  margin: 0 auto;
   
 }
-
 body::-webkit-scrollbar {
   width: 4px;  /* 스크롤바의 너비 */
 }
@@ -54,7 +56,7 @@ body::-webkit-scrollbar-track {
   
   //max-width: 1100px;
   margin: 0 auto;
-  padding-top: 7em;
+  
 
   scroll-behavior: smooth; //스크롤 이동 부드럽게 (js 이동할떄)
 }
@@ -64,8 +66,14 @@ ol, ul {
   margin:0px; padding:0px;
 }
 a{&:link, &:visited, &:hover, &:active{
-  color: #664147;
+  //color: #664147;
+  color: rgb(0, 0, 0);
   text-decoration: none;
   outline: none;
  } 
+}
+@-moz-document url-prefix() {
+  pre {
+    font-family: NanumBarunGothic;
+  }
 }

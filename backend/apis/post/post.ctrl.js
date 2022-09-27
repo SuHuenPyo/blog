@@ -5,6 +5,7 @@ const logger = require("../../utils/winston");
 const RegexHelper = require("../../utils/RegexHelper");
 const { deleteImg } = require("../../utils/multer");
 const { reset } = require("nodemon");
+const { current } = require("../user/user.ctrl");
 
 
 
@@ -27,12 +28,12 @@ const index = async (req, res, next) => {
     boards.b_banner as boardBanner, LEFT(boards.b_markdown, 300) as boardMarkdown ,
     boards.m_id as boardMemberId, boards.b_mdate as boardMDate,
     boards.b_hits as boardHits, boards.b_like  as boardLike,
-    members.userId as memberUserId, members.image as memberPic
+    members.userId as memberUserId, members.image as memberPic,
+    members.name as memberName
     FROM boards, members WHERE boards.m_id = members.m_id;`
 
     const [result] = await dbcon.query(sql);
     json = result;
-
 
     
 
@@ -63,14 +64,16 @@ const detail = async (req, res, next) => {
   try {
     dbcon = await pool.getConnection(async (conn) => conn);
 
-    const sql =
+    let sql =
       "SELECT b_id 'id', b_title 'title', b_banner 'banner', b_content 'content', m_id 'author_id', b_mdate 'date', b_hits 'hits', b_like 'like' FROM boards WHERE b_id = ?";
 
     const [result] = await dbcon.query(sql, [id]);
 
 
+   
+
     if (!result[0]) {
-      return res.status(400).send("ID를 확인해주세요.");
+      return res.status(400).send("글 ID를 확인해주세요.");
     }
 
     const findTagsId = "SELECT t_id FROM board_tags WHERE b_id = ?";
@@ -97,10 +100,19 @@ const detail = async (req, res, next) => {
         return tag[0].name;
       })
     })();
+    let currentHits = result[0].hits;
+
+    currentHits = parseInt(currentHits);
+    currentHits += 1;
+    //조회수 증가
+    sql = "UPDATE boards SET b_hits = ? WHERE b_id=?";
+    await dbcon.query(sql, [currentHits, id]);
 
     json = result[0];
 
     json.tags = tags;
+
+
   } catch (err) {
     logger.error(err);
     console.error(err);
@@ -139,7 +151,7 @@ const popular = async (req, res, next) => {
 
   return res.status(200).json(json);
 };
-
+//최근글 불러오기 
 const recent = async (req, res, next) => {
   let dbcon;
   let json;
@@ -167,7 +179,7 @@ const recent = async (req, res, next) => {
   return res.status(200).json(json);
 };
 
-//글쓰기   ##### Tag 기능 현재안됨
+//글쓰기 
 const create = async (req, res, next) => {
   let dbcon = null;
   const title = req.body.title?.trim();
@@ -182,13 +194,8 @@ const create = async (req, res, next) => {
 
   let boardId = null;
 
+  const m_id = req.body.userId;
 
-  //임시 m_id 
-  const m_id = 2;
-
-  console.log(typeof(tags));
-  console.log(tags);
-  console.log(req.body);
 
   if(tags){
     tags.replace (/"/g,'');
@@ -207,8 +214,8 @@ const create = async (req, res, next) => {
     regex.value(content, "[POST /post content]");
     regex.value(markdown, "[POST /post markdown]");
     regex.value(author, "[POST /post author]");
-    regex.length(title, 2, 45, "[POST /post title]");
-    regex.length(title, 3, 1000, "[POST /post content]");
+    regex.length(title, 2, 100, "[POST /post title]");
+    regex.length(title, 3, 10000, "[POST /post content]");
     regex.number(author, "[POST /post author]");
   } catch (err) {
     logger.error(`[${err.name}] ${err.message}`);

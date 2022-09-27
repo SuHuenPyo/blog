@@ -20,8 +20,10 @@
     max-height: 400px;
     max-width: 3000px;
     z-index: -1;
-    
+
+
     img{
+        
         opacity: 0.8;
         align-items: center;
         width: 100%;
@@ -29,24 +31,36 @@
         max-height: 400px;
         max-width: 3000px;
         
-        object-fit: contain;    
+        object-fit:cover;    
         overflow: hidden;
+        
+    
+        background-repeat: no-repeat; /* 배경이미지X */
+        background-size: cover; /* 요소를 비율에 맞게 커버 */
+        background-position: center; /* 이미지를 요소의 정가운데로 처리 */
+        background-attachment: fixed; /* 스크롤바 움직일때 이미지가 따라다님 */
+        
     }
     .BannertitleText{
         display: flex;
         justify-content: center;
         align-items: center;
         position: absolute;
+        
         height: 100%;
         top: 0;
         width: 100%;
-        font-size: 2.4em;
+        
         font-weight: 800;
-        background-color: rgba(255, 255, 255, 0.315);
-        color: rgb(0, 0, 0);
+        background-color: rgba(5, 5, 5, 0.692);
+        
         overflow: hidden;
         
-        
+        h1{
+            color: rgb(219, 219, 219);
+            font-size: 1.9em;
+             text-shadow: 1px 2px 2px rgb(41, 41, 41); 
+        }
         
         
     }

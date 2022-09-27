@@ -8,7 +8,7 @@ export const BannerTitle = (props) => {
   return (
     <div className='BannerTitle'>
       <img src={props.banner || defaultImg} onError={(e)=>{e.target.src=defaultImg;}} alt=""/>
-      <div className='BannertitleText'>{props.title}</div> 
+      <div className='BannertitleText'><h1>{props.title}</h1></div> 
     </div>
   )
 }

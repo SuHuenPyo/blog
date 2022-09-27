@@ -12,20 +12,20 @@
  //Only use ContentBlock.css : define contents sort with count of width size
  $contentCount-mobile : 1;
  $contentCount-tablet : 2;
- $contentCount-desktop: 3;
+ $contentCount-desktop: 3; // and 4개 
 
 
  //baseSize: desktop, tablet, mobile , default : $bp-desktop
  //widthCount: 컨텐츠 가로 정렬 개수 , default : $contentCount-desktop
  @mixin mixinContentBlockContainer($baseSize: $bp-desktop, $widthCount: $contentCount-desktop){
-    $marginValue: 20px;
-    $withMinusMargin: ($marginValue*($widthCount+1));
+    $marginValue: 15px;
+    $withMinusMargin: ($marginValue*($widthCount));
     
     display: inline-block;
     width: ($baseSize / $widthCount) -($withMinusMargin);
 
 
-    height: 450px;
+    height: 400px;
     background-color: inherit;
     border-radius: 8px;
     margin: $marginValue;
@@ -203,6 +203,7 @@
                         margin: 0;
                         margin-top: 0.3em;
                         padding: 0;
+                        font-size: 12px;
 
                     }
                 }

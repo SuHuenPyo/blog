@@ -10,7 +10,7 @@ const router = express.Router();
 
 
 const regex = new RegexHelper;
-
+//회원가입
 const create = async (req, res, next) => {
     logger.info(`[POST /USER/CREATE] ${req.ip} is access`);
     // 회원가입
@@ -38,8 +38,8 @@ const create = async (req, res, next) => {
 
         //길이
         regex.length(id,3,50,"[POST /user ID]");
-        regex.length(pw,3,50,"[POST /user PW]");
-        regex.length(name,3,45,"[POST /user NAME]");
+        regex.length(pw,5,50,"[POST /user PW]");
+        regex.length(name,2,45,"[POST /user NAME]");
         regex.length(email,3,50,"[POST /user EMAIL]");
 
         if(intro !== null){
@@ -66,17 +66,22 @@ const create = async (req, res, next) => {
 
       dbcon = await pool.getConnection(async (conn) => conn);
 
-      if(!authCode) return res.status(400).json("올바른 인증코드를 입력해주세요!");
+      if(!authCode) return res.status(400).send("올바른 인증코드를 입력해주세요!");
 
-      [result] = await dbcon.query("SELECT * FROM auth WHERE auth_done=1 AND auth_email=?",[email]);
+      //[result] = await dbcon.query("SELECT * FROM auth WHERE auth_done=1 AND auth_email=?",[email]);
+      [result] = await dbcon.query("SELECT * FROM members WHERE email=?",[email]);
+
+      
+      console.log(JSON.stringify(result) );
 
       if(result[0]){
-        return res.status("400").json("이미 가입된 이메일 입니다.");
+        return res.status("400").send("이미 가입된 이메일 입니다.");
       }
       [result] = await dbcon.query("SELECT auth_code from auth WHERE auth_email = ?", [email]);
 
-      if(result[0].auth_code != authCode){
-        return res.status(400).json("올바른 인증코드를 입력해주세요!");
+      if(result[0]?.auth_code != authCode){
+        
+        return res.status(400).send("올바른 인증코드를 입력해주세요!");
       }
         
       logger.info(`[POST /user] AuthCode ${req.ip} 인증완료`);
@@ -105,6 +110,7 @@ const create = async (req, res, next) => {
       logger.info(`[POST /user] AuthCode ${req.ip} 가입완료. auth_done=1`);
 
     } catch (err) {
+      console.error(err);
       logger.error(err);
       return res.status(500).send("Internal Server Error");
     } finally {
@@ -162,7 +168,9 @@ const signIn = async (req, res, next) => {
     if(dbcon) await dbcon.release();
   }
 
-  req.session.nickname = req.body.id;
+  req.session.user = {
+    'USER' : req.body.id
+  };
   req.session.save();
   
   console.log(req.session)
@@ -170,8 +178,47 @@ const signIn = async (req, res, next) => {
   return res.status(200).json("로그인에 성공했습니다.");
 }
 
+//로그아웃  
+const out = async (req, res, next) => {
+  logger.info(`[POST /USER/OUT] ${req.ip} is access`);
+  console.log("[full post detail] DB pool current Count == " + pool.pool._allConnections._tail);
+
+  if(req.session.user){
+    console.log('logOut : ' + req.session.user.USER);
+
+    req.session.destroy(err=>{
+      if(err) throw err;
+      console.log('세션 삭제후 로고아웃됨');
+      return res.status(200).json({text: '성공적으로 로그아웃 되었습니다.'});
+    });
+  }else{
+    console.log('로그인상태아님');
+    return res.status(400).json({text:'로그인 상태가 아니거나 시스템 에러가 발생했습니다.'});
+  }
+
+}
+//세션검사(클라이어트 측에서 쓸것, 서버에서 쓸 미들웨어 아님) 
+const current = async (req, res, next) => {
+  logger.info(`[POST /USER/CURRENT] ${req.ip} is access`);
+  console.log("[full post detail] DB pool current Count == " + pool.pool._allConnections._tail);
+
+  if(req.session.user){
+    return res.status(200).send("유저정보가 있습니다.") // 해당 세션값에 대한 DB검증은 수행하지 않는다 (클라이언트 전용)
+
+  }else{
+    console.log('로그인상태아님');
+    return res.status(400).send("유저 세션정보가 없습니다.");
+  }
+
+}
+
+
+
+
   module.exports = {
       create,
       signIn,
+      out,
+      current,
       
   }
