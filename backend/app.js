@@ -22,21 +22,30 @@ const MySQLStore = require("express-mysql-session");
 const sessionConfig = require('./configs/_config.json').MYSQL_SESSION_OPTION;
 const mysql = require("mysql2/promise");
 
+const https = require('https');
+const fs = require('fs');
 
-const httpsOptions = {
-  key: fs.readFileSync('./.certification/privkey1.pem'),
-  cert: fs.readFileSync('./.certification/cert1.pem')
-};
+
 const httpsPort = 7799;
 
-https.createServer(httpsOptions, app).listen(httpsPort, ()=>{
-  console.log("Https server listening on port " + httpsPort);
-});
+try {
+  const httpsOptions = {
+    ca: fs.readFileSync('./api/certification/fullchain.pem'),
+    key: fs.readFileSync(path.resolve(process.cwd(), './api/certification/privkey.pem'), 'utf8').toString(),
+    cert: fs.readFileSync(path.resolve(process.cwd(), './api/certification/cert.pem'), 'utf8').toString(),
+  };
+
+  HTTPS.createServer(httpsOptions, app).listen(httpsPort, () => {
+    console.log(`[HTTPS] Soda Server is started on port ${colors.cyan(httpsPort)}`);
+  });
+} catch (error) {
+  console.log('[HTTPS] HTTPS 오류가 발생하였습니다. HTTPS 서버는 실행되지 않습니다.');
+  console.log(error);
+}
 
 app.set("trust proxy", 1);
 
-const https = require('https');
-const fs = require('fs');
+
 
 
 const options={

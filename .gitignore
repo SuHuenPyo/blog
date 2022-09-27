@@ -104,3 +104,4 @@ dist
 .tern-port
 backend/apis/certification/cert.pem
 backend/apis/certification/privkey.pem
+backend/apis/certification/fullchain.pem
