@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-08-18 23:11:04
- * @modify date 2022-08-22 22:35:11
+ * @modify date 2022-09-27 17:32:40
  * @desc [description]
  */
 const express = require("express");
@@ -37,7 +37,7 @@ const {
  *       400:
  *        description: 이메일 전송 실패
  */
- router.get("/", AuthCode);
+ router.get("/api/", AuthCode);
 
 
  /**
@@ -62,7 +62,7 @@ const {
  *         400:
  *           description: 유효성 검사 실패
  */
- router.post("/", VerifyCode);
+ router.post("/api/", VerifyCode);
 
 
 

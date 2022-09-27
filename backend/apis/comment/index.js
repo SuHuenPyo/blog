@@ -8,8 +8,8 @@ const {
 
 const {verifySession} = require('../../utils/sessionVerify');
 
-router.post("/", verifySession, create);
-router.get("/", index)
+router.post("/api/", verifySession, create);
+router.get("/api/", index)
 
 
 module.exports = router;

@@ -26,7 +26,7 @@ const {verifySession} = require('../../utils/sessionVerify')
  *         200:
  *          description: 글 불러오기 성공
  */
-router.get("/", index);
+router.get("/api/", index);
 
 /**
  * @swagger
@@ -42,7 +42,7 @@ router.get("/", index);
  *          description: 글 불러오기 성공
  */
 
-router.get("/popular", popular);
+router.get("/api/popular", popular);
 
 /**
  * @swagger
@@ -58,7 +58,7 @@ router.get("/popular", popular);
  *          description: 글 불러오기 성공
  */
 
-router.get("/recent", recent);
+router.get("/api/recent", recent);
 
 /**
  * @swagger
@@ -83,7 +83,7 @@ router.get("/recent", recent);
  *        description: 아이디 확인 필요
  */
 
-router.get("/detail", detail);
+router.get("/api/detail", detail);
 
 /**
  * @swagger
@@ -116,7 +116,7 @@ router.get("/detail", detail);
  *           description: 유효성 검사 실패
  */
 
-router.post("/", upload.single("banner"), verifySession,  create);
+router.post("/api/", upload.single("banner"), verifySession,  create);
 
 /**
  * @swagger
@@ -150,7 +150,7 @@ router.post("/", upload.single("banner"), verifySession,  create);
  *           description: 유효성 검사 실패
  */
 
-router.put("/:id", upload.single("banner"), update);
+router.put("/api/:id", upload.single("banner"), update);
 
 /**
  * @swagger
@@ -184,6 +184,6 @@ router.put("/:id", upload.single("banner"), update);
  *           description: 유효성 검사 실패
  */
 
-router.delete("/:id", destroy);
+router.delete("/api/:id", destroy);
 
 module.exports = router;
