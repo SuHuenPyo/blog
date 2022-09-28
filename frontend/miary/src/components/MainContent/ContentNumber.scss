@@ -1,0 +1,104 @@
+/**
+ * @author Shun
+ * @email vytngms@gmail.com
+ * @create date 2022-09-22 18:05:24
+ * @modify date 2022-09-22 18:05:24
+ * @desc [pagenation 을 위한 scss]
+ */
+ .ContentNumber{
+    padding-top: 3em;
+    
+    max-width: 500px;
+    margin: 0 auto;
+
+    
+    .CommentNumberContainer{
+//        background-color: beige;
+    
+        display: flex;
+        justify-content: center;
+        color: #818181;
+        
+        
+        .CommentPagenationArrowBox{
+            
+            background-color: rgba(233, 233, 233, 0.726);
+            
+            margin: 0 0.3em;
+            border-radius: 50px;
+            line-height: 2.1em;
+            transition: all 0.2s;
+            font-weight: 900;
+
+            &:hover{
+                cursor: pointer;
+                
+                background-color: #575757;
+                transition: all 0.2s;
+                color: white;
+                box-shadow: 0 1px 5px rgb(51, 51, 51);
+                
+            }
+            
+            .CommentPagenationLeftArrow{
+                margin-right: 2px;
+                width: 2em;
+                height: 2em;
+                border-radius: 50px;
+                
+                
+                
+
+            }
+            .CommentPagenationRightArrow{
+                margin-left: 2px;
+                width: 2em;
+                height: 2em;
+                border-radius: 50px;
+
+            }
+        }
+        .CommentPagenationNumberBox{
+            display: flex;
+            background-color: rgba(233, 233, 233, 0.726);
+            
+            margin: 0 0.3em;
+            border-radius: 50px;
+            line-height: 2.1em;
+            padding: 0 10px;
+
+            &:hover{
+                cursor: pointer;
+                
+            }
+
+            .CommentPagenationNumber{
+                width: 2em;
+                height: 2em;
+                transition: all 0.3s;
+                &:hover{
+                    box-shadow: 0 1px 2px rgb(109, 109, 109);
+                    background-color: #575757;
+                    border-radius: 5px;
+                    transition: all 0.2s;
+                    color: white;
+                }
+
+            }
+            .CommentPagenationCurrent{
+                width: 2em;
+                height: 2em;
+                box-shadow: 0 1px 2px rgb(109, 109, 109);
+                border-radius: 5px;
+                background-color: #575757;
+                color: white;
+                
+            }
+        }
+    
+    
+    }
+    
+
+    
+ }

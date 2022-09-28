@@ -6,10 +6,11 @@ import {
     FaGreaterThanEqual, //종(알림) 
        
 } from 'react-icons/fa';
-
-const SearchInput = () => {
+//props - setKeyword(문자열), reloadSwitch(boolean)-새로고침
+const SearchInput = (props) => {
 
     const [inputText, setInputText] = useState();
+    
 
     const refSubmitBtn = useRef();
     const refInputBox = useRef();
@@ -21,6 +22,8 @@ const SearchInput = () => {
             refInputBox.current.style = `border-color: red;  animation: vibration 0.1s 5;`;
             return;
         }
+        props.setKeyword(inputText);
+        props.reloadSwitch(true);
         
     }
     const handleInputText = (e) => {
@@ -57,7 +60,7 @@ const SearchInput = () => {
         <form onSubmit={SubmitSearchText}>
             <div className='SearchContainer'>
                 <div className='SeearchBox' ref={refInputBox}>
-                    <input className='SearchInputText' onChange={handleInputText} type={'text'} onFocus={handleFocusInput} onBlur={handleBlurInput} placeholder={`ex> 개발자`}></input>
+                    <input className='SearchInputText' onChange={handleInputText} type={'text'} onFocus={handleFocusInput} onBlur={handleBlurInput} placeholder={`ex> 이천수`}></input>
                     <button className='SearchInputBtn' ref={refSubmitBtn} type={'submit'} ><FaSearch/></button>
                 </div>
                 

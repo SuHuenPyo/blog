@@ -26,7 +26,7 @@ const SearchView = (props) => {
               <div className='SearchBlockArticleTitleBox'>
                 <div className='SearchBlockArticleTitle'>{` ${props.title}`}</div>
               </div>
-              <div className='BlockArticleContentBox'>
+              <div className='SearchBlockArticleContentBox'>
                 <div className='SearchBlockArticleContent'>
                   {props.content}
                 </div>

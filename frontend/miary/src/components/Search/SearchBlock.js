@@ -6,32 +6,42 @@ import SearchView from './SearchView';
 import defaultImg from "../../assets/img/miary_img/search.gif"
 import ContentBlock from '../MainContent/ContentBlock';
 import ContentView from '../MainContent/ContentView';
+import {getSearchContent  } from '../../slices/SearchSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const SearchBlock = () => {
     const [searchKeyword, setSearchKeyword] = useState();
+    const [reloadSwitch, setReloadSwitch] = useState(false);
 
 
-    const getSearchKeyword = (value) => {
-        setSearchKeyword(value);
+    const {rt, rtmsg, item, loading} = useSelector((state)=> state.mySearchContent);
+    const dispatch = useDispatch();
 
-    }
 
     useEffect(()=>{
         //여기서 슬라이스 사용 
+        if( reloadSwitch && searchKeyword){
+            dispatch(getSearchContent({keyword: searchKeyword}));
+            setReloadSwitch(false);
+        }
 
-    }, [searchKeyword])
+    }, [reloadSwitch])
   return (
     <div className='SearchBlock'>
-        <SearchInput/>
+        <SearchInput setKeyword={setSearchKeyword} reloadSwitch={setReloadSwitch}/>
         <div className='SearchBlockBox'>
         {
             
-                !searchKeyword ?
-                ['가나다', '라마다', 'ㄴㄹㄴ','가나다', '라마다', 'ㄴㄹㄴ','가나다', '라마다', 'ㄴㄹㄴ',
-                '가나다', '라마다', 'ㄴㄹㄴ','가나다', '라마다', 'ㄴㄹㄴ','가나다', '라마다', 'ㄴㄹㄴ',].map((item)=>{
-                    return <SearchView content={`${item}`}/>
+                !loading && item ?
+                item.result?.map((item)=>{
+                    return <SearchView boardId={item.boardId} title={item.boardTitle} banner={item.boardBanner} content={item.boardMarkdown}
+                    memberId={item.boardMemberId} boardMDate={item.boardMDate} hits={item.boardHits} 
+                    like={item.boardLike} memberName={item.memberUserId} memberPic={item.memberPic} memberUserName={item.memberName}/>
                 })
                 
+
+
+
             :
             <div className='SearchBlockDefaultImgBox'>
                 <img src={defaultImg}></img>

@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-09-28 19:59:17
- * @modify date 2022-09-28 20:00:34
+ * @modify date 2022-09-29 05:32:48
  * @desc [검색 기능을 이용하기 위한 slice]
  */
 
@@ -18,8 +18,9 @@
      async (payload, {rejectWithValue})=>{
          let result = null;
          try{
-             result = await MiaryGetAxios(ServerUrl+"post","글 가져오기 성공", "글 가져오기 실패",{...payload});
+             result = await MiaryGetAxios(ServerUrl+"post/keyword","글 가져오기 성공", "글 가져오기 실패",{...payload});
          }catch(err){
+             console.log(err.response);
              return rejectWithValue(err.response);
          }
          return await result;
@@ -54,6 +55,8 @@
          },
          [getSearchContent.rejected]: (state, {payload})=>{
              
+            console.log(state);
+            console.log(payload);
              return{
                  ...state,
                  rt: payload.status,

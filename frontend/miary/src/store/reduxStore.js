@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-08-30 09:27:12
- * @modify date 2022-09-20 08:22:07
+ * @modify date 2022-09-29 05:08:59
  * @desc [리덕스 스토어]
  */
 
@@ -15,6 +15,7 @@ import SessionCheckSlice from '../slices/SessionCheckSlice';
 import LogoutSlice from '../slices/LogoutSlice';
 import CommentWriteSlice from '../slices/CommentWriteSlice';
 import CommentReadSlice from '../slices/CommentReadSlice';
+import SearchSlice from '../slices/SearchSlice';
 
 //slice
 
@@ -30,6 +31,7 @@ const Store = configureStore({
         myLogout : LogoutSlice,
         myCommentWrite : CommentWriteSlice,
         myCommentGet: CommentReadSlice,
+        mySearchContent : SearchSlice,
         
         
     },

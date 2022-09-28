@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-06-16 18:06:39
- * @modify date 2022-09-27 17:31:15
+ * @modify date 2022-09-29 03:12:41
  * @desc [React Markdown 라이브러리를 사용해서 사용자 입력값을 받음]
  */
 import React, { Children, useCallback, useRef, useState } from 'react'
@@ -71,7 +71,7 @@ export const EditorBox = () => {
 
       let response = null ; 
       try{
-        response = await MiaryPostAxios("https://miary.duckdns.org/api/post", bodyFormData, true);
+        response = await MiaryPostAxios( ServerUrl+"post", bodyFormData, true);
         
         //console.log("response : " + JSON.stringify(response, null, 2)); //stringify (,replace, 문자열간격);
       }catch{
