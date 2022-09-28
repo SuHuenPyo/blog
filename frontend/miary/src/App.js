@@ -21,7 +21,7 @@ import ContentDetail from './pages/ContentDetail';
 
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-
+import {Helmet} from 'react-helmet';
 
 
 function App() {
@@ -36,12 +36,16 @@ function App() {
 
   return (
     <div className="App">
+      <Helmet>
+        <title>마이어리</title>
+      </Helmet>
       <Header></Header>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/search" element={<Search />} />
         <Route path="/myblog" element={<MyBlog />} />
+        
         <Route path="/write_post" element={<WritePost />} />
         <Route path="/management" element={<Management />} />
         <Route path="/contentDetail/:contentId" element={<ContentDetail/>} />

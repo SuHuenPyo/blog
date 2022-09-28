@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-06-03 15:23:37
- * @modify date 2022-09-23 13:58:26
+ * @modify date 2022-09-28 16:42:05
  * @desc [content영역에 불러올 컴포넌트 메인 글들을 불러온다.]
  */
 import axios from 'axios';
@@ -15,6 +15,7 @@ import './ContentView.scss';
 //redux;
 import {useSelector, useDispatch} from "react-redux";
 import { getContent } from '../../slices/ContentSlice';
+import Loading from '../Common_function/Loading';
 
 export const ContentView = (props) => {
 
@@ -33,7 +34,8 @@ export const ContentView = (props) => {
 
   return (
     <div className='ContentViewContainer'>
-      { !loading && item ?
+      
+       { !loading && item ?
         item.map((idx, index) => (
           
           <Link to={`/contentDetail/${idx.boardId}`} key={index}>
@@ -42,7 +44,7 @@ export const ContentView = (props) => {
             like={idx.boardLike} memberName={idx.memberUserId} memberPic={idx.memberPic} memberUserName={idx.memberName}/>
           </Link>
          
-        )) : "데이터를 불러오는데 실패했습니다."
+        )) : <Loading/>
 
 
       }

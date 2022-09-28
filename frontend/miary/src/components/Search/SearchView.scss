@@ -1,0 +1,247 @@
+/**
+ * @author Shun
+ * @email vytngms@gmail.com
+ * @create date 2022-09-29 00:00:54
+ * @modify date 2022-09-29 00:00:54
+ * @desc [searchView 컴포넌트 반응형 블럭 출력]
+ */
+
+
+@import '../Common_Scss/mixin';
+@import '../Common_Scss/variables';
+
+
+//Only use SearchBlock.css : define searchs sort with count of width size
+$searchCount-mobile : 1;
+$searchCount-tablet : 2;
+$searchCount-desktop: 3; // and 4개 
+
+
+//baseSize: desktop, tablet, mobile , default : $bp-desktop
+//widthCount: 컨텐츠 가로 정렬 개수 , default : $searchCount-desktop
+@mixin mixinSearchViewContainer($baseSize: $bp-desktop, $widthCount: $searchCount-desktop){
+   $marginValue: 15px;
+   $withMinusMargin: ($marginValue*($widthCount));
+   
+   display: inline-block;
+   width: ($baseSize / $widthCount) -($withMinusMargin);
+
+
+   height: 400px;
+   background-color: inherit;
+   border-radius: 8px;
+   margin: $marginValue;
+   cursor: pointer;
+   flex-direction: column;
+   transition: .5s;
+
+   
+}
+@include desktop{
+   .SearchView{
+       @include mixinSearchViewContainer($bp-desktop,$searchCount-desktop )
+   }
+}
+@include tablet{
+   .SearchView{
+       @include mixinSearchViewContainer($bp-tablet,$searchCount-tablet )
+   }
+}
+@include mobile{
+   .SearchView{
+       @include mixinSearchViewContainer($bp-mobile,$searchCount-mobile )
+   }
+}
+.SearchView{
+    //border-top-left-radius: 30px;
+    //border-top-right-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 0 20px #d8d8d8;
+    &:hover {
+        overflow: hidden;
+        box-shadow: 0 0 20px #696969;
+        transition: .5s;
+        // border-top-left-radius: 30px;
+        // border-top-right-radius: 30px;
+        // border-bottom-right-radius: 30px;
+        // border-bottom-left-radius: 30px;
+        // border-radius: 30px;
+
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+
+        .SearchBlockImage{
+            overflow: hidden;
+            img{
+                transform: scale(1.5);
+                transition: .5s;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+    .SearchBlockImage{
+        
+        height: 50%;
+        max-height: 50%;
+        background-color: rgb(138, 138, 138);
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        overflow: hidden;
+        
+        img{
+            object-fit:cover;
+            transition: .5s;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            
+        }
+    }
+    .SearchArticlContainer{
+        //background-color: blanchedalmond;
+        height: 50%;
+        background-color: rgba(240, 240, 240, 0.945);
+        overflow: hidden;
+        text-align: left;
+
+        .SearchBlockArticleTitleBox{
+            height: 18%;
+            text-align: center;
+            margin: -5px 15px;
+            padding-top: 10px;
+            font-size: 15px;
+            text-overflow: ellipsis; 
+            font-weight:  bolder;
+            color: black;
+            
+            .SearchBlockArticleTitle{
+                //셋트 (문단사이즈 글 자르기)
+                margin-top: 0.8em;
+                margin-left: 0.3em;
+                text-align: left;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
+                overflow: hidden;
+            }
+            //background-color: cadetblue;
+
+        }
+        .SearchBlockArticleContentBox{
+            //background-color: cornflowerblue;
+            color: rgba(0, 0, 0, 0.521);
+            font-weight: 900;
+            height: 50%;
+            font-size: 13px;
+            margin: 0 auto;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin: 0 20px;
+            padding: 10px 10px 0 0;
+
+            //font-weight: bold;
+            .SearchBlockArticleContent{
+                //셋트 (문단사이즈 글 자르기)
+
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 5;
+                
+               
+                overflow: hidden;
+            }
+            
+        }
+        .SearchBlockArticleAuthorContainer{ //writer box.. 
+            //background-color: rgba(184, 135, 11, 0.418);
+            height: 32%;
+            margin: 0 0px;
+            display: flex;
+            flex-direction: row;
+            font-size: 13px;
+            background-color: rgb(235, 235, 235);
+            
+            
+
+            .SearchBlockArticleAuthorPic{ // 저자 프로필 이미지 
+
+                $AuthorPicSize :60px;
+                max-width: $AuthorPicSize;
+                max-height: $AuthorPicSize;
+                min-width: $AuthorPicSize;
+                min-height: $AuthorPicSize;
+
+                .SearchBlockArticleAuthorPicBox{
+                    width: 75%;
+                    height: 75%;
+                    margin: 0 auto;
+                    margin-top: 0.6em;
+                    border-radius: 8px;
+                    overflow: hidden;
+
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+                
+                flex: 1;
+                
+            }
+            .SearchBlockArticleAuthorInfo{ // writer Name, writer's register Date, HitCount(up to every Read times)
+                flex: 9;
+                display: flex;
+                margin-left: 0.5em;
+                flex-direction: column;
+                
+                .SearchBlockArticleAuthorName{
+                    flex: 1;
+                    margin-top: 0.4em;
+                    font-weight: 600;
+                    font-size: 0.7em;
+                    h1{
+                        margin: 0;
+                        margin-top: 0.3em;
+                        padding: 0;
+                        font-size: 12px;
+
+                    }
+                }
+                .SearchBlockArticleAuthorDateHit{
+                    flex: 1;
+                    display: flex;
+                    margin-top: -1.7em;
+                    font-weight: 600;
+                    line-height: 1.1em;
+                    h1{
+                        margin: 0;
+                        padding: 0;
+                        font-size:  0.7em;
+                    }
+                    
+                    .SearchBlockArticleAuthorDate{
+                        flex: 1;
+                        min-width: 10em;
+                        max-width: 10em;
+                        font-size: 0.7em;
+                        //background-color: cadetblue;
+                    }
+                    .SearchBlockArticleAuthorLike{
+                        flex: 1;
+                        //background-color: tan;
+                    }
+                    .SearchBlockArticleAuthorHit{
+                        flex: 1;
+                        
+                        //background-color: red;
+                    }
+                }
+            }
+        }
+    }
+    
+ 
+ }
+ 

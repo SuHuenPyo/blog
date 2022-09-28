@@ -146,11 +146,18 @@ export const Header = (props) => {
             <div className='HeaderToolsContainer'>
                 
                 <ul>
-                    <li><a href="#"><FaSearch/></a></li>
+                    <li><a href="#">
+                        <Link to='/search'>
+                            <FaSearch/>
+                        </Link>
+                    </a></li>
                     <li>
+
                         <Link to="/write_post">
                             글 쓰기
                         </Link>
+
+                        
                     </li>
                     <li>
                         <Link to="/myblog">
