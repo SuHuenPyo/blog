@@ -1,4 +1,3 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=250&section=header&text=Miary Github&fontSize=90" />
 
 ## NOTION :exclamation:
 본 저장소와 MD파일에 서술된 내용과 URL은 포트폴리오용 작업물이며 상업적, 지속적 서비스가 불가능함을 알립니다. 고유식별정보를 포함한 어떠한 중요 정보도 저장하지 마세요.
@@ -15,9 +14,9 @@ Amazon AWS EC2인스턴스로 구동중이며 해당서버를 반사서버로 �
 반응형 웹 디자인
 
 
-접속 URL - https://miary.duckdns.org/
+:heavy_check_mark: :heavy_check_mark: :heavy_check_mark: 접속 URL - https://miary.duckdns.org/
 <br>
-테스트 로그인 계정 :  test1 / aA123!
+:heavy_check_mark: :heavy_check_mark: :heavy_check_mark:테스트 로그인 계정 :  test1 / aA123!
 
 <p align='center'><img src="https://user-images.githubusercontent.com/45797097/177556192-1661a7d4-02db-45fd-8748-1f4c2048854c.png" height="300px" width="320px"></p>
 
@@ -55,7 +54,7 @@ Amazon AWS EC2인스턴스로 구동중이며 해당서버를 반사서버로 �
 
 ### 회원가입
 <p align='center'>
-<img src='https://miary.s3.ap-northeast-2.amazonaws.com/1664948474827.png' width='300px' height='500px'>
+<img src='https://user-images.githubusercontent.com/45797097/194004097-8025a11a-3fd4-4783-8270-33045e0e74eb.png' width='300px' height='500px'>
 </p>
 <br>
 
@@ -64,7 +63,7 @@ Amazon AWS EC2인스턴스로 구동중이며 해당서버를 반사서버로 �
 ### 로그인
 
 <p align='center'>
-<img src='https://miary.s3.ap-northeast-2.amazonaws.com/1664948661140.png' width='300px' height='350px'>
+<img src='https://user-images.githubusercontent.com/45797097/194004274-1fb111f4-b453-487e-b2aa-0e7219b958a7.png' width='300px' height='350px'>
 </p>
 <br>
 
@@ -73,7 +72,7 @@ Amazon AWS EC2인스턴스로 구동중이며 해당서버를 반사서버로 �
 
 ### 글쓰기
 <p align='center'>
-<img src='https://miary.s3.ap-northeast-2.amazonaws.com/1664949008856.png' width='1000px' height='350px'>
+<img src='https://user-images.githubusercontent.com/45797097/194004795-17994ea6-ed65-4753-b3c9-1e1d8aed3733.png' width='1000px' height='550px'>
 </p>
 <br>
 제목입력 (필수)
@@ -83,29 +82,29 @@ Amazon AWS EC2인스턴스로 구동중이며 해당서버를 반사서버로 �
   
 ### 댓글쓰기
 <p align='center'>
-<img src='https://miary.s3.ap-northeast-2.amazonaws.com/1664949397108.png' width='700px' height='250px'>
+<img src='https://user-images.githubusercontent.com/45797097/194005040-d57bc9a2-aabc-4a73-bb06-46c19301dc4c.png' width='700px' height='250px'>
 </p>
 <br>
 
 ### 프로필
 <p align='center'>
-<img src='https://miary.s3.ap-northeast-2.amazonaws.com/1664949821462.png' width='250px' height='420px'>
+<img src='https://user-images.githubusercontent.com/45797097/194005086-00f3200e-c1e2-4ff6-92e2-25efc42130ba.png' width='250px' height='420px'>
 </p>
 <br>
 
 ### 프로필 수정
 <p align='center'>
-<img src='https://miary.s3.ap-northeast-2.amazonaws.com/1664950150891.png' width=1000px' height='600px'>
+<img src='https://user-images.githubusercontent.com/45797097/194005133-696061ab-fd69-4b3b-a461-7580e4db5643.png' width=1000px' height='600px'>
 </p>
 <br>
 
 ### 컨텐츠 검색
 <p align='center'>
-<img src='https://miary.s3.ap-northeast-2.amazonaws.com/1664950397335.png' width=700px' height='500px'>
+<img src='https://user-images.githubusercontent.com/45797097/194005393-b3261d78-943d-4777-a09a-37cfd04dd209.png' width=700px' height='500px'>
 </p>
 <br>
 
 ### 대문 
-![이미지](https://miary.s3.ap-northeast-2.amazonaws.com/1664950538504.png)
+![](https://user-images.githubusercontent.com/45797097/194005219-d16c04ba-f2fd-4be1-b66b-d160421e014c.png)
 
 문제 발생시 연락망 - vytngms.portfolio@gmail.com
