@@ -1,11 +1,26 @@
 const express = require("express");
 const router = express.Router();
+const {verifySession} = require('../../utils/sessionVerify')
 
-const { create, signIn, out, current } = require('./user.ctrl');
+
+const { 
+  create, 
+  signIn, 
+  out, 
+  current,
+  updateId,
+  updateNickname,
+  updateEmail,
+  updatePassword,
+  updateImage,
+  updateIntro
+   
+} = require('./user.ctrl');
 const { upload } = require('../../utils/multer');
 
 router.get("/out", out);
 router.get("/current", current);
+
 
 /**
  * @swagger
@@ -45,6 +60,23 @@ router.post("/", upload.single('profile') ,create);
 //로그인
 router.post("/signin", signIn);
 
+//유저 로그인id 변경
+router.put("/id",verifySession, updateId);
+
+//유저 닉네임 변경
+router.put("/nickname",verifySession, updateNickname);
+
+//유저 이메일 변경
+router.put("/email", verifySession, updateEmail);
+
+//유저 password 변경
+router.put("/password", verifySession, updatePassword);
+
+//유저 이미지 변경
+router.put("/image", verifySession, updateImage);
+
+//유저 자기소개 변경
+router.put("/intro",verifySession, updateIntro)
 
 
 router.delete("/out", (req, res, next) => {

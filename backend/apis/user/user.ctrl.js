@@ -213,12 +213,326 @@ const current = async (req, res, next) => {
 }
 
 
+/**
+ * 유저 로그인 아이디 업데이트
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ * @returns 
+ * requirement : userLoginId(현재 로그인 아이디), newUserId(새로운 로그인아이디), memberId(m_id)
+ */
+const updateId = async (req, res, next) => {
 
+  logger.info(`[PUT /USER/UPDATEID] ${req.ip} is access`);
+
+
+  const sessionUserId = req.session.user.USER;
+  const newUserId = req.body.newUserId?.trim();
+  const memberId = req.body.memberId;
+
+
+  console.log(req.body);
+
+  if(sessionUserId != req.body.userLoginId) return res.status(401).send("잘못된 인증정보 입니다.");
+   
+  let dbcon = null;
+
+
+   // 정규식 검사
+   try {
+       // 값
+       regex.value(newUserId,"[PUT /user newUserId]");
+       regex.length(newUserId,3,50,"[PUT /user newUserId]");
+       regex.idTest(newUserId,"[PUT /user newUserId]");
+
+   } catch(err){
+       logger.error(`[${err.name}] ${err.message}`);
+       return res.status(400).send('올바른 값을 입력 해주세요.').end();
+   }
+   
+   try {
+
+     dbcon = await pool.getConnection(async (conn) => conn);
+
+     result = await dbcon.query("UPDATE members SET userId=? WHERE m_id=?",[newUserId, memberId]);
+       
+     logger.info(`[PUT /user/updateId] updateId ${req.ip} 유저아이디 변경완료`);
+     
+   } catch (err) {
+     console.error(err);
+     logger.error(err);
+     return res.status(500).send("Internal Server Error");
+
+   } finally {
+     if(dbcon) await dbcon.release();
+   }
+   req.session.user.USER = newUserId;
+   return res.status(201).send("변경완료");
+}
+/**
+ * 유저 닉네임 업데이트 (이름) 
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ * @returns 
+ * 
+ * requirements :userLoginId(현재 로그인 아이디), newName(바꿀이름), memberId(m_id)
+ */
+const updateNickname = async (req, res, next) => {
+  logger.info(`[PUT /USER/updateNickname] ${req.ip} is access`);
+
+  const sessionUserId = req.session.user.USER;
+  const newName = req.body.newName?.trim();
+  const memberId = req.body.memberId;
+
+  if(sessionUserId != req.body.userLoginId) return res.status(401).send("잘못된 인증정보 입니다.");
+   
+  let dbcon = null;
+
+
+   // 정규식 검사
+   try {
+       regex.value(newName,"[PUT /user newName]");
+       regex.length(newName,2,45,"[PUT /user newName]");
+
+   } catch(err){
+       logger.error(`[${err.name}] ${err.message}`);
+       return res.status(400).send('올바른 값을 입력 해주세요.').end();
+   }
+   
+   try {
+     dbcon = await pool.getConnection(async (conn) => conn);
+
+     result = await dbcon.query("UPDATE members SET name=? WHERE m_id=?",[newName, memberId]);
+       
+     logger.info(`[PUT /user/updateNickname] updateNickname ${req.ip} 유저이름 변경완료`);
+     
+   } catch (err) {
+     console.error(err);
+     logger.error(err);
+     return res.status(500).send("Internal Server Error");
+
+   } finally {
+     if(dbcon) await dbcon.release();
+   }
+   return res.status(201).send("변경완료");
+
+}
+/**
+ * 유저 이메일 업데이트 
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ * @returns 
+ * requirements : userLoginId(현재 로그인 아이디), newEmail(바꿀이메일), memberId(m_id)
+ */
+const updateEmail = async (req, res, next) => {
+  logger.info(`[PUT /USER/updateEmail] ${req.ip} is access`);
+
+  
+  const sessionUserId = req.session.user.USER;
+  const newEmail = req.body.newEmail?.trim();
+  const memberId = req.body.memberId;
+
+  if(sessionUserId != req.body.userLoginId) return res.status(401).send("잘못된 인증정보 입니다.");
+   
+  let dbcon = null;
+
+
+   // 정규식 검사
+   try {
+
+       regex.value(newEmail,"[PUT /user newEmail]");
+       regex.length(newEmail,3,50,"[PUT /user newEmail]");
+       regex.email(newEmail,"[PUT /user newEmail]");
+
+   } catch(err){
+       logger.error(`[${err.name}] ${err.message}`);
+       return res.status(400).send('올바른 값을 입력 해주세요.').end();
+   }
+   
+   try {
+     dbcon = await pool.getConnection(async (conn) => conn);
+
+     result = await dbcon.query("UPDATE members SET email=? WHERE m_id=?",[newEmail, memberId]);
+       
+     logger.info(`[PUT /user/newEmail] newEmail ${req.ip} 유저이메일 변경완료`);
+     
+   } catch (err) {
+     console.error(err);
+     logger.error(err);
+     return res.status(500).send("Internal Server Error");
+
+   } finally {
+     if(dbcon) await dbcon.release();
+   }
+   return res.status(201).send("변경완료");
+
+}
+/**
+ * 패스워드 업데이트
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ * @returns 
+ * requirements :userLoginId(현재 로그인 아이디), newPassword(새로운 패스워드), memberId(m_id) 
+ */
+const updatePassword = async (req, res, next) => {
+  logger.info(`[PUT /USER/updatePassword] ${req.ip} is access`);
+
+  
+  const sessionUserId = req.session.user.USER;
+  const newPassword = req.body.newPassword?.trim();
+  const memberId = req.body.memberId;
+
+  if(sessionUserId != req.body.userLoginId) return res.status(401).send("잘못된 인증정보 입니다.");
+   
+  let dbcon = null;
+
+
+   // 정규식 검사
+   try {
+       regex.value(newPassword,"[PUT /user newPassword]");
+       regex.length(newPassword,5,50,"[PUT /user newPassword]");
+       regex.pwTest(newPassword,"[PUT /user newPassword]");
+
+   } catch(err){
+       logger.error(`[${err.name}] ${err.message}`);
+       return res.status(400).send('올바른 값을 입력 해주세요.').end();
+   }
+   
+   try {
+     dbcon = await pool.getConnection(async (conn) => conn);
+
+     result = await dbcon.query("UPDATE members SET password=? WHERE m_id=?",[newPassword, memberId]);
+       
+     logger.info(`[PUT /user/newPassword] newPassword ${req.ip} 유저패스워드 변경완료`);
+     
+   } catch (err) {
+     console.error(err);
+     logger.error(err);
+     return res.status(500).send("Internal Server Error");
+
+   } finally {
+     if(dbcon) await dbcon.release();
+   }
+   return res.status(201).send("변경완료");
+
+}
+/**
+ * 유저 프로필사진 업데이트
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ * @returns 
+ * requirements : userLoginId(현재 로그인 아이디), newImage(바꿀 프로필사진(URL)), memberId(m_id)
+ */
+const updateImage = async (req, res, next) => {
+  logger.info(`[PUT /USER/updateImage] ${req.ip} is access`);
+
+  
+  const sessionUserId = req.session.user.USER;
+  const newImage = req.body.newImage[0].trim();
+  const memberId = req.body.memberId;
+
+  console.log(req.body);
+
+  if(sessionUserId != req.body.userLoginId) return res.status(401).send("잘못된 인증정보 입니다.");
+   
+  let dbcon = null;
+
+
+   // 정규식 검사
+   try {
+      if(!newImage){
+        throw Error("이미지 없어");
+      }
+   } catch(err){
+       logger.error(`[${err.name}] ${err.message}`);
+       return res.status(400).send('올바른 값을 입력 해주세요.').end();
+   }
+   
+   try {
+     dbcon = await pool.getConnection(async (conn) => conn);
+
+     result = await dbcon.query("UPDATE members SET image=? WHERE m_id=?",[newImage, memberId]);
+       
+     logger.info(`[PUT /user/newImage] newImage ${req.ip} 유저이미지 변경완료`);
+     
+   } catch (err) {
+     console.error(err);
+     logger.error(err);
+     return res.status(500).send("Internal Server Error");
+
+   } finally {
+     if(dbcon) await dbcon.release();
+   }
+   return res.status(201).send("변경완료");
+
+}
+/**
+ * 유저 자기소개 업데이트
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ * @returns 
+ * requirements : userLoginId(현재 로그인 아이디), newIntro(바꿀 자기소개 string), memberId(m_id)
+ */
+const updateIntro = async (req, res, next) => {
+  logger.info(`[PUT /USER/updateIntro] ${req.ip} is access`);
+
+  const sessionUserId = req.session.user.USER;
+  const newIntro = req.body.newIntro?.trim();
+  const memberId = req.body.memberId;
+
+  if(sessionUserId != req.body.userLoginId) return res.status(401).send("잘못된 인증정보 입니다.");
+   
+  let dbcon = null;
+
+
+   // 정규식 검사
+   try { 
+
+       if(newIntro !== null){
+           regex.length(newIntro,0,100,"[PUT /user INTRO]");
+       }
+
+
+   } catch(err){
+       logger.error(`[${err.name}] ${err.message}`);
+       return res.status(400).send('올바른 값을 입력 해주세요.').end();
+   }
+   
+   try {
+     dbcon = await pool.getConnection(async (conn) => conn);
+
+     result = await dbcon.query("UPDATE members SET intro=? WHERE m_id=?",[newIntro, memberId]);
+       
+     logger.info(`[PUT /user/newIntro] newIntro ${req.ip} 유저 자기소개 변경완료`);
+     
+   } catch (err) {
+     console.error(err);
+     logger.error(err);
+     return res.status(500).send("Internal Server Error");
+
+   } finally {
+     if(dbcon) await dbcon.release();
+   }
+   return res.status(201).send("변경완료");
+
+}
 
   module.exports = {
       create,
       signIn,
       out,
       current,
+      updateId,
+      updateNickname,
+      updateEmail,
+      updatePassword,
+      updateImage,
+      updateIntro,
+
       
   }

@@ -9,7 +9,9 @@ const {
   recent,
   update,
   destroy,
-  search
+  search,
+  myRecent,
+  myContent
 } = require("./post.ctrl");
 
 const {verifySession} = require('../../utils/sessionVerify')
@@ -185,6 +187,8 @@ router.put("/:id", upload.single("banner"), update);
  *           description: 유효성 검사 실패
  */
 router.get("/keyword", search);
+router.get("/myrecent", myRecent);
+router.get("/mycontent", myContent);
 router.delete("/:id", destroy);
 
 module.exports = router;

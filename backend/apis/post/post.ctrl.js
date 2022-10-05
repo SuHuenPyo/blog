@@ -124,6 +124,131 @@ const search = async (req, res, next) => {
   }
   return res.status(200).json({'result':result[0], 'pageEnd':pagenationResult.totalPage});
 };
+//나의 최신글 가져오기  필수 m_id
+const myRecent = async (req, res, next) => {
+
+
+  logger.info(`[GET /myRecent] ${req.ip} is access`);
+  console.log("[index] DB pool current Count == " + pool.pool._allConnections._tail);
+
+  const page = req.query?.page || 1; //보내줄 해당 페이지 넘버. query로 값이 넘어 오지 않으면 맨처음 넘버 1로 보내줌
+  const rows = req.query?.rows || 16; //페이지당 요청 개수
+
+  const memberId = req.query?.m_id;
+
+  if(!memberId) return res.status(400).send('유저 아이디가 비었습니다.');
+
+  let dbcon = null;
+  let json = null;
+  
+  let sql = ``;
+  let pagenationResult = null;
+  let totalCount = 0;
+
+  let result = null;
+
+  try {
+
+    dbcon = await pool.getConnection(async (conn) => conn);
+    sql =`SELECT COUNT(*) as cnt FROM boards WHERE m_id=?`;
+    [result] = await dbcon.query(sql, [memberId]);
+    totalCount = result[0].cnt ;
+
+
+    
+
+    if(result[0].cnt == 0) return res.status(204).json({});
+    result=null;
+
+    pagenationResult = pagenation(totalCount, page, rows);
+
+    
+    sql =`SELECT boards.b_id as boardId , boards.b_title as boardTitle ,
+    boards.b_banner as boardBanner, LEFT(boards.b_markdown, 300) as boardMarkdown ,
+    boards.m_id as boardMemberId, boards.b_mdate as boardMDate,
+    boards.b_hits as boardHits, boards.b_like  as boardLike,
+    members.userId as memberUserId, members.image as memberPic,
+    members.name as memberName
+    FROM boards, members WHERE ((boards.m_id = members.m_id) AND members.m_id = ?  AND (boards.b_mdate > date_add(now(), interval -7 day)) ) ORDER BY boardId DESC LIMIT ?,?`;
+
+    
+    result = await dbcon.query(sql, [ memberId, pagenationResult.offset, pagenationResult.listCount]);
+
+  } catch (err) {
+    logger.error(err);
+    console.error(err);
+    return res.status(500).send("Internal Server Error");
+  } finally {
+    await dbcon.release();
+  }
+  console.log("나의 최근글 가져오기 완료");
+
+  
+  
+  return res.status(200).json({'result':result[0], 'pageEnd':pagenationResult.totalPage});
+};
+
+//나의 전체글 가져오기 
+const myContent = async (req, res, next) => {
+
+ 
+  logger.info(`[GET /myContent] ${req.ip} is access`);
+  console.log("[index] DB pool current Count == " + pool.pool._allConnections._tail);
+
+  const page = req.query?.page || 1; //보내줄 해당 페이지 넘버. query로 값이 넘어 오지 않으면 맨처음 넘버 1로 보내줌
+  const rows = req.query?.rows || 16; //페이지당 요청 개수
+
+  const memberId = req.query?.m_id;
+
+
+  console.log("MyCONTENT :::::  " +JSON.stringify(req.query) );
+
+  console.log(`memberID ::::::::: ${memberId}`);
+
+  if(!memberId) return res.status(400).send('유저 아이디가 비었습니다.');
+
+  let dbcon = null;
+  let json = null;
+  
+  let sql = ``;
+  let pagenationResult = null;
+  let totalCount = 0;
+
+  let result = null;
+
+  try {
+
+    dbcon = await pool.getConnection(async (conn) => conn);
+    sql =`SELECT COUNT(*) as cnt FROM boards WHERE m_id=?`;
+    [result] = await dbcon.query(sql, [memberId]);
+    totalCount = result[0].cnt ;
+
+    if(result[0].cnt == 0) return res.status(204).json({});
+    result=null;
+
+    pagenationResult = pagenation(totalCount, page, rows);
+
+    
+    sql =`SELECT boards.b_id as boardId , boards.b_title as boardTitle ,
+    boards.b_banner as boardBanner, LEFT(boards.b_markdown, 300) as boardMarkdown ,
+    boards.m_id as boardMemberId, boards.b_mdate as boardMDate,
+    boards.b_hits as boardHits, boards.b_like  as boardLike,
+    members.userId as memberUserId, members.image as memberPic,
+    members.name as memberName
+    FROM boards, members WHERE ((boards.m_id = members.m_id) AND members.m_id = ? ) ORDER BY boardId DESC LIMIT ?,?`;
+
+    result = await dbcon.query(sql, [ memberId, pagenationResult.offset, pagenationResult.listCount]);
+
+  } catch (err) {
+    logger.error(err);
+    console.error(err);
+    return res.status(500).send("Internal Server Error");
+  } finally {
+    await dbcon.release();
+  }
+  console.log("나의전체글 가져오기 완료");
+  return res.status(200).json({'result':result[0], 'pageEnd':pagenationResult.totalPage});
+};
 
 
 
@@ -468,4 +593,4 @@ const destroy = async (req, res, next) => {
   return res.status(204).end();
 };
 
-module.exports = { create, index, detail, popular, recent, update, destroy, search };
+module.exports = { create, index, detail, popular, recent, update, destroy, search, myRecent, myContent };

@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-09-18 17:31:46
- * @modify date 2022-09-21 10:06:54
+ * @modify date 2022-10-03 23:25:56
  * @desc [세션 검증을 위한 미들웨어 ]
  */
 
@@ -34,6 +34,7 @@ const verifySession = async(req, res, next) => {
             return res.status(401).send("클라이언트의 세션정보가 없거나 일치하지 않습니다.")
         }
         req.body.userId = result[0]?.m_id;
+        
     }catch(err){
         logger.error(err.message);
         console.error(err);

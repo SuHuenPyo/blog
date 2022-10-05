@@ -40,7 +40,7 @@ const full = async(req, res, next) => {
 
 }
 
-//유저 간단정보 
+//유저 자신정보 
 const info = async(req, res, next) => {
   logger.info(`[GET /profile/id=${req.query.id}/userinfo] ${req.ip} is accessed`);
   console.log("[full profile/id] DB pool current Count == " + pool.pool._allConnections._tail);
@@ -49,6 +49,7 @@ const info = async(req, res, next) => {
   //if(!req.session.user) return res.status(400).send('유저 정보가 존재하지 않습니다.');
 
   let userName = req.session.user.USER;
+
   
 
   let dbcon = null;
@@ -58,7 +59,7 @@ const info = async(req, res, next) => {
   try {
    dbcon = await pool.getConnection(async (conn) => conn);
 
-   const sql = 'SELECT name, image FROM members WHERE userId=?';
+   const sql = 'SELECT name, image, userId, email ,m_id as memberId, rdate, intro  FROM members WHERE userId=?';
 
    const [result] = await dbcon.query(sql,userName);
 
