@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-09-19 00:37:16
- * @modify date 2022-09-21 15:35:57
+ * @modify date 2022-10-05 12:41:10
  * @desc [댓글 대댓글에 대한 로직 컴포넌트]
  */
 import axios from 'axios';
@@ -71,6 +71,7 @@ export const CommentWrite = (props) => {
         console.log("여기서 실행합니다.");
         (async()=>{
           await dispatch(postCommentWrite({boardId: props.boardId, content: Content}));
+          setContent("");
           //게시판 id, 내용 ,그룹id(그룹아이디가 없다면 신규그룹생성)
           props.reloadSwitch(true);
         })();

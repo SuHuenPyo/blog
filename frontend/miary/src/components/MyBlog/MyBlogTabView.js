@@ -1,22 +1,28 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import './MyBlogTabView.scss';
 import Summary from '../MyBlogTab/Summary';
 import MyBlogPost from '../MyBlogTab/MyBlogPost';
 
 
-export const MyBlogTabView = () => {
-  const MyBlogTabs = {
-    0: <Summary/>,
-    1: <MyBlogPost/>,
+//props - memberId맴버의 아이디 
+export const MyBlogTabView = (props) => {
 
-  }
-
+  const [memberId, setMemberId] = useState();
   const [blogTabNumber, setTabNumber] = useState(0);
 
-  const changeTabHandler = (num)=>{
-    setTabNumber(num);
+  useEffect(()=>{
+    setMemberId(props?.memberId);
+  },[props?.memberId]);
+
+  const tabContent = {
+    0 : <Summary memberId={memberId}/>,
+    1 : <MyBlogPost memberId={memberId}/>
+  }
+  const changeTabHandler = (tabNum) =>{
+    setTabNumber(tabNum);
   }
 
+  useEffect(()=>{setMemberId(props.memberId);},[props?.memberId]);
 
   return (
     <>
@@ -27,7 +33,7 @@ export const MyBlogTabView = () => {
       </ul>
     </div>
       <div className="MyBlogTabContents">
-        {MyBlogTabs[blogTabNumber]}
+        {tabContent[blogTabNumber]}
       </div>
     </>
   )

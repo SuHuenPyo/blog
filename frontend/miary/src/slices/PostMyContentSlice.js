@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-09-28 19:59:17
- * @modify date 2022-09-30 02:31:16
+ * @modify date 2022-09-30 07:18:16
  * @desc [검색 기능을 이용하기 위한 slice]
  */
 
@@ -13,12 +13,12 @@
  
  axios.defaults.withCredentials = true;
  
- export const getSearchContent = createAsyncThunk(
-     "GET/MYSEARCHCONTENT", 
+ export const getMyContent = createAsyncThunk(
+     "GET/MYPOSTMYCONTENT", 
      async (payload, {rejectWithValue})=>{
          let result = null;
          try{
-             result = await MiaryGetAxios(ServerUrl+"post/keyword","글 가져오기 성공", "글 가져오기 실패",{...payload});
+             result = await MiaryGetAxios(ServerUrl+"post/mycontent","글 가져오기 성공", "글 가져오기 실패",{...payload});
          }catch(err){
              console.log(err.response);
              return rejectWithValue(err.response);
@@ -27,8 +27,8 @@
      }
  );
  
- const mySearchContent = createSlice({
-     name: "mySearchContent",
+ const myPostMyContent = createSlice({
+     name: "myPostMyContent",
      initialState:{
          rt: null,
          rtmsg: null,
@@ -51,13 +51,13 @@
 
      },
      extraReducers:{
-         [getSearchContent.pending]: (state, action) =>{
+         [getMyContent.pending]: (state, action) =>{
              return {
                  ...state,
                  loading: true,
              };
          },
-         [getSearchContent.fulfilled]: (state, {meta, payload})=>{
+         [getMyContent.fulfilled]: (state, {meta, payload})=>{
              console.log(payload);
              return{
                  rt: payload.status,
@@ -66,7 +66,7 @@
                  loading: false
              };
          },
-         [getSearchContent.rejected]: (state, {payload})=>{
+         [getMyContent.rejected]: (state, {payload})=>{
              
             console.log(state);
             console.log(payload);
@@ -82,6 +82,6 @@
  
  
  
- export default mySearchContent.reducer;
- export const {reset}  = mySearchContent.actions;
+ export default myPostMyContent.reducer;
+ export const {reset}  = myPostMyContent.actions;
  

@@ -6,23 +6,26 @@
  * @desc [ManagementWrap으로 둘러싸는 scss]
  */
 
-.ManagementWrap{
-    
-    
-    margin: 0 auto;
-    
-    
-    margin-bottom: -30px;
-    
-    z-index: -1;
-    
-    .ManagementContainer{
+ @import '../Common_Scss/mixin';
+ @import '../Common_Scss/variables';
+
+ // direction 1 = column, 0 row-reverse
+ @mixin mixinFlexDirection($direction){
+
+
         width: 100%;
         margin: 0 auto;
         display: flex;
         flex-direction: row;
+
+
+        @if $direction==1 {
+            flex-direction: column;
+        }
+
             
-        .ManagementGroupBox{ //커버ㅏ
+        .ManagementGroupBox{
+            
             padding-top:10em;
 
             flex: 1;
@@ -31,10 +34,22 @@
             display: flex;
             flex-direction:row-reverse;
 
+            @if $direction==1 {
+                flex-direction: column;
+                padding-top: 6em;
+            }
+    
+
+
             .ManagementGroupContainer{
                 flex-grow: 1;
                 min-width: 140px;
                 max-width: 180px;
+
+                @if $direction==1 {
+                    max-width: 1000px;
+                }
+        
                 .ManagementGroupTabName{
                     height: 2em;
                     
@@ -65,7 +80,7 @@
                         font-size: 1em;
                         font-weight: 500;
                         transition: all 0.3s;
-    
+
                         &:hover{
                             border-radius: 3px;
                             background-color: rgb(80, 80, 80);
@@ -89,21 +104,52 @@
                     border-top: 1px solid rgb(189, 189, 189);
                 }
             }
-        
-            
         }
+        
         .ManagementContentBoxContainer{
             flex: 2;
             .ManagementContentBox{
                 background-color: white;
                 max-width: 800px;
                 padding-top:6em;
-                
+
+                @if $direction==1 {
+                    padding-top:0;
+                }
             }
         }
 
         
         
 
+
+    
+}
+@include desktop{
+    .ManagementContainer{
+        @include mixinFlexDirection(0)
     }
+ }
+ @include tablet{
+    .ManagementContainer{
+        @include mixinFlexDirection(0)
+    }
+ }
+ @include mobile{
+    .ManagementContainer{
+        @include mixinFlexDirection(1)
+    }
+ }
+
+.ManagementWrap{
+    
+    
+    margin: 0 auto;
+    
+    
+    margin-bottom: -30px;
+    
+    z-index: -1;
+    
+    
 }

@@ -15,13 +15,12 @@ const ContentNumber = (props) => {
     
     if(props.pageEnd > 1 ){
       
-      console.log(props);
+      //console.log(props);
       
       let maxPage = props.currentPage;
       let temp = [];
 
-       ///console.log(props.CurrentPage);
-      
+      //console.log(props.CurrentPage);
 
       let startIndex = props.currentPage -2;
       if(props.pageEnd <= 5){
@@ -52,9 +51,10 @@ const ContentNumber = (props) => {
         }
 
       }
-      console.log(temp)
+      //console.log(temp)
       
       setPageGroup(temp);
+
       
     }
     
@@ -100,8 +100,8 @@ const ContentNumber = (props) => {
         props &&
         <div className='CommentPagenationNumberBox'>
            {PageGroup.map((item, idx) => {
-            console.log(item);
-            console.log(props.currentPage);
+            //console.log(item);
+            //console.log(props.currentPage);
             if(item == props.currentPage) return <div className='CommentPagenationNumber CommentPagenationCurrent' key={(idx)}>{item}</div>
             return <div className='CommentPagenationNumber' key={(idx)} onClick={ChangeNumberPage}>{item}</div>
           })} 

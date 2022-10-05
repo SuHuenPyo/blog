@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-09-28 19:59:17
- * @modify date 2022-09-30 02:31:16
+ * @modify date 2022-09-30 07:43:36
  * @desc [검색 기능을 이용하기 위한 slice]
  */
 
@@ -13,12 +13,12 @@
  
  axios.defaults.withCredentials = true;
  
- export const getSearchContent = createAsyncThunk(
-     "GET/MYSEARCHCONTENT", 
+ export const getMyRecentPost = createAsyncThunk(
+     "GET/MYRECENTPOST", 
      async (payload, {rejectWithValue})=>{
          let result = null;
          try{
-             result = await MiaryGetAxios(ServerUrl+"post/keyword","글 가져오기 성공", "글 가져오기 실패",{...payload});
+             result = await MiaryGetAxios(ServerUrl+"post/myrecent","글 가져오기 성공", "글 가져오기 실패",{...payload});
          }catch(err){
              console.log(err.response);
              return rejectWithValue(err.response);
@@ -27,8 +27,8 @@
      }
  );
  
- const mySearchContent = createSlice({
-     name: "mySearchContent",
+ const myRecentMyPost = createSlice({
+     name: "myRecentMyPost",
      initialState:{
          rt: null,
          rtmsg: null,
@@ -51,13 +51,13 @@
 
      },
      extraReducers:{
-         [getSearchContent.pending]: (state, action) =>{
+         [getMyRecentPost.pending]: (state, action) =>{
              return {
                  ...state,
                  loading: true,
              };
          },
-         [getSearchContent.fulfilled]: (state, {meta, payload})=>{
+         [getMyRecentPost.fulfilled]: (state, {meta, payload})=>{
              console.log(payload);
              return{
                  rt: payload.status,
@@ -66,7 +66,7 @@
                  loading: false
              };
          },
-         [getSearchContent.rejected]: (state, {payload})=>{
+         [getMyRecentPost.rejected]: (state, {payload})=>{
              
             console.log(state);
             console.log(payload);
@@ -82,6 +82,6 @@
  
  
  
- export default mySearchContent.reducer;
- export const {reset}  = mySearchContent.actions;
+ export default myRecentMyPost.reducer;
+ export const {reset}  = myRecentMyPost.actions;
  

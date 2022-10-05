@@ -2,7 +2,7 @@
  * @author Shun
  * @email vytngms@gmail.com
  * @create date 2022-06-16 18:06:39
- * @modify date 2022-09-29 03:12:41
+ * @modify date 2022-10-05 12:20:02
  * @desc [React Markdown 라이브러리를 사용해서 사용자 입력값을 받음]
  */
 import React, { Children, useCallback, useRef, useState } from 'react'
@@ -30,6 +30,8 @@ import { Link } from 'react-router-dom';
 //스타일 시트 editorBox.js
 import "./EditorBox.scss";
 
+import Loading from '../Common_function/Loading'
+
  
 // Initialize a markdown parser
 const mdParser = new MarkdownIt(/* Markdown-it options */);
@@ -50,6 +52,8 @@ export const EditorBox = () => {
   const [HashTag, setHashTag] = useState('');
   const [HashArr, setHashArr] = useState([]);//HashTag에 저장된 값을 배열로 차곡차곡 넣어줄예정 
 
+  const [bLoading, setBLoading] = useState(false); // true시에 loading중 
+
   const recordTitleName = (e) => {
     e.preventDefault();
     setTitleName(e.target.value);
@@ -58,6 +62,8 @@ export const EditorBox = () => {
 
   const handleClickButton = async()=>{
     if(window.confirm("글을 발행합니까?")){
+      setBLoading(true);
+      
       let data = editorRef.current.getInstance().getHTML();
       let markdown = editorRef.current.getInstance().getMarkdown();
       
@@ -87,7 +93,8 @@ export const EditorBox = () => {
       }else{
         window.alert("시스템 에러가 발생했습니다. 관리자에게 문의해주세요.");
       }
-      
+     
+      setBLoading(false);
     }
     
   }
@@ -193,6 +200,8 @@ export const EditorBox = () => {
     }, [HashTag, HashArr]);
   return (
     <div className='EditorBox'>
+      {bLoading && <Loading/>}
+      
       <div className='EditorTitleContainer'>
         
         <div className='titlePostIt' ref={refTitleInput}>
@@ -236,6 +245,8 @@ export const EditorBox = () => {
           hooks={
             {
               addImageBlobHook: async(blob, callback) =>{
+
+                setBLoading(true);
                 console.log(blob);
                 //1. 이미지 서버로 전송, url 리턴받기 
 
@@ -246,6 +257,7 @@ export const EditorBox = () => {
                 let response = await MiaryPostAxios(ServerUrl+'images/', bodyFormData);
                 console.log(response.data);
 
+                setBLoading(false);
                 //2. callback으로 이미지 화면에 넣기
                 callback(response.data, "이미지");
               }

@@ -11,7 +11,7 @@
     width: 90%;
     height: 100%;
     //background-color:rgb(160, 101, 101);
-    padding: 1em 1.5em;
+    padding: 1em 0.5em;
     
     
     .ManageUserBox{
@@ -116,11 +116,13 @@
                 width: 100%;
 
                 .ManagePostBox{
-                    min-width: 8em;
+                    min-width: 10em;
+                    align-items: center;
                     border-radius: 4px;
-                    line-height: 2.2em;
+                    line-height: 5em;
                     height: 8em;
-                    border: 1px solid black;
+                    border: 1px solid rgb(139, 139, 139);
+                    color: rgb(88, 88, 88);
                     margin: 0.2em 0.4em;
                 }
             }

@@ -11,7 +11,7 @@
     width: 90%;
     height: 100%;
     //background-color:rgb(160, 101, 101);
-    padding: 1em 1.5em;
+    padding: 1em 0.5em;
     
     .ManageUserBox{
         width: 100%;
@@ -90,11 +90,25 @@
                 
                 
             }
+            .ManageInputImg{
+                width: 0;
+                height: 0;
+                visibility: hidden;
+            }
             .ManageProfileImg{
+                margin-top: 1em;
                 width: 120px;
                 height: 120px;
                 border-radius: 50%;
                 border: 1px solid rgb(96, 218, 191);
+                transition: all 0.3s;
+
+                &:hover{
+                    cursor: pointer;
+                    opacity: 0.6;
+                    transition: all 0.3s;
+                    
+                }
             }
             .ManageIntroArea{
                 width: 100%;
