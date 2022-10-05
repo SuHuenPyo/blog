@@ -25,21 +25,7 @@ Amazon AWS EC2인스턴스로 구동중이며 해당서버를 반사서버로 �
 ### Tech Stack :
 :computer: Backend : Express
 
-<img src="https://img.shields.io/badge/Ubuntu-E95420?style=flat&logo=Ubuntu&logoColor=white"/>
-<img src="https://img.shields.io/badge/Amazon EC2
--FF9900?style=flat&logo=Amazon EC2
-&logoColor=white"/>
-<img src="https://img.shields.io/badge/Amazon S3-569A31?style=flat&logo=Amazon S3&logoColor=white"/>
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=JavaScript&logoColor=white"/>
-<img src="https://img.shields.io/badge/Node.js-339933?style=flat&logo=Node.js&logoColor=white"/>
-<img src="https://img.shields.io/badge/Nodemon-76D04B?style=flat&logo=Nodemon&logoColor=white"/>
-<img src="https://img.shields.io/badge/Express-000000?style=flat&logo=Express&logoColor=white"/>
-<img src="https://img.shields.io/badge/Mocha-8D6748?style=flat&logo=Mocha&logoColor=white"/>
-<img src="https://img.shields.io/badge/PM2-F7DF1E?style=flat&logo=PM2&logoColor=white"/>
-<img src="https://img.shields.io/badge/Swagger-85EA2D?style=flat&logo=Swagger&logoColor=white"/>
-<img src="https://img.shields.io/badge/NodeMailer-76D04B?style=flat&logo=JavaScript&logoColor=white"/>
-<img src="https://img.shields.io/badge/.ENV-ECD53F?style=flat&logo=.ENV&logoColor=white"/>
-<img src="https://img.shields.io/badge/HTTPS-F7DF1E?style=flat&logo=&logoColor=white"/>
+<img src="https://img.shields.io/badge/Ubuntu-E95420?style=flat&logo=Ubuntu&logoColor=white"/><img src="https://img.shields.io/badge/Amazon EC2-FF9900?style=flat&logo=Amazon EC2&logoColor=white"/><img src="https://img.shields.io/badge/Amazon S3-569A31?style=flat&logo=Amazon S3&logoColor=white"/><img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=JavaScript&logoColor=white"/><img src="https://img.shields.io/badge/Node.js-339933?style=flat&logo=Node.js&logoColor=white"/><img src="https://img.shields.io/badge/Nodemon-76D04B?style=flat&logo=Nodemon&logoColor=white"/><img src="https://img.shields.io/badge/Express-000000?style=flat&logo=Express&logoColor=white"/><img src="https://img.shields.io/badge/Mocha-8D6748?style=flat&logo=Mocha&logoColor=white"/><img src="https://img.shields.io/badge/PM2-F7DF1E?style=flat&logo=PM2&logoColor=white"/><img src="https://img.shields.io/badge/Swagger-85EA2D?style=flat&logo=Swagger&logoColor=white"/><img src="https://img.shields.io/badge/NodeMailer-76D04B?style=flat&logo=JavaScript&logoColor=white"/><img src="https://img.shields.io/badge/.ENV-ECD53F?style=flat&logo=.ENV&logoColor=white"/><img src="https://img.shields.io/badge/HTTPS-F7DF1E?style=flat&logo=&logoColor=white"/>
 
 <br/>
 
