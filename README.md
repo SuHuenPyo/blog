@@ -25,44 +25,25 @@ Amazon AWS EC2인스턴스로 구동중이며 해당서버를 반사서버로 �
 ### Tech Stack :
 :computer: Backend : Express
 
-<img src="https://img.shields.io/badge/Ubuntu-E95420?style=flat&logo=Ubuntu&logoColor=white"/><img src="https://img.shields.io/badge/Amazon EC2-FF9900?style=flat&logo=Amazon EC2&logoColor=white"/><img src="https://img.shields.io/badge/Amazon S3-569A31?style=flat&logo=Amazon S3&logoColor=white"/><img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=JavaScript&logoColor=white"/><img src="https://img.shields.io/badge/Node.js-339933?style=flat&logo=Node.js&logoColor=white"/><img src="https://img.shields.io/badge/Nodemon-76D04B?style=flat&logo=Nodemon&logoColor=white"/><img src="https://img.shields.io/badge/Express-000000?style=flat&logo=Express&logoColor=white"/><img src="https://img.shields.io/badge/Mocha-8D6748?style=flat&logo=Mocha&logoColor=white"/><img src="https://img.shields.io/badge/PM2-F7DF1E?style=flat&logo=PM2&logoColor=white"/><img src="https://img.shields.io/badge/Swagger-85EA2D?style=flat&logo=Swagger&logoColor=white"/><img src="https://img.shields.io/badge/NodeMailer-76D04B?style=flat&logo=JavaScript&logoColor=white"/><img src="https://img.shields.io/badge/.ENV-ECD53F?style=flat&logo=.ENV&logoColor=white"/><img src="https://img.shields.io/badge/HTTPS-F7DF1E?style=flat&logo=&logoColor=white"/>
+<img src="https://img.shields.io/badge/Ubuntu-E95420?style=flat&logo=Ubuntu&logoColor=white"/> <img src="https://img.shields.io/badge/Amazon EC2-FF9900?style=flat&logo=Amazon EC2&logoColor=white"/> <img src="https://img.shields.io/badge/Amazon S3-569A31?style=flat&logo=Amazon S3&logoColor=white"/> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=JavaScript&logoColor=white"/> <img src="https://img.shields.io/badge/Node.js-339933?style=flat&logo=Node.js&logoColor=white"/> <img src="https://img.shields.io/badge/Nodemon-76D04B?style=flat&logo=Nodemon&logoColor=white"/> <img src="https://img.shields.io/badge/Express-000000?style=flat&logo=Express&logoColor=white"/> <img src="https://img.shields.io/badge/Mocha-8D6748?style=flat&logo=Mocha&logoColor=white"/> <img src="https://img.shields.io/badge/PM2-F7DF1E?style=flat&logo=PM2&logoColor=white"/> <img src="https://img.shields.io/badge/Swagger-85EA2D?style=flat&logo=Swagger&logoColor=white"/> <img src="https://img.shields.io/badge/NodeMailer-76D04B?style=flat&logo=JavaScript&logoColor=white"/> <img src="https://img.shields.io/badge/.ENV-ECD53F?style=flat&logo=.ENV&logoColor=white"/> <img src="https://img.shields.io/badge/HTTPS-F7DF1E?style=flat&logo=&logoColor=white"/>
 
 <br/>
 
 :pager: Frontend : React  v18.2.0
 
-<img src="https://img.shields.io/badge/Ubuntu-E95420?style=flat&logo=Ubuntu&logoColor=white"/>
-<img src="https://img.shields.io/badge/Amazon EC2
--FF9900?style=flat&logo=Amazon EC2
-&logoColor=white"/>
-<img src="https://img.shields.io/badge/Amazon S3-569A31?style=flat&logo=Amazon S3&logoColor=white"/>
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=JavaScript&logoColor=white"/>
-<img src="https://img.shields.io/badge/Redux-764ABC?style=flat&logo=Redux&logoColor=white"/>
-<img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=React&logoColor=white"/>
-<img src="https://img.shields.io/badge/OpenSSL-721412?style=flat&logo=OpenSSL&logoColor=white"/>
-<img src="https://img.shields.io/badge/Sass-CC6699?style=flat&logo=Sass&logoColor=white"/>
-<img src="https://img.shields.io/badge/Font Awesome-528DD7?style=flat&logo=Font Awesome&logoColor=white"/>
-<img src="https://img.shields.io/badge/Markdown-000000?style=flat&logo=Markdown&logoColor=white"/>
-<img src="https://img.shields.io/badge/.ENV-ECD53F?style=flat&logo=.ENV&logoColor=white"/>
-<img src="https://img.shields.io/badge/styled components-DB7093?style=flat&logo=styled-components&logoColor=white"/>
-<img src="https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=Axios&logoColor=white"/>
+<img src="https://img.shields.io/badge/Ubuntu-E95420?style=flat&logo=Ubuntu&logoColor=white"/> <img src="https://img.shields.io/badge/Amazon EC2-FF9900?style=flat&logo=Amazon EC2&logoColor=white"/> <img src="https://img.shields.io/badge/Amazon S3-569A31?style=flat&logo=Amazon S3&logoColor=white"/> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=JavaScript&logoColor=white"/> <img src="https://img.shields.io/badge/Redux-764ABC?style=flat&logo=Redux&logoColor=white"/> <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=React&logoColor=white"/> <img src="https://img.shields.io/badge/OpenSSL-721412?style=flat&logo=OpenSSL&logoColor=white"/> <img src="https://img.shields.io/badge/Sass-CC6699?style=flat&logo=Sass&logoColor=white"/>  <img src="https://img.shields.io/badge/Font Awesome-528DD7?style=flat&logo=Font Awesome&logoColor=white"/> <img src="https://img.shields.io/badge/Markdown-000000?style=flat&logo=Markdown&logoColor=white"/> <img src="https://img.shields.io/badge/.ENV-ECD53F?style=flat&logo=.ENV&logoColor=white"/> <img src="https://img.shields.io/badge/styled components-DB7093?style=flat&logo=styled-components&logoColor=white"/> <img src="https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=Axios&logoColor=white"/>
 
 <br/>
 
 :lock: Database
 
-<img src="https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=MySQL&logoColor=white"/>
-<img src="https://img.shields.io/badge/MySQLWorbench-4479A1?style=flat&logo=MySQL&logoColor=white"/>
+<img src="https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=MySQL&logoColor=white"/> <img src="https://img.shields.io/badge/MySQLWorbench-4479A1?style=flat&logo=MySQL&logoColor=white"/>
 
 <br/>
 
 :two_men_holding_hands: Team Collaboration Tool
 
-<img src="https://img.shields.io/badge/Sourcetree-0052CC?style=flat&logo=Sourcetree&logoColor=white"/>
-<img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/>
-<img src="https://img.shields.io/badge/Notion-000000?style=flat&logo=Notion&logoColor=white"/>
-<img src="https://img.shields.io/badge/Discord-5865F2?style=flat&logo=Discord&logoColor=white"/>
-<img src="https://img.shields.io/badge/Jira-0052CC?style=flat&logo=Jira&logoColor=white"/>
+<img src="https://img.shields.io/badge/Sourcetree-0052CC?style=flat&logo=Sourcetree&logoColor=white"/> <img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/> <img src="https://img.shields.io/badge/Notion-000000?style=flat&logo=Notion&logoColor=white"/> <img src="https://img.shields.io/badge/Discord-5865F2?style=flat&logo=Discord&logoColor=white"/> <img src="https://img.shields.io/badge/Jira-0052CC?style=flat&logo=Jira&logoColor=white"/>
 
 <br/>
 
